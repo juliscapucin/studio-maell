@@ -10,69 +10,19 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { GSDevTools } from 'gsap/GSDevTools'
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger, GSDevTools)
 
-import { navLinks } from '@/data'
-
-import { Header } from '@/components/ui'
-
 type PageWrapperProps = {
-	variant?: 'primary' | 'secondary' | 'tertiary' | 'accent'
 	classes?: string
 	children?: React.ReactNode
-	hasContainer?: boolean
 }
 
-export default function PageWrapper({
-	children,
-	variant = 'primary',
-	classes,
-	hasContainer = true,
-}: PageWrapperProps) {
+export default function PageWrapper({ children, classes }: PageWrapperProps) {
 	const pathname = usePathname()
 
-	const scrollSmootherRef = useRef<ScrollSmoother | null>(null)
-	const pageContentRef = useRef<HTMLDivElement | null>(null)
 	const pageTransitionRef = useRef<HTMLDivElement | null>(null)
-
-	let pageWrapperStyles = ''
-
-	switch (variant) {
-		case 'primary':
-			pageWrapperStyles = 'bg-primary text-secondary'
-			break
-		case 'secondary':
-			pageWrapperStyles = 'bg-secondary text-primary'
-			break
-		case 'tertiary':
-			pageWrapperStyles = 'bg-tertiary text-primary'
-			break
-		case 'accent':
-			pageWrapperStyles = 'bg-accent-1 text-primary'
-			break
-	}
-
-	//* INITIALIZE GSAP SCROLLSMOOTHER *//
-	useGSAP(() => {
-		// Only run on client side
-		if (typeof window === 'undefined') return
-
-		// Cleanup existing ScrollSmoother
-		if (scrollSmootherRef.current) {
-			scrollSmootherRef.current.kill()
-			scrollSmootherRef.current = null
-		}
-
-		// Create new ScrollSmoother
-		scrollSmootherRef.current = ScrollSmoother.create({
-			smooth: 1,
-			effects: false,
-		})
-	}, [pathname])
 
 	// * PAGE TRANSITION ANIMATION *//
 	useGSAP(() => {
-		if (!pageContentRef.current || !pageTransitionRef.current) return
-
-		gsap.set(pageContentRef.current, { xPercent: -10 })
+		if (!pageTransitionRef.current) return
 
 		// Animate the mask to reveal the content
 		gsap.to(pageTransitionRef.current, {
@@ -80,62 +30,24 @@ export default function PageWrapper({
 			xPercent: 100,
 			ease: 'power2.out',
 		})
-		gsap.to(pageContentRef.current, {
-			xPercent: 0,
-			duration: 0.5,
-			ease: 'power2.out',
-		})
 
 		// GSDevTools.create()
 	}, [pathname])
-
-	// Cleanup on unmount
-	useEffect(() => {
-		return () => {
-			if (scrollSmootherRef.current) {
-				scrollSmootherRef.current.kill()
-				scrollSmootherRef.current = null
-			}
-		}
-	}, [])
 
 	return (
 		<Fragment key={pathname}>
 			{/* PAGE TRANSITION MASK */}
 			<div
 				ref={pageTransitionRef}
-				className='gsap-page-transition fixed inset-0 bg-secondary z-50'></div>
+				className='gsap-page-transition fixed inset-0 bg-secondary z-50 hidden md:block'></div>
 
-			{/* HEADER */}
-			<Header navLinks={navLinks} />
-
-			{/* GSAP SMOOTHER WRAPPER */}
-			<div id='smooth-wrapper' className='z-0 pointer-events-none'>
-				{/* GSAP SMOOTHER CONTENT */}
-				<div id='smooth-content' className={`z-0 pointer-events-none`}>
-					{/* PAGE CONTENT BACKGROUND */}
-					<div
-						ref={pageContentRef}
-						className={`gsap-page-wrapper min-h-screen w-full pointer-events-auto pt-[var(--height-header)] ${
-							pageWrapperStyles ? pageWrapperStyles : ''
-						}`}>
-						{/* PAGE CONTENT CONTAINER */}
-						<div
-							className={`relative pointer-events-auto ${
-								hasContainer ? 'container pb-32 mx-auto' : ''
-							}`}>
-							{/* MAIN CONTENT */}
-							{/* Keep children in column 2 to 13 */}
-							<main
-								id='main-content' // Add id for skip link
-								tabIndex={-1} // Make focusable for skip link
-								className={`${classes ? classes : ''}`}>
-								{children}
-							</main>
-						</div>
-					</div>
-				</div>
-			</div>
+			{/* MAIN CONTENT */}
+			<main
+				id='main-content' // Add id for skip link
+				tabIndex={-1} // Make focusable for skip link
+				className={`w-full bg-yellow-400 flex-3/4 relative ${classes ? classes : ''}`}>
+				{children}
+			</main>
 		</Fragment>
 	)
 }

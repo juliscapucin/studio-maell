@@ -1,5 +1,4 @@
 export const navLinks = [
-	{ label: 'Start', slug: '/' },
 	{ label: 'Work', slug: 'work' },
 	{ label: 'Services', slug: 'services' },
 	{ label: 'Articles', slug: 'articles' },

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+import { MenuDesktop, MenuMobile } from '@/components/ui'
+import { navLinks } from '@/data'
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -26,7 +28,19 @@ export default function RootLayout({
 		<html lang='en'>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased bg-primary text-secondary`}>
-				{children}
+				{/* SKIP TO MAIN CONTENT LINK - for screen readers */}
+				<a
+					href='#main-content'
+					className='fixed top-0 left-0 z-50 -translate-y-full bg-secondary text-primary px-4 py-2 underline focus:translate-y-0'>
+					Skip to main content
+				</a>
+				<MenuDesktop navLinks={navLinks} />
+				<MenuMobile navLinks={navLinks} />
+				<div className='container mx-auto flex relative'>
+					{/* SPACER FOR DESKTOP MENU */}
+					<div className='hidden md:block flex-1/4'></div>
+					{children}
+				</div>
 			</body>
 		</html>
 	)

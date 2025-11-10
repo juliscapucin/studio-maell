@@ -4,6 +4,7 @@ import ExternalLink from './externalLink'
 import Header from './header'
 import ImageWithSpinner from './imageWithSpinner'
 import Logo from './logo'
+import MenuDesktop from './menuDesktop'
 import MenuMobile from './menuMobile'
 import PageWrapper from './pageWrapper'
 
@@ -14,6 +15,7 @@ export {
 	Header,
 	ImageWithSpinner,
 	Logo,
+	MenuDesktop,
 	MenuMobile,
 	PageWrapper,
 }
