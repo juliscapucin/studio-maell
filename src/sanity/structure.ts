@@ -3,15 +3,56 @@ import type { StructureResolver } from 'sanity/structure'
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
 	S.list()
-		.title('Blog')
+		.title('Content')
 		.items([
-			S.documentTypeListItem('project').title('Projects'),
-			S.documentTypeListItem('category').title('Categories'),
-			S.documentTypeListItem('author').title('Authors'),
+			// Pages section
+			S.listItem()
+				.title('Pages')
+				.child(
+					S.list()
+						.title('Pages')
+						.items([
+							S.listItem()
+								.title('Work')
+								.child(
+									S.document().schemaType('workPage').documentId('workPage')
+								),
+							S.listItem()
+								.title('Connect')
+								.child(
+									S.document()
+										.schemaType('connectPage')
+										.documentId('connectPage')
+								),
+						])
+				),
+			S.divider(),
+			// Collections section
+			S.listItem()
+				.title('Collections')
+				.child(
+					S.list()
+						.title('Collections')
+						.items([
+							S.documentTypeListItem('article').title('Articles'),
+							S.documentTypeListItem('author').title('Authors'),
+							S.documentTypeListItem('case').title('Cases'),
+							S.documentTypeListItem('category').title('Categories'),
+							S.documentTypeListItem('service').title('Services'),
+						])
+				),
 			S.divider(),
 			...S.documentTypeListItems().filter(
 				(item) =>
 					item.getId() &&
-					!['project', 'category', 'author'].includes(item.getId()!)
+					![
+						'article',
+						'author',
+						'case',
+						'category',
+						'connectPage',
+						'service',
+						'workPage',
+					].includes(item.getId()!)
 			),
 		])

@@ -1,9 +1,9 @@
 import { DocumentTextIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-export const projectType = defineType({
-	name: 'project',
-	title: 'Project',
+export const caseType = defineType({
+	name: 'case',
+	title: 'Case',
 	type: 'document',
 	icon: DocumentTextIcon,
 	fields: [
@@ -17,11 +17,6 @@ export const projectType = defineType({
 			options: {
 				source: 'title',
 			},
-		}),
-		defineField({
-			name: 'author',
-			type: 'reference',
-			to: { type: 'author' },
 		}),
 		defineField({
 			name: 'mainImage',
@@ -54,12 +49,11 @@ export const projectType = defineType({
 	preview: {
 		select: {
 			title: 'title',
-			author: 'author.name',
 			media: 'mainImage',
 		},
 		prepare(selection) {
-			const { author } = selection
-			return { ...selection, subtitle: author && `by ${author}` }
+			const { title } = selection
+			return { ...selection, subtitle: title && `by ${title}` }
 		},
 	},
 })
