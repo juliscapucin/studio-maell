@@ -1,14 +1,17 @@
-import { PageWrapper } from '@/components/ui'
+import { PageHeader, PageWrapper } from '@/components/ui'
+import { ProjectCard } from '@/components'
 
 export default function Home() {
 	return (
 		<PageWrapper>
-			<div className='bg-green-500 h-96 w-full'></div>
-			<div className='bg-green-500 h-96 w-full mt-8'></div>
-			<div className='bg-green-500 h-96 w-full mt-8'></div>
-			<div className='bg-green-500 h-96 w-full mt-8'></div>
-			<div className='bg-green-500 h-96 w-full mt-8'></div>
-			<div className='bg-green-500 h-96 w-full mt-8'></div>
+			<PageHeader
+				title='Work'
+				subtitle='6 years of inclusive digital design summarized in a few highlights'></PageHeader>
+			<div className='space-y-8'>
+				{[1, 2, 3, 4, 5, 6].map((item) => (
+					<ProjectCard key={item}></ProjectCard>
+				))}
+			</div>
 		</PageWrapper>
 	)
 }
