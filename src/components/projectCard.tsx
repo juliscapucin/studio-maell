@@ -1,4 +1,5 @@
 import { ImageWithSpinner } from '@/components/ui'
+import { ButtonProject } from '@/components/buttons'
 
 export default function ProjectCard({}) {
 	return (
@@ -8,7 +9,7 @@ export default function ProjectCard({}) {
 			</h2>
 			<p>Jacob Douwe Egberts Professsional</p>
 			<hr className='my-4 border-tertiary' />
-			<div>
+			<div className='flex justify-between items-end'>
 				<ImageWithSpinner
 					containerClassName='w-1/3 h-96 relative'
 					imageClassName='w-full h-full object-cover'
@@ -16,6 +17,7 @@ export default function ProjectCard({}) {
 					sizes='100vw'
 					fill
 				/>
+				<ButtonProject slug='advising-caretakers' />
 			</div>
 		</article>
 	)

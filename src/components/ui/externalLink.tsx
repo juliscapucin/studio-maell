@@ -7,12 +7,12 @@ type ExternalLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
 export default function ExternalLink({ classes, ...props }: ExternalLinkProps) {
 	return (
 		<a
-			className={`relative inline-flex items-center group gap-2 w-fit ${classes}`}
+			className={`relative flex items-center group gap-2 w-fit ${classes}`}
 			{...props}
 			target='_blank'
 			rel='noopener noreferrer'>
 			{/* LABEL */}
-			<span className='underlined-link'>{props.children}</span>
+			<span className='underlined-link heading-subtitle'>{props.children}</span>
 			{/* ARROW ANIMATION */}
 			<span className='relative inline-block overflow-hidden w-4 h-4 '>
 				{/* First arrow - moves out */}
