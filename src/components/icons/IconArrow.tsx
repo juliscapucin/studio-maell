@@ -6,6 +6,7 @@ export default function IconArrow({ color }: IconArrowProps) {
 	const colorFinal = color || 'currentColor'
 	return (
 		<svg
+			aria-hidden='true'
 			width='100'
 			height='14'
 			viewBox='0 0 100 14'

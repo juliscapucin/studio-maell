@@ -1,6 +1,7 @@
 export default function IconArrowUpRight() {
 	return (
 		<svg
+			aria-hidden='true'
 			width='17'
 			height='15'
 			viewBox='0 0 17 15'

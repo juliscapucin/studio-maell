@@ -2,13 +2,13 @@
 
 import { useRouter } from 'next/navigation'
 
-import { IconArrowBack } from '@/components/icons'
+import { IconArrow } from '@/components/icons'
 
 type ButtonBackProps = {
 	label?: string
 }
 
-export default function ButtonBack({ label }: ButtonBackProps) {
+export default function ButtonProject({ label }: ButtonBackProps) {
 	const router = useRouter()
 
 	return (
@@ -16,7 +16,7 @@ export default function ButtonBack({ label }: ButtonBackProps) {
 			className='h-8 mb-8 flex gap-4 items-center w-full pb-4'
 			onClick={() => router.back()}
 			aria-label='Go back to previous page'>
-			<IconArrowBack />
+			<IconArrow aria-hidden='true' />
 			<span className='underlined-link'>Back{label ? ` to ${label}` : ''}</span>
 		</button>
 	)

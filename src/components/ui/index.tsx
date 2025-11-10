@@ -6,6 +6,7 @@ import ImageWithSpinner from './imageWithSpinner'
 import Logo from './logo'
 import MenuDesktop from './menuDesktop'
 import MenuMobile from './menuMobile'
+import PageHeader from './pageHeader'
 import PageWrapper from './pageWrapper'
 
 export {
@@ -17,5 +18,6 @@ export {
 	Logo,
 	MenuDesktop,
 	MenuMobile,
+	PageHeader,
 	PageWrapper,
 }
