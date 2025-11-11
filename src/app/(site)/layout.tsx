@@ -4,13 +4,16 @@ import './globals.css'
 
 import { draftMode } from 'next/headers'
 import { VisualEditing } from 'next-sanity/visual-editing'
+import { defineQuery } from 'next-sanity'
 
 import { MenuDesktop, MenuMobile } from '@/components/ui'
 import { DisableDraftMode } from '@/components'
-import { getNavLinks } from '@/sanity/lib/queries'
-import { SanityLive } from '@/sanity/lib/live'
+import { SanityLive, sanityFetch } from '@/sanity/lib/live'
 
-const navLinks = await getNavLinks()
+const navLinksQuery = defineQuery(`*[_type == "navLink"]|order(order asc) {
+			label,
+			"slug": slug.current,
+		 }`)
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -32,6 +35,8 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
+	const { data: navLinks } = await sanityFetch({ query: navLinksQuery })
+
 	return (
 		<html lang='en'>
 			<body
@@ -47,10 +52,10 @@ export default async function RootLayout({
 				{(await draftMode()).isEnabled && (
 					<>
 						<VisualEditing />
-						{/* <DisableDraftMode /> */}
+						<DisableDraftMode />
 					</>
 				)}
-				<SanityLive />
+				{/* <SanityLive /> */}
 				<div className='container mx-auto flex relative'>
 					{/* SPACER FOR DESKTOP MENU */}
 					<div className='hidden md:block flex-1/4'></div>

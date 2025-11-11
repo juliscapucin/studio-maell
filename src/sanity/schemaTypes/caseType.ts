@@ -10,6 +10,7 @@ export const caseType = defineType({
 		defineField({
 			name: 'title',
 			type: 'string',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'slug',
@@ -17,6 +18,12 @@ export const caseType = defineType({
 			options: {
 				source: 'title',
 			},
+			validation: (Rule) => Rule.required(),
+		}),
+		defineField({
+			name: 'client',
+			type: 'string',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'mainImage',
@@ -33,12 +40,27 @@ export const caseType = defineType({
 			],
 		}),
 		defineField({
-			name: 'categories',
+			name: 'services',
 			type: 'array',
-			of: [defineArrayMember({ type: 'reference', to: { type: 'category' } })],
+			of: [
+				{
+					type: 'object',
+					fields: [
+						{
+							name: 'label',
+							title: 'Label',
+							type: 'string',
+						},
+					],
+				},
+			],
 		}),
 		defineField({
-			name: 'publishedAt',
+			name: 'role',
+			type: 'string',
+		}),
+		defineField({
+			name: 'publishedOn',
 			type: 'datetime',
 		}),
 		defineField({

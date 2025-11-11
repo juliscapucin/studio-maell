@@ -1,9 +1,9 @@
 import { ComposeIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
-export const articleType = defineType({
-	name: 'article',
-	title: 'Article',
+export const servicesPageType = defineType({
+	name: 'servicesPage',
+	title: 'Services',
 	type: 'document',
 	icon: ComposeIcon,
 	fields: [
@@ -13,18 +13,8 @@ export const articleType = defineType({
 			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
-			name: 'url',
-			type: 'url',
-			validation: (Rule) => Rule.required(),
-		}),
-		defineField({
-			name: 'publication',
+			name: 'subtitle',
 			type: 'string',
-			validation: (Rule) => Rule.required(),
-		}),
-		defineField({
-			name: 'publishedOn',
-			type: 'datetime',
 			validation: (Rule) => Rule.required(),
 		}),
 	],

@@ -1,9 +1,20 @@
+import { EmptyResults } from '@/components/ui'
+
+import { ServiceType } from '@/types'
+
 type ServiceCardProps = {
-	title: string
-	description: string
+	service: ServiceType
 }
 
-export default function ServiceCard({ title, description }: ServiceCardProps) {
+export default function ServiceCard({ service }: ServiceCardProps) {
+	if (!service) {
+		return (
+			<EmptyResults message='Service information is not available at the moment' />
+		)
+	}
+
+	const { title, description } = service
+
 	return (
 		<article className='bg-secondary rounded-sm p-6 h-100 flex flex-col justify-between'>
 			<div>

@@ -1,15 +1,16 @@
 import { PageHeader, PageWrapper } from '@/components/ui'
-import { ProjectCard } from '@/components'
+import { CaseCard } from '@/components'
+import { getAllCases, getWorkPageContent } from '@/sanity/lib/queries'
 
-export default function Work() {
+export default async function Work() {
+	const data = await getWorkPageContent()
+	const cases = await getAllCases()
 	return (
 		<PageWrapper>
-			<PageHeader
-				title='Work'
-				subtitle='6 years of inclusive digital design summarized in a few highlights'></PageHeader>
+			<PageHeader title={data.title} subtitle={data.subtitle}></PageHeader>
 			<div className='space-y-8'>
-				{[1, 2, 3, 4, 5, 6].map((item) => (
-					<ProjectCard key={item}></ProjectCard>
+				{cases.map((caseItem) => (
+					<CaseCard key={caseItem.slug} caseData={caseItem}></CaseCard>
 				))}
 			</div>
 		</PageWrapper>

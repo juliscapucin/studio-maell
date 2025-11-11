@@ -8,7 +8,7 @@ const client = createClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
 	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
 	useCdn: true,
-	apiVersion: 'v2025-03-04',
+	apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
 	stega: { studioUrl: '/studio' },
 })
 

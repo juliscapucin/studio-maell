@@ -24,7 +24,7 @@ export default defineConfig({
 		// Vision is for querying with GROQ from inside the Studio
 		// https://www.sanity.io/docs/the-vision-plugin
 		visionTool({
-			defaultApiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION!,
+			defaultApiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
 		}),
 		presentationTool({
 			previewUrl: {

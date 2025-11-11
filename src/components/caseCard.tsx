@@ -1,12 +1,19 @@
-import { ImageWithSpinner } from '@/components/ui'
-import { ButtonProject } from '@/components/buttons'
+import { EmptyResults, ImageWithSpinner } from '@/components/ui'
+import { ButtonCase } from '@/components/buttons'
+import { CaseType } from '@/types/CaseType'
 
-export default function ProjectCard({}) {
+type CaseCardProps = {
+	caseData?: CaseType
+}
+
+export default function CaseCard({ caseData }: CaseCardProps) {
+	if (!caseData) {
+		return <EmptyResults message='This case is not available' />
+	}
+
 	return (
 		<article className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6'>
-			<h2 className='heading-title'>
-				Advising caretakers in the sensitive process of name adjustment
-			</h2>
+			<h2 className='heading-title'>{caseData.title}</h2>
 			<p>Jacob Douwe Egberts Professsional</p>
 			<hr className='my-4 border-tertiary' />
 			<div className='lg:flex justify-between items-end'>
@@ -17,7 +24,7 @@ export default function ProjectCard({}) {
 					sizes='100vw'
 					fill
 				/>
-				<ButtonProject slug='advising-caretakers' />
+				<ButtonCase slug={caseData.slug} />
 			</div>
 		</article>
 	)

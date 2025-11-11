@@ -4,11 +4,11 @@ import { useRouter } from 'next/navigation'
 
 import { IconArrow } from '@/components/icons'
 
-type ButtonProjectProps = {
+type ButtonCaseProps = {
 	slug: string
 }
 
-export default function ButtonProject({ slug }: ButtonProjectProps) {
+export default function ButtonCase({ slug }: ButtonCaseProps) {
 	const router = useRouter()
 
 	return (

@@ -1,6 +1,6 @@
 import ArticleCard from './articleCard'
+import CaseCard from './caseCard'
 import DisableDraftMode from './disableDraftMode'
-import ProjectCard from './projectCard'
 import ServiceCard from './serviceCard'
 
-export { ArticleCard, DisableDraftMode, ProjectCard, ServiceCard }
+export { ArticleCard, CaseCard, DisableDraftMode, ServiceCard }

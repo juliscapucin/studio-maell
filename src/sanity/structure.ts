@@ -18,6 +18,20 @@ export const structure: StructureResolver = (S) =>
 									S.document().schemaType('workPage').documentId('workPage')
 								),
 							S.listItem()
+								.title('Services')
+								.child(
+									S.document()
+										.schemaType('servicesPage')
+										.documentId('servicesPage')
+								),
+							S.listItem()
+								.title('Articles')
+								.child(
+									S.document()
+										.schemaType('articlesPage')
+										.documentId('articlesPage')
+								),
+							S.listItem()
 								.title('Connect')
 								.child(
 									S.document()
@@ -54,11 +68,13 @@ export const structure: StructureResolver = (S) =>
 					item.getId() &&
 					![
 						'article',
+						'articlesPage',
 						'case',
 						'category',
 						'connectPage',
 						'navLink',
 						'service',
+						'servicesPage',
 						'workPage',
 					].includes(item.getId()!)
 			),

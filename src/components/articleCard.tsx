@@ -1,26 +1,36 @@
 import { IconArrowUpRight } from '@/components/icons'
+import { ArticleType } from '@/types/ArticleType'
+import { EmptyResults } from './ui'
 
 type ArticleCardProps = {
-	date?: string
-	publication?: string
-	title?: string
-	url?: string
+	article: ArticleType
 }
 
-export default function ArticleCard({
-	date,
-	publication,
-	title,
-	url,
-}: ArticleCardProps) {
+export default function ArticleCard({ article }: ArticleCardProps) {
+	if (!article) {
+		return (
+			<EmptyResults message='Article data is not available at the moment' />
+		)
+	}
+
+	const { title, url, publication, publishedOn } = article
+
+	// Format date
+	const dateObj = new Date(publishedOn)
+	const date = dateObj.toLocaleDateString('en-US', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	})
+
 	return (
 		<>
 			<article className='flex justify-between items-start md:items-center group'>
 				<div className='flex flex-col-reverse md:flex-row md:items-center md:flex-1'>
 					{/* DATE AND PUBLICATION */}
 					<div className='flex gap-4 md:block md:flex-1'>
-						<p>{date || 'Sept. 2025'}</p>
-						<p>{publication || 'Smashing Magazine'}</p>
+						<p>{date}</p>
+						<p>{publication}</p>
 					</div>
 					{/* SPACER */}
 					<div className='hidden md:block flex-1 h-8'></div>
@@ -29,10 +39,7 @@ export default function ArticleCard({
 						href={url || 'http://example.com'}
 						target='_blank'
 						rel='noopener noreferrer'>
-						<h2>
-							{title ||
-								"Understanding Cognitive Load: Designing with the User's Mind in Mind"}
-						</h2>
+						<h2>{title}</h2>
 					</a>
 					{/* SPACER */}
 					<div className='hidden md:block flex-1 h-8'></div>

@@ -1,6 +1,6 @@
 import ButtonBack from './buttonBack'
 import ButtonBurger from './buttonBurger'
 import ButtonClose from './buttonClose'
-import ButtonProject from './buttonProject'
+import ButtonCase from './buttonCase'
 
-export { ButtonBack, ButtonBurger, ButtonClose, ButtonProject }
+export { ButtonBack, ButtonBurger, ButtonClose, ButtonCase }
