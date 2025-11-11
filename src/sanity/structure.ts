@@ -35,9 +35,16 @@ export const structure: StructureResolver = (S) =>
 						.title('Collections')
 						.items([
 							S.documentTypeListItem('article').title('Articles'),
-							S.documentTypeListItem('author').title('Authors'),
 							S.documentTypeListItem('case').title('Cases'),
 							S.documentTypeListItem('category').title('Categories'),
+							S.documentTypeListItem('navLink')
+								.title('NavLinks')
+								.child(
+									S.documentList()
+										.title('NavLinks')
+										.filter('_type == "navLink"')
+										.defaultOrdering([{ field: 'order', direction: 'asc' }])
+								),
 							S.documentTypeListItem('service').title('Services'),
 						])
 				),
@@ -47,10 +54,10 @@ export const structure: StructureResolver = (S) =>
 					item.getId() &&
 					![
 						'article',
-						'author',
 						'case',
 						'category',
 						'connectPage',
+						'navLink',
 						'service',
 						'workPage',
 					].includes(item.getId()!)
