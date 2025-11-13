@@ -9,6 +9,8 @@ import { ButtonBurger, ButtonClose } from '@/components/buttons'
 
 import type { NavLinkType } from '@/types'
 import { useGSAP } from '@gsap/react'
+import Link from 'next/link'
+import Logo from './logo'
 
 type NavLinksProps = {
 	navLinks: NavLinkType[]
@@ -18,6 +20,8 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 	const mobileMenuRef = useRef<HTMLDivElement | null>(null)
 	const pathname = usePathname()
 	const router = useRouter()
+
+	const bulletRef = useRef<HTMLSpanElement>(null)
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const [slug, setSlug] = useState<string | null>(null)
@@ -73,7 +77,7 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 			<>
 				{/* BURGER BUTTON - Outside header for blend mode */}
 				<ButtonBurger
-					className='z-50 pointer-events-auto fixed bottom-0 flex w-full items-center justify-end pr-4 md:hidden'
+					className='z-50 pointer-events-auto fixed bottom-0 flex w-full items-center justify-end pr-6 md:hidden'
 					onClick={() => toggleMenu()}
 					aria-expanded={isMenuOpen}
 					aria-controls='mobile-menu'
@@ -83,12 +87,13 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 				<header className='fixed top-2 right-0 left-0 z-50 pointer-events-none block h-dvh md:hidden gutter-stable'>
 					{/* EXPANDED MENU */}
 					<aside
-						className='z-50 pointer-events-auto fixed top-0 min-h-svh w-full bg-secondary transition-transform duration-300'
+						className='z-50 pointer-events-auto fixed top-0 min-h-svh w-full bg-primary transition-transform duration-300 p-6'
 						ref={mobileMenuRef}
 						role='dialog'
 						aria-modal='true'
 						aria-labelledby='mobile-menu-title'>
-						<div className='absolute top-4 right-4 z-100'>
+						<Logo />
+						<div className='absolute bottom-6 right-6 z-100 flex items-end justify-between'>
 							{/* CLOSE BUTTON */}
 							<ButtonClose
 								aria-label='Close navigation menu'
@@ -102,31 +107,36 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 						</h2>
 
 						{/* NAV LINKS */}
-						<nav
-							aria-label='Navigation'
-							className='flex h-screen flex-col items-center justify-center gap-8'>
-							{navLinks.map((link) => {
-								const isCurrentPage =
-									(link.slug === '/' && pathname === '/') ||
-									(link.slug !== '/' && pathname.includes(`${link.slug}`))
+						<nav aria-label='Navigation' className='h-screen flex items-end'>
+							<ul className='space-y-6'>
+								{navLinks.map((link) => {
+									const isCurrentPage =
+										(link.slug === '/' && pathname === '/') ||
+										(link.slug !== '/' && pathname.includes(`${link.slug}`))
 
-								return (
-									<div
-										className='relative flex w-full justify-center'
-										key={link.slug}>
-										<button
-											className='block font-primary disabled:opacity-40 transition-opacity duration-500'
-											onClick={() => toggleMenu(link.slug)}
-											disabled={isCurrentPage}
-											aria-current={isCurrentPage ? 'location' : undefined}
-											tabIndex={isMenuOpen ? 0 : -1}>
-											<span className='heading-display text-primary md:text-secondary uppercase'>
-												{link.label}
-											</span>
-										</button>
-									</div>
-								)
-							})}
+									return (
+										<li className='relative flex items-center' key={link.slug}>
+											<span
+												ref={bulletRef}
+												className={`absolute h-2 w-2 bg-secondary rounded-full transition-transform duration-300 ${pathname === `/${link.slug}` ? 'scale-100' : 'scale-0'}`}
+												aria-hidden='true'></span>
+											<Link
+												href={link.slug}
+												className={`block transition-transform duration-500 ${isCurrentPage ? 'translate-x-4' : 'translate-0'}`}
+												onClick={(e) => {
+													e.preventDefault()
+													toggleMenu(link.slug)
+												}}
+												aria-current={isCurrentPage ? 'location' : undefined}
+												tabIndex={isMenuOpen ? 0 : -1}>
+												<span className='text-secondary uppercase'>
+													{link.label}
+												</span>
+											</Link>
+										</li>
+									)
+								})}
+							</ul>
 						</nav>
 					</aside>
 				</header>

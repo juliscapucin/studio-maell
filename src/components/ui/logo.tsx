@@ -8,7 +8,7 @@ export default function Logo() {
 	const pathname = usePathname()
 
 	return (
-		<>
+		<div>
 			<Link
 				href='/'
 				className='block underlined-link uppercase font-primary'
@@ -24,6 +24,6 @@ export default function Logo() {
 				Freelance Product Designer, specialised in accessibility and inclusive
 				design.
 			</p>
-		</>
+		</div>
 	)
 }

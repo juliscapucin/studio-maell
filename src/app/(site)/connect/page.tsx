@@ -22,8 +22,10 @@ export default async function Connect() {
 
 			{/* If pageData exists, render the contact info */}
 			{pageData ? (
-				<div className='flex-1 flex flex-col justify-center gap-4'>
-					<h2 className='heading-title mb-8'>{pageData.cta}</h2>
+				<div className='flex-1 flex flex-col justify-start gap-4'>
+					<h2 className='heading-title mb-8 max-w-[280px] lg:max-w-[500px] text-pretty mt-16 lg:mt-28'>
+						{pageData.cta}
+					</h2>
 					<ExternalLink href={`mailto:${pageData.email}`}>
 						{pageData.email}
 					</ExternalLink>

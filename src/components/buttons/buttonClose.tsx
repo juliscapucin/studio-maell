@@ -6,10 +6,13 @@ type ButtonCloseProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 
 export default function ButtonClose({ classes, ...props }: ButtonCloseProps) {
 	return (
-		<button className={`group relative h-12 w-12 ${classes || ''}`} {...props}>
-			<div className='transform-rotate duration-300 group-hover:rotate-90'>
+		<button
+			className={`group relative flex items-center gap-1 h-6  ${classes || ''}`}
+			{...props}>
+			<div className='relative h-6 w-6 flex items-center justify-center'>
 				<IconClose />
 			</div>
+			<span className='uppercase underline'>Close</span>
 		</button>
 	)
 }
