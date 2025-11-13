@@ -155,6 +155,10 @@ body {
 		@apply bg-accent-1 text-secondary hover:bg-accent-1;
 	}
 
+	.btn-ghost-secondary {
+		@apply border border-secondary bg-transparent text-secondary hover:bg-tertiary w-fit;
+	}
+
 	.btn-ghost-tertiary {
 		@apply border border-tertiary bg-transparent text-tertiary hover:bg-tertiary hover:text-secondary w-fit;
 	}

@@ -8,23 +8,19 @@ export default async function Work() {
 	const pageData = await getPageContent('workPage')
 	const cases = await getAllCases()
 
-	if (!pageData || !cases) {
-		return (
-			<EmptyResults
-				variant='page'
-				message='Work page content is not available at the moment'
-			/>
-		)
-	}
 	return (
 		<PageWrapper>
 			<PageHeader
-				title={pageData.title}
+				title={pageData.title || 'Work'}
 				subtitle={pageData.subtitle}></PageHeader>
 			<div className='space-y-8'>
-				{cases.map((caseItem: CaseType) => (
-					<CaseCard key={caseItem.slug} caseData={caseItem}></CaseCard>
-				))}
+				{cases && cases.length > 0 ? (
+					cases.map((caseItem: CaseType) => (
+						<CaseCard key={caseItem.slug} caseData={caseItem}></CaseCard>
+					))
+				) : (
+					<EmptyResults message='No cases available at the moment' />
+				)}
 			</div>
 		</PageWrapper>
 	)

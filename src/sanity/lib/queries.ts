@@ -38,6 +38,21 @@ export async function getAllCases(): Promise<CaseType[]> {
 	return cases
 }
 
+export async function getCaseBySlug(slug: string) {
+	const query = defineQuery(`*[_type == "case" && slug.current == $slug][0] {
+				title,
+				"slug": slug.current,
+				"coverImage": coverImage.asset->url,
+				client,
+				role,
+				services,
+				publishedOn,
+				"services": services[].label,
+			 }`)
+	const caseData = await client.fetch(query, { slug })
+	return caseData
+}
+
 export async function getAllCasesSlugs() {
 	const query = defineQuery(`*[_type == "case"] {
 			"slug": slug.current,

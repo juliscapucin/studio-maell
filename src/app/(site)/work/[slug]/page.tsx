@@ -1,29 +1,21 @@
-import { defineQuery } from 'next-sanity'
-import { sanityFetch } from '@/sanity/lib/live'
-
 import { ButtonBack } from '@/components/buttons'
 import { EmptyResults, PageWrapper } from '@/components/ui'
-
-const caseQuery = defineQuery(`*[_type == "case" && slug.current == $slug][0] {
-			title,
-			"slug": slug.current,
-			"coverImage": coverImage.asset->url,
-			client,
-			role,
-			services,
-			publishedOn,
-			"services": services[].label,
-		 }`)
+import { getCaseBySlug } from '@/sanity/lib/queries'
 
 export default async function Project({
 	params,
 }: {
 	params: Promise<{ slug: string }>
 }) {
-	const { data } = await sanityFetch({ query: caseQuery, params: await params })
+	const data = await getCaseBySlug((await params).slug)
 
 	if (!data) {
-		return <EmptyResults message='This case is not available at the moment' />
+		return (
+			<EmptyResults
+				variant='page'
+				message='This case is not available at the moment'
+			/>
+		)
 	}
 
 	return (
