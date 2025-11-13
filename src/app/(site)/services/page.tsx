@@ -14,7 +14,7 @@ export default async function Services() {
 				title={pageData.title || 'Services'}
 				subtitle={pageData.subtitle}
 			/>
-			<div className='flex flex-nowrap gap-4 text-tertiary'>
+			<div className='flex gap-6 text-tertiary'>
 				{services && services.length > 0 ? (
 					services.map((service: ServiceType) => (
 						<ServiceCard key={service.title} service={service} />
