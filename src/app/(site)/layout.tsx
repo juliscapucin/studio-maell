@@ -1,4 +1,3 @@
-import type { Metadata } from 'next'
 import { Work_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
@@ -11,6 +10,7 @@ import { DisableDraftMode } from '@/components'
 import { getNavLinks, getPageContent } from '@/sanity/lib/queries'
 
 import { cleanSanityInputs } from '@/utils'
+import { metadataFallback } from '@/data'
 
 const workSans = Work_Sans({
 	variable: '--font-work-sans',
@@ -28,21 +28,6 @@ const fontPrimary = localFont({
 		},
 	],
 })
-
-export const metadataFallback: Metadata = {
-	title: 'Studio Maell',
-	description:
-		'Freelance Product Designer, specialised in accessibility and inclusive design.',
-	keywords: [
-		'Studio Maell',
-		'Maell',
-		'Product Designer',
-		'Freelance Designer',
-		'Accessibility',
-		'Inclusive Design',
-		'UX Design',
-	],
-}
 
 export async function generateMetadata() {
 	const pageData = getPageContent('workPage')
@@ -74,7 +59,7 @@ export default async function RootLayout({
 	return (
 		<html lang='en'>
 			<body
-				className={`${workSans.variable} ${fontPrimary.variable} antialiased bg-primary text-secondary font-secondary`}>
+				className={`${workSans.variable} ${fontPrimary.variable} antialiased bg-primary text-secondary font-secondary text-body`}>
 				{/* SKIP TO MAIN CONTENT LINK - for screen readers */}
 				<a
 					href='#main-content'
@@ -89,7 +74,7 @@ export default async function RootLayout({
 						<DisableDraftMode />
 					</>
 				)}
-				<div className='container mx-auto flex relative'>
+				<div className='custom-container mx-auto flex relative'>
 					{/* SPACER FOR DESKTOP MENU */}
 					<div className='hidden md:block flex-1/4'></div>
 					{/* MAIN CONTENT */}

@@ -18,9 +18,9 @@ export default function DisableDraftMode() {
 	console.log(isPresentationTool)
 
 	// Only show the disable draft mode button when outside of Presentation Tool
-	if (environment !== 'live' && environment !== 'unknown') {
-		return null
-	}
+	// if (environment !== 'live' && environment !== 'unknown') {
+	// 	return null
+	// }
 
 	const disable = () =>
 		startTransition(async () => {

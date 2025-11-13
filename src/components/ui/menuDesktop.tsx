@@ -17,13 +17,15 @@ export default function MenuDesktop({ navLinks }: MenuDesktopProps) {
 
 	return (
 		<div className='fixed pointer-events-none inset-0 z-10 hidden md:block'>
-			<div className='container mx-auto h-svh'>
-				<div className='w-1/4 flex flex-col justify-between h-full p-8 pointer-events-auto'>
+			{/* CONTAINER */}
+			<div className='custom-container mx-auto h-svh'>
+				{/* 1/4 COLUMN */}
+				<div className='w-1/4 flex flex-col justify-between h-full p-6 pointer-events-auto'>
 					{/* HEADER */}
-					<header>
+					<header className='h-header flex flex-col justify-end items-start pb-32'>
 						<Link
 							href='/'
-							className='block underlined-link'
+							className='block underlined-link uppercase font-primary'
 							onClick={(e) => {
 								e.preventDefault()
 								router.push('/')
@@ -32,21 +34,21 @@ export default function MenuDesktop({ navLinks }: MenuDesktopProps) {
 							aria-current={pathname === '/' ? 'page' : undefined}>
 							Studio Maell
 						</Link>
-						<p className='text-pretty'>
+						<p className='text-pretty max-w-64 leading-snug'>
 							Freelance Product Designer, specialised in accessibility and
 							inclusive design.
 						</p>
 					</header>
 					{/* NAVLINKS */}
 					<nav>
-						<ul className='relative'>
+						<ul className='relative space-y-6'>
 							{/* LINKS */}
 							{navLinks.map(
 								(link, index) =>
 									link.slug !== '/' && (
 										<li
 											key={`panel-link-${index}`}
-											className='mb-4 relative flex items-center gap-2'>
+											className='relative flex items-center gap-2'>
 											<span
 												ref={bulletRef}
 												className={`absolute h-2 w-2 bg-secondary rounded-full transition-transform duration-300 ${pathname === `/${link.slug}` ? 'scale-100' : 'scale-0'}`}

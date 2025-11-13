@@ -22,16 +22,16 @@
 	--font-primary: var(--font-primary);
 	--font-secondary: var(--font-work-sans);
 
-	--text-display-large: 91px;
+	--text-display-large: 100px;
 	--text-display-medium: 54px;
 	--text-display-small: 36px;
-	--text-headline-large: 57px;
+	--text-headline-large: 40px;
 	--text-headline-medium: 40px;
 	--text-headline-small: 28px;
 	--text-title-large: 32px;
 	--text-title-medium: 25px;
 	--text-title-small: 20px;
-	--text-subtitle-large: 32px;
+	--text-subtitle-large: 18px;
 	--text-subtitle-medium: 25px;
 	--text-subtitle-small: 20px;
 	--text-navlink-large: 22px;
@@ -44,12 +44,12 @@
 	--text-label-medium: 14px;
 	--text-label-small: 12px;
 
-	--max-width-desktop: 1800px;
+	--max-width-desktop: 2200px;
 
 	--breakpoint-3xl: 120rem;
 
 	/* Heights based on Tailwind's spacing scale: --spacing: 0.25rem /* 4px */
-	--height-header: calc(var(--spacing) * 40) /* [40] 10rem = 160px */;
+	--height-header: calc(var(--spacing) * 57) /* [57] 14.25rem = 228px */;
 	--height-content: calc(100svh - var(--height-header));
 }
 
@@ -86,6 +86,10 @@
 
 	button {
 		@apply cursor-pointer;
+	}
+
+	.custom-container {
+		@apply w-full mx-auto max-w-desktop;
 	}
 
 	/* FOCUS STYLES */

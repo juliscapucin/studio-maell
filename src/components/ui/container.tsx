@@ -4,5 +4,7 @@ type ContainerProps = {
 }
 
 export default function Container({ children, classes = '' }: ContainerProps) {
-	return <div className={`container mx-auto px-4 ${classes}`}>{children}</div>
+	return (
+		<div className={`custom-container mx-auto px-4 ${classes}`}>{children}</div>
+	)
 }
