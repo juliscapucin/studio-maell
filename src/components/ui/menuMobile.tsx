@@ -7,11 +7,11 @@ import gsap from 'gsap'
 
 import { ButtonBurger, ButtonClose } from '@/components/buttons'
 
-import type { NavLink } from '@/types'
+import type { NavLinkType } from '@/types'
 import { useGSAP } from '@gsap/react'
 
 type NavLinksProps = {
-	navLinks: NavLink[]
+	navLinks: NavLinkType[]
 }
 
 export default function MenuMobile({ navLinks }: NavLinksProps) {
@@ -73,7 +73,7 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 			<>
 				{/* BURGER BUTTON - Outside header for blend mode */}
 				<ButtonBurger
-					className='z-50 pointer-events-auto fixed top-0 flex w-full items-center justify-end pr-4 mix-blend-exclusion md:hidden'
+					className='z-50 pointer-events-auto fixed bottom-0 flex w-full items-center justify-end pr-4 md:hidden'
 					onClick={() => toggleMenu()}
 					aria-expanded={isMenuOpen}
 					aria-controls='mobile-menu'

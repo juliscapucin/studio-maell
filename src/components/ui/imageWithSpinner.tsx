@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { EmptyResults } from '@/components/ui'
 
 // Extracted Spinner component for better separation
-function LoadingSpinner({ className = '', bgColor = 'bg-accent-3' }) {
+function LoadingSpinner({ className = '', bgColor = 'bg-accent-1' }) {
 	return (
 		<div
 			className={`absolute inset-0 z-10 grid place-items-center ${bgColor} ${className}`}
@@ -46,7 +46,7 @@ export default function ImageWithSpinner({
 	containerClassName = '',
 	imageClassName = '',
 	spinnerClassName = '',
-	bgColor = 'bg-accent-3',
+	bgColor = 'bg-accent-1',
 	quality = 75,
 	priority = false,
 	showSpinner = true,

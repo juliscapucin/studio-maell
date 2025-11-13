@@ -1,37 +1,10 @@
 @import 'tailwindcss';
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
 :root {
 	--primary: #2563eb;
 	--secondary: #f8fafc;
 	--tertiary: #1e293b;
 	--accent-1: #cbd5e1;
-	--accent-2: #fff2ec;
-	--accent-3: #dad5c9;
 	--accent-focus: #ff6e1f;
 }
 
@@ -46,7 +19,8 @@ body {
 	--color-text-dark: var(--primary);
 	--color-text-light: var(--secondary);
 
-	--font-primary: var(--font-pp-neue-corp);
+	--font-primary: var(--font-primary);
+	--font-secondary: var(--font-work-sans);
 
 	--text-display-large: 91px;
 	--text-display-medium: 54px;
@@ -170,15 +144,15 @@ body {
 
 	/* HEADING STYLES */
 	.heading-display {
-		@apply text-display-small leading-none font-thin sm:text-display-medium xl:text-display-large;
+		@apply font-primary text-display-small leading-none font-thin sm:text-display-medium xl:text-display-large;
 	}
 
 	.heading-headline {
-		@apply text-headline-small leading-none font-thin sm:text-headline-medium xl:text-headline-large;
+		@apply font-primary text-headline-small leading-none font-thin sm:text-headline-medium xl:text-headline-large;
 	}
 
 	.heading-title {
-		@apply text-title-small font-normal sm:text-title-medium xl:text-title-large leading-none text-pretty;
+		@apply font-primary text-title-small font-normal sm:text-title-medium xl:text-title-large leading-none text-pretty;
 	}
 
 	.heading-subtitle {

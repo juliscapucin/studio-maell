@@ -25,11 +25,11 @@ export default async function Project({
 				<h1 className='heading-headline text-pretty'>{data.title}</h1>
 				<p className='mt-4'>{data.client}</p>
 				<hr className='my-4 border-tertiary' />
-				<div className='flex'>
+				<div className='flex flex-wrap'>
 					{data.services && data.services.length > 0 && (
 						<div className='flex-2'>
 							<h2>Services</h2>
-							<ul className='flex gap-2'>
+							<ul className='flex flex-wrap gap-2'>
 								{data.services.map((service: string) => (
 									<li className='pill' key={service}>
 										{service}
