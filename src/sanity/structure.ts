@@ -50,7 +50,7 @@ export const structure: StructureResolver = (S) =>
 						.items([
 							S.documentTypeListItem('article').title('Articles'),
 							S.documentTypeListItem('case').title('Cases'),
-							S.documentTypeListItem('category').title('Categories'),
+							// S.documentTypeListItem('category').title('Categories'),
 							S.documentTypeListItem('navLink')
 								.title('NavLinks')
 								.child(

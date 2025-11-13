@@ -14,7 +14,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 	return (
 		<article className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6'>
 			<h2 className='heading-title'>{caseData.title}</h2>
-			<p>Jacob Douwe Egberts Professsional</p>
+			<p>{caseData.client}</p>
 			<hr className='my-4 border-tertiary' />
 			<div className='lg:flex justify-between items-end'>
 				<ImageWithSpinner

@@ -18,6 +18,9 @@ export async function getPageContent($type: string) {
 	const query = defineQuery(`*[_type == "${$type}"][0] {
 			title,
 			subtitle,
+			metadataTitle,
+			metadataDescription,
+			metadataKeywords,
 		 }`)
 
 	const data = await client.fetch(query)
@@ -29,6 +32,7 @@ export async function getAllCases(): Promise<CaseType[]> {
 			title,
 			"slug": slug.current,
 			"coverImage": coverImage.asset->url,
+			client,
 			publishedOn,
 			"categories": categories[]->title,
 			"excerpt": excerpt,

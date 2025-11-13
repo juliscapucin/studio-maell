@@ -46,6 +46,18 @@ export const connectPageType = defineType({
 				},
 			],
 		}),
+		{ name: 'metadataTitle', title: 'Metadata Title', type: 'string' },
+		{
+			name: 'metadataDescription',
+			title: 'Metadata Description',
+			type: 'string',
+		},
+		{
+			name: 'metadataKeywords',
+			title: 'Metadata Keywords',
+			type: 'array',
+			of: [{ type: 'string' }],
+		},
 	],
 	preview: {
 		select: {

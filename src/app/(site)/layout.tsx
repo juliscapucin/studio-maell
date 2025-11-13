@@ -1,25 +1,16 @@
 import type { Metadata } from 'next'
-import { Geist_Mono, Work_Sans } from 'next/font/google'
+import { Work_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 
 import { draftMode } from 'next/headers'
 import { VisualEditing } from 'next-sanity/visual-editing'
-import { defineQuery } from 'next-sanity'
 
 import { MenuDesktop, MenuMobile } from '@/components/ui'
 import { DisableDraftMode } from '@/components'
-import { sanityFetch } from '@/sanity/lib/live'
+import { getNavLinks, getPageContent } from '@/sanity/lib/queries'
 
-const navLinksQuery = defineQuery(`*[_type == "navLink"]|order(order asc) {
-			label,
-			"slug": slug.current,
-		 }`)
-
-const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin'],
-})
+import { cleanSanityInputs } from '@/utils'
 
 const workSans = Work_Sans({
 	variable: '--font-work-sans',
@@ -38,9 +29,39 @@ const fontPrimary = localFont({
 	],
 })
 
-export const metadata: Metadata = {
+export const metadataFallback: Metadata = {
 	title: 'Studio Maell',
-	description: 'A design studio crafting unique digital experiences.',
+	description:
+		'Freelance Product Designer, specialised in accessibility and inclusive design.',
+	keywords: [
+		'Studio Maell',
+		'Maell',
+		'Product Designer',
+		'Freelance Designer',
+		'Accessibility',
+		'Inclusive Design',
+		'UX Design',
+	],
+}
+
+export async function generateMetadata() {
+	const pageData = getPageContent('workPage')
+	const page = await pageData
+
+	if (!page) {
+		return metadataFallback
+	}
+
+	const cleanTitle = cleanSanityInputs(page.metadataTitle)
+	const cleanDescription = cleanSanityInputs(page.metadataDescription)
+	const cleanKeywords = cleanSanityInputs(page.metadataKeywords)
+
+	return {
+		metadataBase: metadataFallback.metadataBase,
+		title: cleanTitle || metadataFallback.title,
+		description: cleanDescription || metadataFallback.description,
+		keywords: cleanKeywords || metadataFallback.keywords,
+	}
 }
 
 export default async function RootLayout({
@@ -48,7 +69,7 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	const { data: navLinks } = await sanityFetch({ query: navLinksQuery })
+	const navLinks = await getNavLinks()
 
 	return (
 		<html lang='en'>
