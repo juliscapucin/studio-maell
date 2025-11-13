@@ -9,12 +9,12 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 			<h1 className='heading-display mb-30'>{title}</h1>
 
 			{subtitle && (
-				<div className='fixed w-full h-full left-0 z-20'>
-					<div className='relative h-full custom-container mx-auto flex flex-col items-end justify-end px-6'>
-						<p className='w-96 lg:text-2xl bg-primary pl-8 font-medium mb-6'>
+				<div className='fixed left-0 top-0 right-0 z-20'>
+					<div className='relative h-header custom-container mx-auto flex items-start justify-end px-6'>
+						<p className='w-fit max-w-94 lg:text-2xl bg-primary pl-8 font-medium mt-32 text-pretty'>
 							{subtitle ? subtitle : ''}
 						</p>
-						<div className='absolute bottom-0 h-px w-full bg-secondary -z-10 mb-26'></div>
+						<div className='absolute top-36 left-0 h-px w-[90%] bg-secondary -z-10'></div>
 					</div>
 				</div>
 			)}

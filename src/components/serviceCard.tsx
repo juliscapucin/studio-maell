@@ -16,9 +16,9 @@ export default function ServiceCard({ service }: ServiceCardProps) {
 	const { title, description } = service
 
 	return (
-		<article className='bg-secondary rounded-sm p-6 h-100 flex flex-col justify-between'>
+		<article className='flex-1 bg-secondary rounded-sm p-6 h-100 flex flex-col justify-between'>
 			<div>
-				<h2 className='heading-title'>{title}</h2>
+				<h2 className='heading-title text-balance'>{title}</h2>
 				<hr className='my-4 border-tertiary' />
 			</div>
 			<p>{description}</p>

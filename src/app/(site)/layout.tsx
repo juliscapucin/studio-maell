@@ -57,7 +57,7 @@ export default async function RootLayout({
 	const navLinks = await getNavLinks()
 
 	return (
-		<html lang='en'>
+		<html lang='en' className='gutter-stable'>
 			<body
 				className={`${workSans.variable} ${fontPrimary.variable} antialiased bg-primary text-secondary font-secondary text-body`}>
 				{/* SKIP TO MAIN CONTENT LINK - for screen readers */}
