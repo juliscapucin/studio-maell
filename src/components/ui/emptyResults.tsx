@@ -16,10 +16,7 @@ export default function EmptyResults({
 		.map((line, index, array) => (index < array.length - 1 ? line + '.' : line))
 
 	return lines.length > 1 && variant === 'page' ? (
-		<PageWrapper
-			hasContainer={false}
-			classes='flex flex-col items-center justify-center'
-			pageName='empty results'>
+		<PageWrapper classes='flex flex-col items-center justify-center'>
 			<div className='h-content flex flex-col items-center justify-center'>
 				<h1 className='heading-headline text-center text-pretty'>{lines[0]}</h1>
 				<div className='max-w-prose'>
@@ -32,8 +29,8 @@ export default function EmptyResults({
 			</div>
 		</PageWrapper>
 	) : (
-		<div className='w-full h-full min-h-96 flex items-center justify-center bg-accent-1'>
-			<p className='text-center text-pretty'>{message}</p>
+		<div className='w-full h-full min-h-96 flex items-center justify-center bg-secondary rounded-sm'>
+			<p className='text-center text-pretty text-tertiary'>{message}</p>
 		</div>
 	)
 }

@@ -2,7 +2,6 @@ import { defineQuery } from 'next-sanity'
 
 import type { CaseType, NavLinkType } from '@/types'
 import { client } from '@/sanity/lib/client'
-import { sanityFetch } from '@/sanity/lib/live'
 
 export async function getNavLinks(): Promise<NavLinkType[]> {
 	const query = defineQuery(`*[_type == "navLink"]|order(order asc) {
@@ -15,8 +14,8 @@ export async function getNavLinks(): Promise<NavLinkType[]> {
 	return [{ label: 'Home', slug: '/', order: 0 }, ...data]
 }
 
-export async function getWorkPageContent() {
-	const query = defineQuery(`*[_type == "workPage"][0] {
+export async function getPageContent($type: string) {
+	const query = defineQuery(`*[_type == "${$type}"][0] {
 			title,
 			subtitle,
 		 }`)
@@ -48,6 +47,16 @@ export async function getAllCasesSlugs() {
 	return casesSlugs
 }
 
+export async function getAllServices() {
+	const query = defineQuery(`*[_type == "service"]|order(publishedOn desc) {
+			title,
+			description,
+		 }`)
+
+	const services = await client.fetch(query)
+	return services
+}
+
 export async function getAllArticles() {
 	const query = defineQuery(`*[_type == "article"]|order(publishedOn desc) {
 			title,
@@ -64,6 +73,7 @@ export async function getConnectPageContent() {
 	const query = defineQuery(`*[_type == "connectPage"][0] {
 			title,
 			subtitle,
+			cta,
 			email,
 			socials[] {
 				label,

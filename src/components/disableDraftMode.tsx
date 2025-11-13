@@ -26,7 +26,7 @@ export default function DisableDraftMode() {
 			{pending ? (
 				'Disabling draft mode...'
 			) : (
-				<button type='button' onClick={disable}>
+				<button type='button' onClick={disable} className='fixed z-100'>
 					Disable draft mode
 				</button>
 			)}

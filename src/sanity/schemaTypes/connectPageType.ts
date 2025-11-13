@@ -13,6 +13,14 @@ export const connectPageType = defineType({
 			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
+			name: 'subtitle',
+			type: 'string',
+		}),
+		defineField({
+			name: 'cta',
+			type: 'string',
+		}),
+		defineField({
 			name: 'email',
 			type: 'string',
 			validation: (Rule) => Rule.required(),

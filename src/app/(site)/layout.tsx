@@ -37,6 +37,8 @@ export default async function RootLayout({
 }>) {
 	const { data: navLinks } = await sanityFetch({ query: navLinksQuery })
 
+	console.log((await draftMode()).isEnabled)
+
 	return (
 		<html lang='en'>
 			<body
