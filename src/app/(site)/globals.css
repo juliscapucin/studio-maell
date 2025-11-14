@@ -37,9 +37,9 @@
 	--text-navlink-large: 20px;
 	--text-navlink-medium: 20px;
 	--text-navlink-small: 18px;
-	--text-body-large: 18px;
-	--text-body-medium: 16px;
-	--text-body-small: 14px;
+	--text-body-large: 24px;
+	--text-body-medium: 22px;
+	--text-body-small: 20px;
 	--text-label-large: 16px;
 	--text-label-medium: 14px;
 	--text-label-small: 12px;
@@ -144,29 +144,29 @@
 
 	/* PILL STYLES */
 	.pill {
-		@apply rounded-full px-4 py-2 leading-none font-medium text-label-medium bg-accent-1 w-fit;
+		@apply rounded-full px-4 py-2 leading-none font-normal text-lg bg-accent-1 w-fit;
 	}
 
 	/* HEADING STYLES */
 	.heading-display {
-		@apply font-primary text-display-small leading-none font-thin sm:text-display-medium xl:text-display-large;
+		@apply font-primary text-display-small font-thin sm:text-display-medium xl:text-display-large;
 	}
 
 	.heading-headline {
-		@apply font-primary text-headline-small leading-none font-thin sm:text-headline-medium xl:text-headline-large;
+		@apply font-primary text-headline-small leading-[1.1] font-thin sm:text-headline-medium xl:text-headline-large;
 	}
 
 	.heading-title {
-		@apply font-primary text-title-small font-normal sm:text-title-medium xl:text-title-large leading-none text-pretty;
+		@apply font-primary text-title-small font-normal sm:text-title-medium xl:text-title-large text-pretty;
 	}
 
 	.heading-subtitle {
-		@apply text-subtitle-small font-normal sm:text-subtitle-medium xl:text-subtitle-large leading-none text-pretty;
+		@apply text-subtitle-large font-medium text-pretty;
 	}
 
 	/* TEXT STYLES */
 	.text-body {
-		@apply text-body-medium md:text-body-large;
+		@apply text-body-small md:text-body-medium lg:text-body-large;
 	}
 
 	.text-paragraph {
@@ -182,24 +182,34 @@
 		@apply text-navlink-small md:text-navlink-medium lg:text-navlink-large leading-6;
 	}
 
-	.navlink:nth-child(2),
-	.navlink:nth-child(3) {
-		@apply text-right self-end block w-full;
+	.custom-rich-text p {
+		@apply text-body-small md:text-body-medium lg:text-body-large mb-6;
+	}
+
+	.custom-rich-text p:last-of-type {
+		@apply mb-0;
+	}
+
+	.custom-rich-text h2 {
+		@apply text-title-small md:text-title-medium lg:text-title-large;
+	}
+
+	.custom-rich-text h2,
+	.custom-rich-text h3 {
+		@apply text-subtitle-large font-medium;
+	}
+
+	.custom-rich-text a {
+		@apply font-normal;
+	}
+
+	.custom-rich-text ul {
+		@apply list-disc ml-6 mb-6;
 	}
 
 	/* ANIMATIONS */
 	.form-input {
 		@apply px-3 py-2 border border-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-focus focus:border-accent-focus disabled:opacity-50 disabled:cursor-not-allowed;
-	}
-
-	/* ANIMATIONS */
-	@keyframes glitchStrip {
-		0% {
-			mask-position: -150% 0;
-		}
-		100% {
-			mask-position: 150% 0;
-		}
 	}
 
 	/* UTILITIES */

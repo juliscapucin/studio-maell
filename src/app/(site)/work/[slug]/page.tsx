@@ -1,6 +1,13 @@
+import Image from 'next/image'
+import { PortableText } from '@portabletext/react'
+
+import { getCaseBySlug } from '@/sanity/lib/queries'
+import { urlFor } from '@/sanity/lib/imageUrlBuilder'
+import { IconEnd } from '@/components/icons'
 import { ButtonBack } from '@/components/buttons'
 import { EmptyResults, PageWrapper } from '@/components/ui'
-import { getCaseBySlug } from '@/sanity/lib/queries'
+import { CaseServices } from '@/components'
+import { ImageType } from '@/types'
 
 export default async function Project({
 	params,
@@ -18,32 +25,76 @@ export default async function Project({
 		)
 	}
 
+	// Portable Text components
+	const portableTextComponents = {
+		types: {
+			image: ({ value }: { value: ImageType }) => {
+				const alt = value.alt || ''
+				const src = value.src || urlFor(value).width(1200).url()
+				return (
+					<figure className='my-10'>
+						<Image
+							src={src}
+							alt={alt}
+							width={1200}
+							height={800}
+							className='rounded-sm object-cover'
+						/>
+						{value.caption && (
+							<figcaption className='text-sm mt-2 text-secondary/70'>
+								{value.caption}
+							</figcaption>
+						)}
+					</figure>
+				)
+			},
+		},
+	}
+
 	return (
 		<PageWrapper>
-			<div className='bg-secondary text-tertiary rounded-sm relative p-6'>
-				<ButtonBack />
-				<h1 className='heading-headline text-pretty'>{data.title}</h1>
-				<p className='mt-4'>{data.client}</p>
-				<hr className='my-4 border-tertiary' />
-				<div className='flex flex-wrap'>
-					{data.services && data.services.length > 0 && (
-						<div className='flex-2'>
-							<h2>Services</h2>
-							<ul className='flex flex-wrap gap-2'>
-								{data.services.map((service: string) => (
-									<li className='pill' key={service}>
-										{service}
-									</li>
-								))}
-							</ul>
-						</div>
-					)}
-					{data.role && (
-						<div className='flex-1'>
-							<h2>Role</h2>
-							<p>Lead Designer</p>
-						</div>
-					)}
+			{/* GRID */}
+			<div className='bg-secondary text-tertiary rounded-sm relative p-6 md:grid grid-cols-8 gap-5 px-4 md:px-6'>
+				{/* BACK BUTTON */}
+				<ButtonBack label='work' />
+
+				{/* CONTENT */}
+				<div className='col-start-2 col-end-8 mt-12'>
+					<h1 className='heading-headline text-pretty'>{data.title}</h1>
+					<p className='mt-4'>{data.client}</p>
+					<hr className='my-8 border-accent-1' />
+
+					{/* SERVICES + ROLE */}
+					<div className='lg:flex flex-wrap'>
+						{data.services && data.services.length > 0 && (
+							<CaseServices services={data.services} />
+						)}
+
+						{/* ROLE */}
+						{data.role && (
+							<div className='flex-1 mt-6 lg:mt-0'>
+								<h2 className='text-lg font-medium'>Role</h2>
+								<p className='font-normal text-lg'>{data.role}</p>
+							</div>
+						)}
+					</div>
+
+					{/* BODY CONTENT */}
+					<div className='mt-24 custom-rich-text'>
+						{/* INTRO */}
+						<p className='font-medium'>{data.intro}</p>
+
+						{/* PORTABLE TEXT BODY */}
+						<PortableText
+							value={data.body}
+							components={portableTextComponents}
+						/>
+					</div>
+
+					{/* END ICON */}
+					<div className='flex justify-center mt-12 mb-6 text-primary'>
+						<IconEnd />
+					</div>
 				</div>
 			</div>
 		</PageWrapper>

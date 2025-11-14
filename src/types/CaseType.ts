@@ -1,3 +1,5 @@
+import { PortableTextBlock } from 'next-sanity'
+
 export type CaseType = {
 	title: string
 	slug: string
@@ -6,4 +8,7 @@ export type CaseType = {
 	publishedOn: string
 	categories: string[]
 	excerpt: string
+	body: PortableTextBlock[]
+	services: string[]
+	role: string
 }

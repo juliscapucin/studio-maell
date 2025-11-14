@@ -52,6 +52,15 @@ export async function getCaseBySlug(slug: string) {
 				services,
 				publishedOn,
 				"services": services[].label,
+				intro,
+				body[]{
+					...,
+					// for images: include needed asset fields
+					_type == "image" => {
+						...,
+						"src": asset->url
+					}
+				},
 			 }`)
 	const caseData = await client.fetch(query, { slug })
 	return caseData

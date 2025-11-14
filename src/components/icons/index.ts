@@ -4,6 +4,7 @@ import IconArrowShort from './IconArrowShort'
 import IconArrowUpRight from './IconArrowUpRight'
 import IconBurger from './IconBurger'
 import IconClose from './IconClose'
+import IconEnd from './IconEnd'
 
 export {
 	IconArrow,
@@ -12,4 +13,5 @@ export {
 	IconArrowUpRight,
 	IconBurger,
 	IconClose,
+	IconEnd,
 }

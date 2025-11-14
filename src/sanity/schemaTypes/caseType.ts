@@ -64,8 +64,23 @@ export const caseType = defineType({
 			type: 'datetime',
 		}),
 		defineField({
+			name: 'intro',
+			type: 'text',
+		}),
+		defineField({
 			name: 'body',
-			type: 'blockContent',
+			title: 'Body',
+			type: 'array',
+			of: [
+				defineArrayMember({ type: 'block' }),
+				defineArrayMember({
+					type: 'image',
+					fields: [
+						{ name: 'alt', type: 'string', title: 'Alt text' },
+						{ name: 'caption', type: 'string', title: 'Caption' },
+					],
+				}),
+			],
 		}),
 	],
 	preview: {
