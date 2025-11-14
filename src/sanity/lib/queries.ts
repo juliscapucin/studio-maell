@@ -11,7 +11,7 @@ export async function getNavLinks(): Promise<NavLinkType[]> {
 
 	const data = await client.fetch(query)
 
-	return [{ label: 'Home', slug: '/', order: 0 }, ...data]
+	return data
 }
 
 export async function getPageContent($type: string) {

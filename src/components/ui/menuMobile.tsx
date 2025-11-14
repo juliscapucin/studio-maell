@@ -39,9 +39,9 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 
 			if (isMenuOpen) {
 				gsap.to(mobileMenuRef.current, {
-					y: '0%',
+					yPercent: 0,
 					duration: 0.5,
-					ease: 'power4.out',
+					ease: 'power3.out',
 					onComplete: () => {
 						document.body.style.overflow = 'hidden'
 						if (slug) router.push(slug)
@@ -50,9 +50,9 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 			} else {
 				document.body.style.overflow = 'unset'
 				gsap.to(mobileMenuRef.current, {
-					y: '-120%',
+					yPercent: 92,
 					duration: 0.5,
-					ease: 'power4.in',
+					ease: 'power3.in',
 				})
 			}
 		},
@@ -74,73 +74,78 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 
 	return (
 		navLinks && (
-			<>
-				{/* BURGER BUTTON - Outside header for blend mode */}
-				<ButtonBurger
-					className='z-50 pointer-events-auto fixed bottom-0 flex w-full items-center justify-end pr-6 md:hidden'
-					onClick={() => toggleMenu()}
-					aria-expanded={isMenuOpen}
-					aria-controls='mobile-menu'
-					aria-haspopup='dialog'
-					aria-label={'Open navigation menu'}
-				/>
-				<header className='fixed top-2 right-0 left-0 z-50 pointer-events-none block h-dvh md:hidden gutter-stable'>
-					{/* EXPANDED MENU */}
-					<aside
-						className='z-50 pointer-events-auto fixed top-0 min-h-svh w-full bg-primary transition-transform duration-300 p-6'
-						ref={mobileMenuRef}
-						role='dialog'
-						aria-modal='true'
-						aria-labelledby='mobile-menu-title'>
-						<Logo />
-						<div className='absolute bottom-6 right-6 z-100 flex items-end justify-between'>
-							{/* CLOSE BUTTON */}
-							<ButtonClose
-								aria-label='Close navigation menu'
-								onClick={() => toggleMenu()}
-							/>
-						</div>
+			<header className='fixed inset-0 z-100 block h-dvh md:hidden gutter-stable pointer-events-none'>
+				{/* EXPANDED MENU */}
+				<aside
+					className='h-svh w-full bg-primary p-6 pointer-events-auto'
+					ref={mobileMenuRef}
+					role='dialog'
+					aria-modal='true'
+					aria-labelledby='mobile-menu-title'>
+					{/* LOGO */}
+					<div className='absolute top-6 left-6 right-6 flex items-start justify-between z-100'>
+						<Logo isDescriptionVisible={isMenuOpen} />
+						{/* BURGER BUTTON */}
+						<ButtonBurger
+							className={`md:hidden ${isMenuOpen ? 'opacity-0' : 'opacity-100 pointer-events-auto'} transition-opacity duration-300`}
+							onClick={() => toggleMenu()}
+							aria-expanded={isMenuOpen}
+							aria-controls='mobile-menu'
+							aria-haspopup='dialog'
+							aria-label={'Open navigation menu'}
+						/>
+					</div>
 
-						{/* SCREEN READER TITLE */}
-						<h2 id='mobile-menu-title' className='sr-only'>
-							Navigation Menu
-						</h2>
+					{/* CLOSE BUTTON */}
+					<div
+						className={`absolute bottom-6 right-6 z-100 flex items-end justify-between bg-primary ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0'} transition-opacity duration-300`}>
+						<ButtonClose
+							aria-label='Close navigation menu'
+							onClick={() => toggleMenu()}
+						/>
+					</div>
 
-						{/* NAV LINKS */}
-						<nav aria-label='Navigation' className='h-screen flex items-end'>
-							<ul className='space-y-6'>
-								{navLinks.map((link) => {
-									const isCurrentPage =
-										(link.slug === '/' && pathname === '/') ||
-										(link.slug !== '/' && pathname.includes(`${link.slug}`))
+					{/* SCREEN READER TITLE */}
+					<h2 id='mobile-menu-title' className='sr-only'>
+						Navigation Menu
+					</h2>
 
-									return (
-										<li className='relative flex items-center' key={link.slug}>
+					{/* NAV LINKS */}
+					<nav aria-label='Navigation' className='flex h-full items-end pb-40'>
+						<ul className='space-y-6'>
+							{navLinks.map((link) => {
+								const isCurrentPage =
+									(link.slug === '/' && pathname === '/') ||
+									(link.slug !== '/' && pathname.includes(`${link.slug}`))
+
+								return (
+									<li key={link.slug}>
+										<Link
+											href={link.slug}
+											className='relative flex items-center'
+											onClick={(e) => {
+												e.preventDefault()
+												toggleMenu(link.slug)
+											}}
+											aria-current={isCurrentPage ? 'location' : undefined}
+											tabIndex={isMenuOpen ? 0 : -1}>
+											{/* BULLET */}
 											<span
 												ref={bulletRef}
 												className={`absolute h-2 w-2 bg-secondary rounded-full transition-transform duration-300 ${pathname === `/${link.slug}` ? 'scale-100' : 'scale-0'}`}
 												aria-hidden='true'></span>
-											<Link
-												href={link.slug}
-												className={`block transition-transform duration-500 ${isCurrentPage ? 'translate-x-4' : 'translate-0'}`}
-												onClick={(e) => {
-													e.preventDefault()
-													toggleMenu(link.slug)
-												}}
-												aria-current={isCurrentPage ? 'location' : undefined}
-												tabIndex={isMenuOpen ? 0 : -1}>
-												<span className='text-secondary uppercase'>
-													{link.label}
-												</span>
-											</Link>
-										</li>
-									)
-								})}
-							</ul>
-						</nav>
-					</aside>
-				</header>
-			</>
+											<span
+												className={`text-secondary transition-transform duration-500 ${isCurrentPage ? 'translate-x-4 font-bold' : 'translate-0'}`}>
+												{link.label}
+											</span>
+										</Link>
+									</li>
+								)
+							})}
+						</ul>
+					</nav>
+				</aside>
+			</header>
 		)
 	)
 }

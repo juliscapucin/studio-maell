@@ -3,7 +3,11 @@
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 
-export default function Logo() {
+type LogoProps = {
+	isDescriptionVisible?: boolean
+}
+
+export default function Logo({ isDescriptionVisible = true }: LogoProps) {
 	const router = useRouter()
 	const pathname = usePathname()
 
@@ -20,7 +24,8 @@ export default function Logo() {
 				aria-current={pathname === '/' ? 'page' : undefined}>
 				Studio Maell
 			</Link>
-			<p className='text-pretty max-w-64 leading-snug'>
+			<p
+				className={`text-pretty max-w-64 leading-snug ${isDescriptionVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
 				Freelance Product Designer, specialised in accessibility and inclusive
 				design.
 			</p>
