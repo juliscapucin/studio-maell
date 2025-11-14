@@ -20,9 +20,11 @@ export default function CaseServices({ services }: CaseServicesProps) {
 						{service}
 					</li>
 				))}
+
+				{/* SHOW "SHOW LESS" BUTTON IF ALL SERVICES ARE SHOWN ON MOBILE */}
 				{showAllServices && (
 					<button
-						className='underline text-[#4338CA] text-lg mt-1 ml-2'
+						className='underline text-[#4338CA] text-lg mt-1 ml-2 md:hidden'
 						onClick={() => setShowAllServices(!showAllServices)}>
 						Show less
 					</button>

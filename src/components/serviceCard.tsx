@@ -23,7 +23,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
 				</h2>
 				<hr className='my-4 w-full border-tertiary border' />
 			</div>
-			<p className='leading-[1.3]'>{description}</p>
+			<p className='leading-[1.2] text-xl'>{description}</p>
 		</article>
 	)
 }

@@ -30,9 +30,11 @@ export default function MenuDesktop({ navLinks }: MenuDesktopProps) {
 					<nav>
 						<ul className='relative space-y-6'>
 							{/* LINKS */}
-							{navLinks.map(
-								(link, index) =>
-									link.slug !== '/' && (
+							{navLinks.map((link, index) => {
+								const isInternalPage =
+									pathname.split('/')[1] === 'work' && link.slug === 'work'
+								return (
+									<>
 										<li
 											key={`panel-link-${index}`}
 											className='relative flex items-center gap-2'>
@@ -44,7 +46,7 @@ export default function MenuDesktop({ navLinks }: MenuDesktopProps) {
 											<Link
 												key={`panel-button-${index}`}
 												href={link.slug}
-												className={`underlined-link transition-all duration-300 ${
+												className={`underlined-link text-xl transition-all duration-300 ${
 													pathname === `/${link.slug}`
 														? 'font-bold translate-x-4'
 														: ''
@@ -60,8 +62,12 @@ export default function MenuDesktop({ navLinks }: MenuDesktopProps) {
 												{link.label}
 											</Link>
 										</li>
-									)
-							)}
+										{index === 0 && isInternalPage && (
+											<li className='h-6'>hi</li>
+										)}
+									</>
+								)
+							})}
 						</ul>
 					</nav>
 				</div>

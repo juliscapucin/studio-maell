@@ -12,8 +12,8 @@ export default function IconEnd() {
 				x2='23'
 				y2='0.999998'
 				stroke='currentColor'
-				stroke-width='2'
-				stroke-linecap='round'
+				strokeWidth='2'
+				strokeLinecap='round'
 			/>
 		</svg>
 	)

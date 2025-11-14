@@ -59,7 +59,7 @@ export default async function RootLayout({
 	return (
 		<html lang='en' className='gutter-stable'>
 			<body
-				className={`${workSans.variable} ${fontPrimary.variable} antialiased bg-primary text-secondary font-secondary text-body`}>
+				className={`${workSans.variable} ${fontPrimary.variable} antialiased bg-primary text-secondary font-secondary`}>
 				{/* SKIP TO MAIN CONTENT LINK - for screen readers */}
 				<a
 					href='#main-content'

@@ -61,7 +61,7 @@ export default async function Project({
 				{/* CONTENT */}
 				<div className='col-start-2 col-end-8 mt-12'>
 					<h1 className='heading-headline text-pretty'>{data.title}</h1>
-					<p className='mt-4'>{data.client}</p>
+					<p className='mt-4 text-lg md:text-xl font-normal'>{data.client}</p>
 					<hr className='my-8 border-accent-1' />
 
 					{/* SERVICES + ROLE */}
