@@ -45,7 +45,7 @@ export default function PageWrapper({ children, classes }: PageWrapperProps) {
 			<main
 				id='main-content' // Add id for skip link
 				tabIndex={-1} // Make focusable for skip link
-				className={`w-full flex-3/4 relative p-6 gutter-stable ${classes ? classes : ''}`}>
+				className={`w-full flex-3/4 relative p-4 md:p-6 gutter-stable pb-18 md:pb-6 ${classes ? classes : ''}`}>
 				{children}
 			</main>
 		</Fragment>

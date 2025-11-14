@@ -12,7 +12,7 @@ export default function ButtonClose({ classes, ...props }: ButtonCloseProps) {
 			<div className='relative h-6 w-6 flex items-center justify-center'>
 				<IconClose />
 			</div>
-			<span className='uppercase underline'>Close</span>
+			<span className='uppercase underline text-lg'>Close</span>
 		</button>
 	)
 }

@@ -9,7 +9,7 @@ export default async function Services() {
 	const services = await getAllServices()
 
 	return (
-		<PageWrapper classes='flex flex-col justify-between h-svh'>
+		<PageWrapper classes='flex flex-col justify-between h-svh overflow-hidden'>
 			<PageHeader
 				title={pageData.title || 'Services'}
 				subtitle={pageData.subtitle}

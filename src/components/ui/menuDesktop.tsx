@@ -23,7 +23,7 @@ export default function MenuDesktop({ navLinks }: MenuDesktopProps) {
 				{/* 1/4 COLUMN */}
 				<div className='w-1/4 flex flex-col justify-between h-full p-6 pointer-events-auto'>
 					{/* HEADER */}
-					<header className='h-header flex flex-col justify-end items-start pb-32'>
+					<header className='h-header-desktop'>
 						<Logo />
 					</header>
 					{/* NAVLINKS */}
