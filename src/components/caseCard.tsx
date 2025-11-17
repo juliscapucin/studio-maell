@@ -16,9 +16,9 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 			<h2 className='heading-title'>{caseData.title}</h2>
 			<p>{caseData.client}</p>
 			<hr className='my-4 border-tertiary' />
-			<div className='lg:flex justify-between items-end'>
+			<div className='sm:flex justify-between items-end'>
 				<ImageWithSpinner
-					containerClassName='lg:w-3/4 xl:w-1/2 2xl:w-1/3 h-96 relative mb-6 lg:mb-0'
+					containerClassName='sm:w-3/4 xl:w-1/2 2xl:w-1/3 h-96 relative mb-6 sm:mb-0'
 					imageClassName='w-full h-full object-cover'
 					imageSrc={{ url: '/images/ascii-01.jpg' }}
 					sizes='100vw'

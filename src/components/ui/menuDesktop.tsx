@@ -22,7 +22,7 @@ export default function MenuDesktop({
 	const submenuRef = useRef<HTMLUListElement>(null)
 
 	return (
-		<div className='fixed pointer-events-none inset-0 z-10 hidden md:block'>
+		<div className='fixed pointer-events-none inset-0 z-10 hidden lg:block'>
 			{/* CONTAINER */}
 			<div className='custom-container mx-auto h-svh'>
 				{/* 1/4 COLUMN */}

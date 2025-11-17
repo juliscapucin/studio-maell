@@ -23,7 +23,7 @@
 	--font-secondary: var(--font-work-sans);
 
 	--text-display-large: 100px;
-	--text-display-medium: 54px;
+	--text-display-medium: 70px;
 	--text-display-small: 40px;
 	--text-headline-large: 40px;
 	--text-headline-medium: 40px;
@@ -49,7 +49,8 @@
 	--breakpoint-3xl: 120rem;
 
 	/* Heights based on Tailwind's spacing scale: --spacing: 0.25rem /* 4px */
-	--height-header-desktop: calc(var(--spacing) * 57) /* [57] 14.25rem = 228px */;
+	--height-header-desktop: calc(var(--spacing) * 51) /* [51] 12.75rem = 204px */;
+	--height-header-tablet: calc(var(--spacing) * 48) /* [48] 12rem = 192px */;
 	--height-header-mobile: calc(var(--spacing) * 36) /* [36] 9rem = 144px */;
 	--height-content: calc(100svh - var(--height-header-desktop));
 }
@@ -149,7 +150,7 @@
 
 	/* HEADING STYLES */
 	.heading-display {
-		@apply font-primary text-display-small font-thin sm:text-display-medium xl:text-display-large;
+		@apply font-primary text-display-small font-thin sm:text-display-medium md:text-display-large leading-none;
 	}
 
 	.heading-headline {

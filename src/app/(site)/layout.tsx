@@ -81,7 +81,7 @@ export default async function RootLayout({
 				)}
 				<div className='custom-container mx-auto flex relative'>
 					{/* SPACER FOR DESKTOP MENU */}
-					<div className='hidden md:block flex-1/4'></div>
+					<div className='hidden lg:block flex-1/4'></div>
 					{/* MAIN CONTENT */}
 					{children}
 				</div>

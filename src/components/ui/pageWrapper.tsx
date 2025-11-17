@@ -39,13 +39,13 @@ export default function PageWrapper({ children, classes }: PageWrapperProps) {
 			{/* PAGE TRANSITION MASK */}
 			<div
 				ref={pageTransitionRef}
-				className='gsap-page-transition fixed inset-0 bg-primary z-50 hidden md:block pointer-events-none'></div>
+				className='gsap-page-transition fixed inset-0 bg-primary z-50 hidden lg:block pointer-events-none'></div>
 
 			{/* MAIN CONTENT */}
 			<main
 				id='main-content' // Add id for skip link
 				tabIndex={-1} // Make focusable for skip link
-				className={`w-full flex-3/4 relative p-4 md:p-6 gutter-stable pb-18 md:pb-6 ${classes ? classes : ''}`}>
+				className={`w-full flex-3/4 relative p-4 lg:p-6 gutter-stable pb-18 lg:pb-6 ${classes ? classes : ''}`}>
 				{children}
 			</main>
 		</Fragment>

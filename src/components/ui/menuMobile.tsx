@@ -82,7 +82,7 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 
 	return (
 		navLinks && (
-			<header className='fixed inset-0 z-100 block h-dvh md:hidden gutter-stable pointer-events-none overflow-clip'>
+			<header className='fixed inset-0 z-100 block h-dvh lg:hidden gutter-stable pointer-events-none overflow-clip'>
 				{/* EXPANDED MENU */}
 				<aside
 					className='relative h-svh w-full p-4 pt-0 pointer-events-auto bg-primary'
@@ -97,7 +97,7 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 						<Logo isDescriptionVisible={isMenuOpen} />
 						{/* BURGER BUTTON */}
 						<ButtonBurger
-							className={`md:hidden ${isMenuOpen ? 'opacity-0' : 'opacity-100 delay-200'} transition-opacity duration-300`}
+							className={`${isMenuOpen ? 'opacity-0' : 'opacity-100 delay-200'} transition-opacity duration-300`}
 							onClick={() => toggleMenu()}
 							aria-expanded={isMenuOpen}
 							aria-controls='mobile-menu'
