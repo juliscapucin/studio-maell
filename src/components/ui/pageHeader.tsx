@@ -13,12 +13,12 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 				{subtitle && (
 					<>
 						{/* SUBTITLE */}
-						<p className='absolute z-20 right-0 top-[72px] sm:top-[76px] md:top-[108px] lg:top-[100px] pl-6 max-w-64 md:max-w-94 text-lg md:text-xl lg:text-2xl font-medium text-pretty leading-[0.95] bg-primary'>
+						<p className='absolute z-20 right-0 top-[72px] sm:top-[76px] md:top-[100px] lg:top-[100px] pl-6 max-w-64 md:max-w-94 text-lg md:text-2xl font-medium text-pretty leading-[0.95] bg-primary'>
 							{subtitle}
 						</p>
 						{/* HORIZONTAL LINE */}
 						<div
-							className='header-line -mt-6 left-0 w-3/4 md:w-[90%] max-w-[2800px] -z-10'
+							className='header-line -mt-6 -left-6 w-3/4 md:w-[90%] max-w-[2800px] -z-10'
 							aria-hidden='true'></div>
 					</>
 				)}

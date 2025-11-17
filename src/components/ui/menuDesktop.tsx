@@ -29,7 +29,9 @@ export default function MenuDesktop({
 						{(pathname === '/' ||
 							pathname === '/work' ||
 							pathname === '/services') && (
-							<div className='header-line' aria-hidden='true'></div>
+							<div
+								className='header-line -left-6 w-[90vw]'
+								aria-hidden='true'></div>
 						)}
 					</header>
 					{/* NAVLINKS */}

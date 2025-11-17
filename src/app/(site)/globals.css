@@ -223,6 +223,6 @@
 	}
 
 	.header-line {
-		@apply absolute h-0.5 bg-secondary w-full top-[70px] sm:top-[100px] md:top-[134px];
+		@apply absolute h-0.5 bg-secondary w-full top-[77px] sm:top-[108px] md:top-[134px];
 	}
 }

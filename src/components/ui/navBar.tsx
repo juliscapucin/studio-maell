@@ -48,8 +48,8 @@ export default function NavBar({
 								key={`panel-button-${index}`}
 								href={`/${link.slug}`}
 								onClick={(e) => {
-									e.preventDefault()
 									if (!isMobile || !toggleMenu) return
+									e.preventDefault()
 									toggleMenu(`/${link.slug}`)
 								}}
 								className={`underlined-link transition-all duration-300 ${
@@ -89,8 +89,8 @@ export default function NavBar({
 												}`}
 												role='button'
 												onClick={(e) => {
-													e.preventDefault()
 													if (!isMobile || !toggleMenu) return
+													e.preventDefault()
 													toggleMenu(`/work/${caseItem.slug}`)
 												}}
 												aria-current={
