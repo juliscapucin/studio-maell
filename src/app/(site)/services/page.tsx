@@ -1,7 +1,6 @@
-import { ServiceCard } from '@/components'
-import { EmptyResults, PageHeader, PageWrapper } from '@/components/ui'
+import { ServicesCarousel } from '@/components'
+import { PageHeader, PageWrapper } from '@/components/ui'
 
-import { ServiceType } from '@/types/ServiceType'
 import { getAllServices, getPageContent } from '@/sanity/lib/queries'
 
 const pageData = await getPageContent('servicesPage')
@@ -14,15 +13,8 @@ export default async function Services() {
 				title={pageData.title || 'Services'}
 				subtitle={pageData.subtitle}
 			/>
-			<div className='flex gap-6 text-tertiary'>
-				{services && services.length > 0 ? (
-					services.map((service: ServiceType) => (
-						<ServiceCard key={service.title} service={service} />
-					))
-				) : (
-					<EmptyResults message='No services available at the moment' />
-				)}
-			</div>
+			{/* Services Carousel */}
+			<ServicesCarousel services={services} />
 		</PageWrapper>
 	)
 }
