@@ -7,7 +7,11 @@ import { VisualEditing } from 'next-sanity/visual-editing'
 
 import { MenuDesktop, MenuMobile } from '@/components/ui'
 import { DisableDraftMode } from '@/components'
-import { getNavLinks, getPageContent } from '@/sanity/lib/queries'
+import {
+	getAllCasesSlugs,
+	getNavLinks,
+	getPageContent,
+} from '@/sanity/lib/queries'
 
 import { cleanSanityInputs } from '@/utils'
 import { metadataFallback } from '@/data'
@@ -49,13 +53,14 @@ export async function generateMetadata() {
 	}
 }
 
+const navLinks = await getNavLinks()
+const casesSlugs = await getAllCasesSlugs()
+
 export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	const navLinks = await getNavLinks()
-
 	return (
 		<html lang='en' className='gutter-stable'>
 			<body
@@ -66,7 +71,7 @@ export default async function RootLayout({
 					className='fixed top-0 left-0 z-50 -translate-y-full bg-secondary text-primary px-4 py-2 underline focus:translate-y-0'>
 					Skip to main content
 				</a>
-				<MenuDesktop navLinks={navLinks} />
+				<MenuDesktop navLinks={navLinks} casesSlugs={casesSlugs} />
 				<MenuMobile navLinks={navLinks} />
 				{(await draftMode()).isEnabled && (
 					<>

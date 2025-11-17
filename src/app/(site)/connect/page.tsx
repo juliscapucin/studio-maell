@@ -6,9 +6,9 @@ import {
 } from '@/components/ui'
 import { getConnectPageContent } from '@/sanity/lib/queries'
 
-export default async function Connect() {
-	const pageData = await getConnectPageContent()
+const pageData = await getConnectPageContent()
 
+export default async function Connect() {
 	if (!pageData) {
 		return <EmptyResults message='This page is not available at the moment' />
 	}

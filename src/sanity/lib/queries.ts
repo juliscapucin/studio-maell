@@ -69,6 +69,7 @@ export async function getCaseBySlug(slug: string) {
 export async function getAllCasesSlugs() {
 	const query = defineQuery(`*[_type == "case"] {
 			"slug": slug.current,
+			client,
 		 }`)
 
 	const casesSlugs = await client.fetch(query)

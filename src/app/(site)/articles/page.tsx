@@ -3,10 +3,10 @@ import { PageHeader, PageWrapper, EmptyResults } from '@/components/ui'
 import { ArticleType } from '@/types/ArticleType'
 import { getAllArticles, getPageContent } from '@/sanity/lib/queries'
 
-export default async function Connect() {
-	const pageData = await getPageContent('articlesPage')
-	const articles = await getAllArticles()
+const pageData = await getPageContent('articlesPage')
+const articles = await getAllArticles()
 
+export default async function Connect() {
 	return (
 		<PageWrapper classes='flex flex-col h-svh'>
 			<PageHeader

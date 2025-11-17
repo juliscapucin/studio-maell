@@ -4,10 +4,10 @@ import { CaseType } from '@/types'
 
 import { getAllCases, getPageContent } from '@/sanity/lib/queries'
 
-export default async function Home() {
-	const pageData = await getPageContent('workPage')
-	const cases = await getAllCases()
+const pageData = await getPageContent('workPage')
+const cases = await getAllCases()
 
+export default async function Home() {
 	if (!pageData || !cases) {
 		return (
 			<EmptyResults

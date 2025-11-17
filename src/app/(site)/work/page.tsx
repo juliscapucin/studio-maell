@@ -4,10 +4,10 @@ import { EmptyResults } from '@/components/ui'
 import { CaseType } from '@/types'
 import { getAllCases, getPageContent } from '@/sanity/lib/queries'
 
-export default async function Work() {
-	const pageData = await getPageContent('workPage')
-	const cases = await getAllCases()
+const pageData = await getPageContent('workPage')
+const cases = await getAllCases()
 
+export default async function Work() {
 	return (
 		<PageWrapper>
 			<PageHeader

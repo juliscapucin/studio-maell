@@ -4,10 +4,10 @@ import { EmptyResults, PageHeader, PageWrapper } from '@/components/ui'
 import { ServiceType } from '@/types/ServiceType'
 import { getAllServices, getPageContent } from '@/sanity/lib/queries'
 
-export default async function Services() {
-	const pageData = await getPageContent('servicesPage')
-	const services = await getAllServices()
+const pageData = await getPageContent('servicesPage')
+const services = await getAllServices()
 
+export default async function Services() {
 	return (
 		<PageWrapper classes='flex flex-col justify-between h-svh overflow-hidden'>
 			<PageHeader
