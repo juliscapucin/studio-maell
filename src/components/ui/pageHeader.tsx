@@ -18,7 +18,7 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 						</p>
 						{/* HORIZONTAL LINE */}
 						<div
-							className='header-line -mt-6 -left-6 w-3/4 md:w-[90%] max-w-[2800px] -z-10'
+							className='header-line w-[90%] -mt-6 -left-12 -z-10'
 							aria-hidden='true'></div>
 					</>
 				)}
