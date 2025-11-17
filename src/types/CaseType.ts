@@ -1,10 +1,11 @@
 import { PortableTextBlock } from 'next-sanity'
+import { Image } from 'sanity'
 
 export type CaseType = {
 	title: string
 	slug: string
 	client: string
-	coverImage: string
+	mainImage: Image
 	publishedOn: string
 	categories: string[]
 	excerpt: string

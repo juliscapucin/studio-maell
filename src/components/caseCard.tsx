@@ -1,3 +1,5 @@
+import { urlFor } from '@/sanity/lib/imageUrlBuilder'
+
 import { EmptyResults, ImageWithSpinner } from '@/components/ui'
 import { ButtonCase } from '@/components/buttons'
 import { CaseType } from '@/types/CaseType'
@@ -13,14 +15,14 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 
 	return (
 		<article className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6'>
-			<h2 className='heading-title'>{caseData.title}</h2>
-			<p>{caseData.client}</p>
-			<div className='my-4 h-0.5 bg-tertiary' />
-			<div className='sm:flex justify-between items-end'>
+			<h2 className='heading-title leading-[1.1]'>{caseData.title}</h2>
+			<p className='mt-4 leading-none'>{caseData.client}</p>
+			<div className='my-6 lg:my-8 h-0.5 bg-tertiary' />
+			<div className='flex flex-col sm:flex-row gap-4 justify-between items-end'>
 				<ImageWithSpinner
-					containerClassName='sm:w-3/4 xl:w-1/2 2xl:w-1/3 h-96 relative mb-6 sm:mb-0'
+					containerClassName='w-full sm:w-3/4 xl:w-1/2 2xl:w-1/3 h-36 md:h-96 relative mb-6 sm:mb-0'
 					imageClassName='w-full h-full object-cover'
-					imageSrc={{ url: '/images/ascii-01.jpg' }}
+					imageSrc={{ url: urlFor(caseData.mainImage).width(1200).url() }}
 					sizes='100vw'
 					fill
 				/>

@@ -13,7 +13,7 @@ export default function ButtonCase({ slug }: ButtonCaseProps) {
 
 	return (
 		<button
-			className='btn btn-ghost-tertiary'
+			className='btn btn-ghost-tertiary font-bold text-nowrap'
 			onClick={() => router.push(`/work/${slug}`)}>
 			<span>Read case</span>
 			<IconArrow />

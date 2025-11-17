@@ -31,11 +31,9 @@ export async function getAllCases(): Promise<CaseType[]> {
 	const query = defineQuery(`*[_type == "case"]|order(publishedOn desc) {
 			title,
 			"slug": slug.current,
-			"coverImage": coverImage.asset->url,
+			"mainImage": mainImage.asset->url,
 			client,
 			publishedOn,
-			"categories": categories[]->title,
-			"excerpt": excerpt,
 		 }`)
 
 	const cases = await client.fetch(query)

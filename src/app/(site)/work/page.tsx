@@ -4,10 +4,12 @@ import { EmptyResults } from '@/components/ui'
 import { CaseType } from '@/types'
 import { getAllCases, getPageContent } from '@/sanity/lib/queries'
 
-const pageData = await getPageContent('workPage')
-const cases = await getAllCases()
+export const revalidate = 1 // revalidate every 5 minutes (300 seconds)
 
 export default async function Work() {
+	const pageData = await getPageContent('workPage')
+	const cases = await getAllCases()
+
 	return (
 		<PageWrapper>
 			<PageHeader
