@@ -4,9 +4,9 @@ import { ArticleType } from '@/types/ArticleType'
 import { getAllArticles, getPageContent } from '@/sanity/lib/queries'
 
 const pageData = await getPageContent('articlesPage')
-const articles = await getAllArticles()
 
 export default async function Connect() {
+	const articles = await getAllArticles()
 	return (
 		<PageWrapper classes='flex flex-col h-svh'>
 			<PageHeader

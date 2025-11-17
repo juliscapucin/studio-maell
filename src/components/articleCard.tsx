@@ -25,24 +25,21 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 
 	return (
 		<>
-			<article className='flex justify-between items-start 2xl:items-center group'>
-				<div className='flex flex-col-reverse 2xl:flex-row 2xl:items-center 2xl:flex-1'>
+			<article className='flex justify-between items-start xl:items-center gap-x-6 xl:gap-x-24 group'>
+				<div className='flex flex-col-reverse xl:flex-row xl:items-center xl:gap-x-6'>
 					{/* DATE AND PUBLICATION */}
-					<div className='flex gap-4 2xl:block 2xl:flex-1 mt-4 2xl:mt-0 min-w-48'>
+					<div className='flex gap-4 xl:block mt-4 xl:mt-0 xl:w-54 2xl:w-72 xl:mr-6'>
 						<p className='text-lg lg:text-xl'>{date}</p>
 						<p className='text-lg'>{publication}</p>
 					</div>
-					{/* SPACER */}
-					<div className='hidden md:block flex-1 h-8'></div>
-					{/* LINK WITH TITLE */}
+
 					<a
+						className='flex-1'
 						href={url || 'http://example.com'}
 						target='_blank'
 						rel='noopener noreferrer'>
 						<h2 className='text-xl lg:text-2xl'>{title}</h2>
 					</a>
-					{/* SPACER */}
-					<div className='hidden md:block flex-1 h-8'></div>
 				</div>
 
 				{/* ARROW + ANIMATION */}
