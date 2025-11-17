@@ -72,7 +72,7 @@ export default async function RootLayout({
 					Skip to main content
 				</a>
 				<MenuDesktop navLinks={navLinks} casesSlugs={casesSlugs} />
-				<MenuMobile navLinks={navLinks} />
+				<MenuMobile navLinks={navLinks} casesSlugs={casesSlugs} />
 				{(await draftMode()).isEnabled && (
 					<>
 						<VisualEditing />

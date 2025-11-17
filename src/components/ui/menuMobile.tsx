@@ -4,39 +4,38 @@ import { useRef, useState, useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 import { ButtonBurger, ButtonClose } from '@/components/buttons'
 
 import type { NavLinkType } from '@/types'
-import { useGSAP } from '@gsap/react'
-import Link from 'next/link'
 import Logo from './logo'
+import NavBar from './navBar'
 
 type NavLinksProps = {
 	navLinks: NavLinkType[]
+	casesSlugs: { slug: string; client: string }[]
 }
 
-export default function MenuMobile({ navLinks }: NavLinksProps) {
+export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 	const mobileMenuRef = useRef<HTMLDivElement | null>(null)
 	const pathname = usePathname()
 	const router = useRouter()
 
-	const bulletRef = useRef<HTMLSpanElement>(null)
-
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
-	const [slug, setSlug] = useState<string | null>(null)
 
 	const toggleMenu = (slug?: string | null) => {
 		setIsMenuOpen((prev) => !prev)
 		if (slug) {
-			router.push(slug)
+			router.push(`${slug}`)
 		}
 	}
 
+	// Initial position of the mobile menu
 	useGSAP(
 		() => {
 			if (!mobileMenuRef.current) return
-			gsap.set(mobileMenuRef.current, { y: window.innerHeight - 70 })
+			gsap.set(mobileMenuRef.current, { y: window.innerHeight - 70 }) // so that the header is visible
 		},
 		{ dependencies: [], scope: mobileMenuRef }
 	)
@@ -52,7 +51,6 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 					ease: 'power3.out',
 					onComplete: () => {
 						document.body.style.overflow = 'hidden'
-						if (slug) router.push(slug)
 					},
 				})
 			} else {
@@ -61,6 +59,7 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 					y: window.innerHeight - 70,
 					duration: 0.5,
 					ease: 'power3.in',
+					delay: 0.3,
 				})
 			}
 		},
@@ -122,37 +121,14 @@ export default function MenuMobile({ navLinks }: NavLinksProps) {
 
 					{/* NAV LINKS */}
 					<nav aria-label='Navigation' className='flex h-full items-end pb-28'>
-						<ul className='space-y-6 ml-2'>
-							{navLinks.map((link) => {
-								const isCurrentPage =
-									(link.slug === '/' && pathname === '/') ||
-									(link.slug !== '/' && pathname.includes(`${link.slug}`))
-
-								return (
-									<li key={link.slug}>
-										<Link
-											href={link.slug}
-											className='relative flex items-center text-navlink-large'
-											onClick={(e) => {
-												e.preventDefault()
-												toggleMenu(link.slug)
-											}}
-											aria-current={isCurrentPage ? 'location' : undefined}
-											tabIndex={isMenuOpen ? 0 : -1}>
-											{/* BULLET */}
-											<span
-												ref={bulletRef}
-												className={`absolute h-2 w-2 bg-secondary rounded-full transition-transform duration-300 ${pathname === `/${link.slug}` ? 'scale-100' : 'scale-0'}`}
-												aria-hidden='true'></span>
-											<span
-												className={`text-secondary transition-transform duration-500 ${isCurrentPage ? 'translate-x-4 font-bold' : 'translate-0'}`}>
-												{link.label}
-											</span>
-										</Link>
-									</li>
-								)
-							})}
-						</ul>
+						<NavBar
+							isMobile={true}
+							navLinks={navLinks}
+							toggleMenu={toggleMenu}
+							isMenuOpen={isMenuOpen}
+							pathname={pathname}
+							casesSlugs={casesSlugs}
+						/>
 					</nav>
 				</aside>
 			</header>

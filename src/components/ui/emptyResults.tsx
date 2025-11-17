@@ -23,7 +23,9 @@ export default function EmptyResults({ message, variant }: EmptyResultsProps) {
 							{line}
 						</p>
 					))}
-					<Link href='/' className='btn btn-ghost-tertiary mx-auto mt-6'>
+					<Link
+						href='/'
+						className='btn btn-ghost-tertiary mx-auto mt-6 font-bold'>
 						Start again
 					</Link>
 				</div>
@@ -32,7 +34,7 @@ export default function EmptyResults({ message, variant }: EmptyResultsProps) {
 	) : (
 		<div className='w-full h-full min-h-96 flex flex-col items-center justify-center bg-secondary rounded-sm'>
 			<p className='text-center text-pretty text-tertiary'>{message}</p>
-			<Link href='/' className='btn btn-ghost-tertiary mx-auto mt-6'>
+			<Link href='/' className='btn btn-ghost-tertiary mx-auto mt-6 font-bold'>
 				Start again
 			</Link>
 		</div>
