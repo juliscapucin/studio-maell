@@ -221,4 +221,8 @@
 	.spinner {
 		@apply w-4 h-4 border-2 border-secondary border-t-transparent rounded-full animate-spin;
 	}
+
+	.header-line {
+		@apply absolute h-0.5 bg-secondary w-full top-[70px] sm:top-[100px] md:top-[134px];
+	}
 }

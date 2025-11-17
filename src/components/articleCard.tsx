@@ -25,12 +25,12 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 
 	return (
 		<>
-			<article className='flex justify-between items-start md:items-center group'>
-				<div className='flex flex-col-reverse md:flex-row md:items-center md:flex-1'>
+			<article className='flex justify-between items-start 2xl:items-center group'>
+				<div className='flex flex-col-reverse 2xl:flex-row 2xl:items-center 2xl:flex-1'>
 					{/* DATE AND PUBLICATION */}
-					<div className='flex gap-4 md:block md:flex-1'>
-						<p>{date}</p>
-						<p>{publication}</p>
+					<div className='flex gap-4 2xl:block 2xl:flex-1 mt-4 2xl:mt-0 min-w-48'>
+						<p className='text-lg lg:text-xl'>{date}</p>
+						<p className='text-lg'>{publication}</p>
 					</div>
 					{/* SPACER */}
 					<div className='hidden md:block flex-1 h-8'></div>
@@ -39,14 +39,14 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 						href={url || 'http://example.com'}
 						target='_blank'
 						rel='noopener noreferrer'>
-						<h2>{title}</h2>
+						<h2 className='text-xl lg:text-2xl'>{title}</h2>
 					</a>
 					{/* SPACER */}
 					<div className='hidden md:block flex-1 h-8'></div>
 				</div>
 
 				{/* ARROW + ANIMATION */}
-				<span className='relative inline-block overflow-hidden w-4 h-4'>
+				<span className='relative inline-block overflow-hidden w-4 h-4 min-w-4 mt-2'>
 					{/* First arrow - moves out */}
 					<span className='absolute inset-0 transition-transform duration-300 ease-out group-hover:translate-x-4 group-hover:-translate-y-4'>
 						<IconArrowUpRight />
@@ -57,7 +57,8 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 					</span>
 				</span>
 			</article>
-			<hr className='my-4 border-secondary w-full' aria-hidden='true' />
+			{/* HORIZONTAL LINE */}
+			<div className='my-4 bg-secondary w-full h-px' aria-hidden='true' />
 		</>
 	)
 }

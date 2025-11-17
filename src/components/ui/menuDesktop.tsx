@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 import { NavLinkType } from '@/types'
 import { Logo } from '@/components/ui'
 import { IconDash } from '@/components/icons'
+import path from 'path'
 
 type MenuDesktopProps = {
 	navLinks: NavLinkType[]
@@ -26,10 +27,16 @@ export default function MenuDesktop({
 			{/* CONTAINER */}
 			<div className='custom-container mx-auto h-svh'>
 				{/* 1/4 COLUMN */}
-				<div className='w-1/4 flex flex-col justify-between h-full p-6 pointer-events-auto'>
+				<div className='relative w-1/4 flex flex-col justify-between h-full p-6 pointer-events-auto'>
 					{/* HEADER */}
-					<header className='h-header-desktop'>
+					<header className='h-header-mobile md:h-header-tablet lg:h-header-desktop'>
 						<Logo />
+						{/* HORIZONTAL LINE */}
+						{(pathname === '/' ||
+							pathname === '/work' ||
+							pathname === '/services') && (
+							<div className='header-line' aria-hidden='true'></div>
+						)}
 					</header>
 					{/* NAVLINKS */}
 					<nav>

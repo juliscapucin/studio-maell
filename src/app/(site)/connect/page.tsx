@@ -20,12 +20,15 @@ export default async function Connect() {
 				subtitle={pageData.subtitle}
 			/>
 
-			{/* If pageData exists, render the contact info */}
 			{pageData ? (
-				<div className='flex-1 flex flex-col justify-start gap-4'>
-					<h2 className='heading-title mb-8 max-w-[280px] lg:max-w-[500px] text-pretty mt-16 lg:mt-28'>
-						{pageData.cta}
-					</h2>
+				<div className='flex-1 flex flex-col justify-start gap-4 text-2xl'>
+					{/* CTA */}
+					<div className='flex items-end'>
+						<h2 className='heading-title mb-8 max-w-[280px] lg:max-w-[500px] text-pretty mt-16 lg:mt-28'>
+							{pageData.cta}
+						</h2>
+						<div className='h-0.5 bg-secondary flex-1 mb-13 -ml-14'></div>
+					</div>
 					<ExternalLink href={`mailto:${pageData.email}`}>
 						{pageData.email}
 					</ExternalLink>
@@ -38,7 +41,6 @@ export default async function Connect() {
 						))}
 				</div>
 			) : (
-				//* Fallback in case pageData is nullish, though this should be unreachable due to the earlier check *//
 				<EmptyResults message='This page is not available at the moment' />
 			)}
 		</PageWrapper>

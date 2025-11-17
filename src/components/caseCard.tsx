@@ -15,7 +15,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 		<article className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6'>
 			<h2 className='heading-title'>{caseData.title}</h2>
 			<p>{caseData.client}</p>
-			<hr className='my-4 border-tertiary' />
+			<div className='my-4 h-0.5 bg-tertiary' />
 			<div className='sm:flex justify-between items-end'>
 				<ImageWithSpinner
 					containerClassName='sm:w-3/4 xl:w-1/2 2xl:w-1/3 h-96 relative mb-6 sm:mb-0'
