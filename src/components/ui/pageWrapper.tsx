@@ -26,7 +26,7 @@ export default function PageWrapper({ children, classes }: PageWrapperProps) {
 
 		// Animate the mask to reveal the content
 		gsap.to(pageTransitionRef.current, {
-			duration: 0.6,
+			duration: 0.7,
 			opacity: 0,
 			ease: 'power2.out',
 		})
@@ -39,7 +39,11 @@ export default function PageWrapper({ children, classes }: PageWrapperProps) {
 			{/* PAGE TRANSITION MASK */}
 			<div
 				ref={pageTransitionRef}
-				className='gsap-page-transition fixed inset-0 bg-primary z-50 hidden lg:block pointer-events-none'></div>
+				className='gsap-page-transition fixed inset-0 z-50 hidden lg:block pointer-events-none'>
+				<div className='custom-container h-full'>
+					<div className='h-full w-3/4 ml-auto bg-primary'></div>
+				</div>
+			</div>
 
 			{/* MAIN CONTENT */}
 			<main

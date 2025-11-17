@@ -90,10 +90,6 @@
 		@apply cursor-pointer;
 	}
 
-	.custom-container {
-		@apply w-full mx-auto max-w-desktop;
-	}
-
 	/* FOCUS STYLES */
 	:focus-visible {
 		@apply outline-none ring-4 ring-accent-focus;
@@ -210,6 +206,10 @@
 	}
 
 	/* UTILITIES */
+	.custom-container {
+		@apply w-full mx-auto max-w-desktop;
+	}
+
 	.gutter-stable {
 		scrollbar-gutter: stable;
 	}
