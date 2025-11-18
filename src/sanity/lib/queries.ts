@@ -59,6 +59,9 @@ export async function getCaseBySlug(slug: string) {
 						"src": asset->url
 					}
 				},
+				metadataTitle,
+				metadataDescription,
+				metadataKeywords,
 			 }`)
 	const caseData = await client.fetch(query, { slug })
 	return caseData
@@ -106,6 +109,9 @@ export async function getConnectPageContent() {
 				label,
 				url,
 			},
+			metadataTitle,
+			metadataDescription,
+			metadataKeywords,
 		 }`)
 
 	const connectPageContent = await client.fetch(query)

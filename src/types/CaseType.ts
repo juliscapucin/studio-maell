@@ -12,4 +12,7 @@ export type CaseType = {
 	body: PortableTextBlock[]
 	services: string[]
 	role: string
+	metadataTitle?: string
+	metadataDescription?: string
+	metadataKeywords?: string[]
 }

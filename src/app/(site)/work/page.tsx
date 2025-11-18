@@ -4,12 +4,34 @@ import { EmptyResults } from '@/components/ui'
 import { CaseType } from '@/types'
 import { getAllCases, getPageContent } from '@/sanity/lib/queries'
 
+import { metadataFallback } from '@/data'
+import { cleanSanityInputs } from '@/utils'
+
 export const revalidate = 1 // revalidate every 5 minutes (300 seconds)
 
-export default async function Work() {
-	const pageData = await getPageContent('workPage')
-	const cases = await getAllCases()
+const pageData = await getPageContent('workPage')
+const cases = await getAllCases()
 
+export async function generateMetadata() {
+	const page = await pageData
+
+	if (!page) {
+		return metadataFallback
+	}
+
+	const cleanTitle = cleanSanityInputs(page.metadataTitle)
+	const cleanDescription = cleanSanityInputs(page.metadataDescription)
+	const cleanKeywords = cleanSanityInputs(page.metadataKeywords)
+
+	return {
+		metadataBase: metadataFallback.metadataBase,
+		title: cleanTitle || metadataFallback.title,
+		description: cleanDescription || metadataFallback.description,
+		keywords: cleanKeywords || metadataFallback.keywords,
+	}
+}
+
+export default async function Work() {
 	return (
 		<PageWrapper>
 			<PageHeader
