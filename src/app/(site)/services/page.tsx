@@ -1,18 +1,20 @@
+import { cache } from 'react'
+
 import { ServicesCarousel } from '@/components'
 import { PageHeader, PageWrapper } from '@/components/ui'
 
 import { getAllServices, getPageContent } from '@/sanity/lib/queries'
 
-const pageData = await getPageContent('servicesPage')
-const services = await getAllServices()
-
 import { metadataFallback } from '@/data'
 import { cleanSanityInputs } from '@/utils'
 
-export const revalidate = 1 // revalidate every 5 minutes (300 seconds)
+// Memoize query as in Next docs: https://nextjs.org/docs/app/getting-started/metadata-and-og-images
+const pageData = cache(async () => {
+	return await getPageContent('servicesPage')
+})
 
 export async function generateMetadata() {
-	const page = await pageData
+	const page = await pageData()
 
 	if (!page) {
 		return metadataFallback
@@ -31,12 +33,12 @@ export async function generateMetadata() {
 }
 
 export default async function Services() {
+	const page = await pageData()
+	const services = await getAllServices()
+
 	return (
 		<PageWrapper classes='flex flex-col justify-between h-screen overflow-hidden z-0'>
-			<PageHeader
-				title={pageData.title || 'Services'}
-				subtitle={pageData.subtitle}
-			/>
+			<PageHeader title={page.title || 'Services'} subtitle={page.subtitle} />
 			{/* Services Carousel */}
 			<ServicesCarousel services={services} />
 		</PageWrapper>

@@ -1,3 +1,5 @@
+import { cache } from 'react'
+
 import { PageHeader, PageWrapper } from '@/components/ui'
 import { CaseCard } from '@/components'
 import { EmptyResults } from '@/components/ui'
@@ -7,13 +9,13 @@ import { getAllCases, getPageContent } from '@/sanity/lib/queries'
 import { metadataFallback } from '@/data'
 import { cleanSanityInputs } from '@/utils'
 
-export const revalidate = 1 // revalidate every 5 minutes (300 seconds)
-
-const pageData = await getPageContent('workPage')
-const cases = await getAllCases()
+// Memoize query as in Next docs: https://nextjs.org/docs/app/getting-started/metadata-and-og-images
+const pageData = cache(async () => {
+	return await getPageContent('workPage')
+})
 
 export async function generateMetadata() {
-	const page = await pageData
+	const page = await pageData()
 
 	if (!page) {
 		return metadataFallback
@@ -32,11 +34,14 @@ export async function generateMetadata() {
 }
 
 export default async function Work() {
+	const page = await pageData()
+	const cases = await getAllCases()
+
 	return (
 		<PageWrapper>
 			<PageHeader
-				title={pageData.title || 'Work'}
-				subtitle={pageData.subtitle}></PageHeader>
+				title={page.title || 'Work'}
+				subtitle={page.subtitle}></PageHeader>
 			<div className='space-y-8'>
 				{cases && cases.length > 0 ? (
 					cases.map((caseItem: CaseType) => (

@@ -2,6 +2,7 @@ import { defineQuery } from 'next-sanity'
 
 import type { CaseType, NavLinkType } from '@/types'
 import { client } from '@/sanity/lib/client'
+import { PageType, ConnectPageType } from '@/types'
 
 export async function getNavLinks(): Promise<NavLinkType[]> {
 	const query = defineQuery(`*[_type == "navLink"]|order(order asc) {
@@ -14,7 +15,7 @@ export async function getNavLinks(): Promise<NavLinkType[]> {
 	return data
 }
 
-export async function getPageContent($type: string) {
+export async function getPageContent($type: string): Promise<PageType> {
 	const query = defineQuery(`*[_type == "${$type}"][0] {
 			title,
 			subtitle,
@@ -99,7 +100,7 @@ export async function getAllArticles() {
 	return articles
 }
 
-export async function getConnectPageContent() {
+export async function getConnectPageContent(): Promise<ConnectPageType> {
 	const query = defineQuery(`*[_type == "connectPage"][0] {
 			title,
 			subtitle,

@@ -1,3 +1,5 @@
+import { cache } from 'react'
+
 import { ArticleCard } from '@/components'
 import { PageHeader, PageWrapper, EmptyResults } from '@/components/ui'
 import { ArticleType } from '@/types/ArticleType'
@@ -6,10 +8,13 @@ import { getAllArticles, getPageContent } from '@/sanity/lib/queries'
 import { metadataFallback } from '@/data'
 import { cleanSanityInputs } from '@/utils'
 
-const pageData = await getPageContent('articlesPage')
+// Memoize query as in Next docs: https://nextjs.org/docs/app/getting-started/metadata-and-og-images
+const pageData = cache(async () => {
+	return await getPageContent('articlesPage')
+})
 
 export async function generateMetadata() {
-	const page = await pageData
+	const page = await pageData()
 
 	if (!page) {
 		return metadataFallback
@@ -28,13 +33,11 @@ export async function generateMetadata() {
 }
 
 export default async function Connect() {
+	const page = await pageData()
 	const articles = await getAllArticles()
 	return (
 		<PageWrapper classes='flex flex-col h-svh'>
-			<PageHeader
-				title={pageData.title || 'Articles'}
-				subtitle={pageData.subtitle}
-			/>
+			<PageHeader title={page.title || 'Articles'} subtitle={page.subtitle} />
 			<div className='mt-48'>
 				{articles && articles.length > 0 ? (
 					articles.map((article: ArticleType) => (

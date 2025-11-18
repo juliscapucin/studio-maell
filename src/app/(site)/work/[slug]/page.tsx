@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 
@@ -12,14 +13,17 @@ import { ImageType } from '@/types'
 import { metadataFallback } from '@/data'
 import { cleanSanityInputs } from '@/utils'
 
-export const revalidate = 1 // revalidate every 5 minutes (300 seconds)
+// Memoize query as in Next docs: https://nextjs.org/docs/app/getting-started/metadata-and-og-images
+const caseData = cache(async (slug: string) => {
+	return await getCaseBySlug(slug)
+})
 
 export async function generateMetadata({
 	params,
 }: {
 	params: Promise<{ slug: string }>
 }) {
-	const page = await getCaseBySlug((await params).slug)
+	const page = await caseData((await params).slug)
 
 	if (!page) {
 		return metadataFallback
@@ -42,7 +46,7 @@ export default async function Project({
 }: {
 	params: Promise<{ slug: string }>
 }) {
-	const data = await getCaseBySlug((await params).slug)
+	const data = await caseData((await params).slug)
 
 	if (!data) {
 		return (

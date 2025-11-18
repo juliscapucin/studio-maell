@@ -1,5 +1,5 @@
 type PageHeaderProps = {
-	title: string
+	title?: string
 	subtitle?: string
 }
 
@@ -8,7 +8,7 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 		<>
 			<div className='relative h-header-mobile md:h-header-tablet lg:h-header-desktop'>
 				{/* TITLE */}
-				<h1 className='heading-display'>{title}</h1>
+				{title && <h1 className='heading-display'>{title}</h1>}
 
 				{subtitle && (
 					<>
