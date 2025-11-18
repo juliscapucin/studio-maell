@@ -30,7 +30,7 @@ export default function MenuDesktop({
 							pathname === '/work' ||
 							pathname === '/services') && (
 							<div
-								className='header-line -left-6 w-full'
+								className='header-line -left-6 -right-6'
 								aria-hidden='true'></div>
 						)}
 					</header>

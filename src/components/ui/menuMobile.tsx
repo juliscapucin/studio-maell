@@ -103,6 +103,7 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 	return (
 		navLinks && (
 			<header className='fixed inset-0 z-100 block lg:hidden gutter-stable pointer-events-none overflow-clip'>
+				{/* COLLAPSED HEADER */}
 				<div
 					ref={mobileHeaderRef}
 					className='absolute -bottom-8 left-0 right-0 h-28 p-6 flex items-start justify-between bg-primary z-50 pointer-events-auto'>

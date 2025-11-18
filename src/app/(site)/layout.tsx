@@ -62,7 +62,7 @@ export default async function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='en' className='gutter-stable'>
+		<html lang='en'>
 			<body
 				className={`${workSans.variable} ${fontPrimary.variable} antialiased bg-primary text-secondary font-secondary`}>
 				{/* SKIP TO MAIN CONTENT LINK - for screen readers */}

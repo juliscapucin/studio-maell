@@ -27,7 +27,8 @@ export default async function Connect() {
 						<h2 className='heading-title mb-8 max-w-[280px] lg:max-w-[500px] text-pretty mt-16 lg:mt-28'>
 							{pageData.cta}
 						</h2>
-						<div className='h-0.5 bg-secondary flex-1 mb-13 -ml-14'></div>
+						{/* HORIZONTAL LINE */}
+						<div className='h-0.5 bg-secondary flex-1 mb-12 -ml-32 xl:-ml-16 -mr-40'></div>
 					</div>
 					<ExternalLink href={`mailto:${pageData.email}`}>
 						{pageData.email}
