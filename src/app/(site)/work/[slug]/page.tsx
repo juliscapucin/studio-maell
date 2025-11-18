@@ -38,6 +38,12 @@ export async function generateMetadata({
 		title: cleanTitle || metadataFallback.title,
 		description: cleanDescription || metadataFallback.description,
 		keywords: cleanKeywords || metadataFallback.keywords,
+		openGraph: {
+			siteName: 'Studio Maell',
+			title: page.title || metadataFallback.title,
+			description: page.intro || metadataFallback.description,
+			// images: [{ url: page.mainImage as string }],
+		},
 	}
 }
 

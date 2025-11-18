@@ -19,8 +19,6 @@ export default async function Image({
 }) {
 	const caseData = await getCaseBySlug((await params).slug)
 
-	console.log(caseData)
-
 	return new ImageResponse(
 		(
 			<div
@@ -34,38 +32,19 @@ export default async function Image({
 					backgroundColor: '#000',
 				}}>
 				{/* Background image */}
-				<img
-					src={
-						caseData.mainImage
-							? urlFor(caseData.mainImage as ImageType)
-									.width(1200)
-									.height(630)
-									.fit('crop')
-									.url()!
-							: '/og-image-fallback.png'
-					}
-					alt=''
-					style={{
-						position: 'absolute',
-						inset: 0,
-						width: '100%',
-						height: '100%',
-						objectFit: 'cover',
-					}}
-				/>
-
-				<div
-					style={{
-						position: 'relative',
-						padding: '40px',
-						width: '100%',
-						color: 'white',
-						fontSize: 64,
-						fontWeight: 700,
-						fontFamily: 'sans-serif',
-					}}>
-					{caseData.title}
-				</div>
+				{caseData.mainImage && (
+					<img
+						src={caseData.mainImage}
+						alt=''
+						style={{
+							position: 'absolute',
+							inset: 0,
+							width: '100%',
+							height: '100%',
+							objectFit: 'cover',
+						}}
+					/>
+				)}
 			</div>
 		),
 		size
