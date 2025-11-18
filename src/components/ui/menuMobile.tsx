@@ -19,6 +19,7 @@ type NavLinksProps = {
 
 export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 	const mobileMenuRef = useRef<HTMLDivElement | null>(null)
+	const mobileHeaderRef = useRef<HTMLDivElement | null>(null)
 	const pathname = usePathname()
 	const router = useRouter()
 
@@ -35,7 +36,7 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 	useGSAP(
 		() => {
 			if (!mobileMenuRef.current) return
-			gsap.set(mobileMenuRef.current, { y: window.innerHeight - 70 }) // so that the header is visible
+			gsap.set(mobileMenuRef.current, { y: window.innerHeight })
 		},
 		{ dependencies: [], scope: mobileMenuRef }
 	)
@@ -44,23 +45,43 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 		() => {
 			if (!mobileMenuRef.current) return
 
+			// Open animation
 			if (isMenuOpen) {
-				gsap.to(mobileMenuRef.current, {
+				const tl = gsap.timeline()
+				tl.to(mobileMenuRef.current, {
 					y: 0,
 					duration: 0.5,
 					ease: 'power3.out',
 					onComplete: () => {
 						document.body.style.overflow = 'hidden'
 					},
-				})
+				}).to(
+					mobileHeaderRef.current,
+					{
+						opacity: 0,
+						yPercent: -100,
+						duration: 0.1,
+					},
+					'-=0.5'
+				)
+				// Close animation
 			} else {
 				document.body.style.overflow = 'unset'
-				gsap.to(mobileMenuRef.current, {
-					y: window.innerHeight - 70,
+				const tl = gsap.timeline()
+				tl.to(mobileMenuRef.current, {
+					y: window.innerHeight,
 					duration: 0.5,
 					ease: 'power3.in',
 					delay: 0.3,
-				})
+				}).to(
+					mobileHeaderRef.current,
+					{
+						opacity: 1,
+						yPercent: 0,
+						duration: 0.3,
+					},
+					'-=0.2'
+				)
 			}
 		},
 		{ dependencies: [isMenuOpen], scope: mobileMenuRef }
@@ -81,7 +102,25 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 
 	return (
 		navLinks && (
-			<header className='fixed inset-0 z-100 block h-dvh lg:hidden gutter-stable pointer-events-none overflow-clip'>
+			<header className='fixed inset-0 z-100 block lg:hidden gutter-stable pointer-events-none overflow-clip'>
+				<div
+					ref={mobileHeaderRef}
+					className='absolute bottom-0 left-0 right-0 h-20 p-6 flex items-start justify-between bg-primary z-100 pointer-events-auto'>
+					{/* TOP GRADIENT */}
+					<div className='absolute -top-[3px] -left-6 -right-6 h-1 bg-linear-to-b from-transparent to-primary'></div>
+					{/* LOGO */}
+					<Logo isDescriptionVisible={false} />
+					{/* BURGER BUTTON */}
+					<ButtonBurger
+						className={`${isMenuOpen ? 'opacity-0' : 'opacity-100 delay-200'} transition-opacity duration-300`}
+						onClick={() => toggleMenu()}
+						aria-expanded={isMenuOpen}
+						aria-controls='mobile-menu'
+						aria-haspopup='dialog'
+						aria-label={'Open navigation menu'}
+					/>
+				</div>
+
 				{/* EXPANDED MENU */}
 				<aside
 					className='relative h-svh w-full p-4 pt-0 pointer-events-auto bg-primary'
@@ -91,8 +130,8 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 					aria-labelledby='mobile-menu-title'
 					tabIndex={isMenuOpen ? 0 : -1}>
 					{/* TOP GRADIENT */}
-					<div className='absolute -top-[3px] h-1 w-full bg-linear-to-b from-transparent to-primary'></div>
-					<div className='absolute top-6 left-6 right-6 flex items-start justify-between z-100'>
+					<div className='absolute -top-[3px] -left-6 -right-6 h-1 w-full bg-linear-to-b from-transparent to-primary'></div>
+					<div className='absolute top-6 left-6 right-6 flex items-start justify-between z-100 pointer-events-auto'>
 						{/* LOGO */}
 						<Logo isDescriptionVisible={isMenuOpen} />
 						{/* BURGER BUTTON */}
