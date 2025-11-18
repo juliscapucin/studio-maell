@@ -80,7 +80,7 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 						yPercent: 0,
 						duration: 0.3,
 					},
-					'-=0.2'
+					'-=0.3'
 				)
 			}
 		},
@@ -105,7 +105,7 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 			<header className='fixed inset-0 z-100 block lg:hidden gutter-stable pointer-events-none overflow-clip'>
 				<div
 					ref={mobileHeaderRef}
-					className='absolute bottom-0 left-0 right-0 h-20 p-6 flex items-start justify-between bg-primary z-100 pointer-events-auto'>
+					className='absolute -bottom-8 left-0 right-0 h-28 p-6 flex items-start justify-between bg-primary z-100 pointer-events-auto'>
 					{/* TOP GRADIENT */}
 					<div className='absolute -top-[3px] -left-6 -right-6 h-1 bg-linear-to-b from-transparent to-primary'></div>
 					{/* LOGO */}
@@ -123,7 +123,7 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 
 				{/* EXPANDED MENU */}
 				<aside
-					className='relative h-svh w-full p-4 pt-0 pointer-events-auto bg-primary'
+					className='relative h-screen w-full p-4 pt-0 pointer-events-auto bg-primary'
 					ref={mobileMenuRef}
 					role='dialog'
 					aria-modal='true'
