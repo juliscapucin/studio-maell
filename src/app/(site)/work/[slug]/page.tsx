@@ -62,10 +62,14 @@ export default async function Project({
 				<div className='col-start-2 col-end-8 mt-12'>
 					<h1 className='heading-headline text-pretty'>{data.title}</h1>
 					<p className='mt-4 text-lg md:text-xl font-normal'>{data.client}</p>
-					<hr className='my-8 border-accent-1' />
+
+					{/* DIVIDER */}
+					<div
+						className='my-8 h-0.5 bg-accent-1 w-full'
+						aria-hidden='true'></div>
 
 					{/* SERVICES + ROLE */}
-					<div className='lg:flex flex-wrap'>
+					<div className='lg:flex flex-wrap md:gap-6'>
 						{data.services && data.services.length > 0 && (
 							<CaseServices services={data.services} />
 						)}
@@ -73,14 +77,14 @@ export default async function Project({
 						{/* ROLE */}
 						{data.role && (
 							<div className='flex-1 mt-6 lg:mt-0'>
-								<h2 className='text-lg font-medium'>Role</h2>
+								<h2 className='text-lg font-medium mb-4'>Role</h2>
 								<p className='font-normal text-lg'>{data.role}</p>
 							</div>
 						)}
 					</div>
 
 					{/* BODY CONTENT */}
-					<div className='mt-24 custom-rich-text'>
+					<div className='mt-6 lg:mt-12 custom-rich-text'>
 						{/* INTRO */}
 						<p className='font-medium'>{data.intro}</p>
 

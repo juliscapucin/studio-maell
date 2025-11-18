@@ -16,11 +16,11 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 	return (
 		<article className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6'>
 			<h2 className='heading-title leading-[1.1]'>{caseData.title}</h2>
-			<p className='mt-4 leading-none'>{caseData.client}</p>
+			<p className='mt-4 leading-[0.7]'>{caseData.client}</p>
 			<div className='my-6 lg:my-8 h-0.5 bg-tertiary' />
-			<div className='flex flex-col sm:flex-row gap-4 justify-between items-end'>
+			<div className='flex flex-col sm:flex-row gap-6 justify-between items-end'>
 				<ImageWithSpinner
-					containerClassName='w-full sm:w-3/4 xl:w-1/2 2xl:w-1/3 h-36 md:h-96 relative mb-6 sm:mb-0'
+					containerClassName='w-full sm:w-1/2 lg:w-3/4 xl:w-1/2 2xl:w-1/3 h-36 sm:h-56 md:h-96 relative'
 					imageClassName='w-full h-full object-cover'
 					imageSrc={{ url: urlFor(caseData.mainImage).width(1200).url() }}
 					sizes='100vw'

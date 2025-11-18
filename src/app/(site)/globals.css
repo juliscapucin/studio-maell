@@ -179,8 +179,9 @@
 		@apply text-navlink-small md:text-navlink-medium lg:text-navlink-large leading-6;
 	}
 
+	/* RICH TEXT STYLES */
 	.custom-rich-text p {
-		@apply text-body-small md:text-body-medium lg:text-body-large mb-6 font-normal;
+		@apply text-body-small md:text-body-medium lg:text-body-large mb-6 lg:mb-12 font-normal;
 	}
 
 	.custom-rich-text p:last-of-type {
@@ -189,7 +190,7 @@
 
 	.custom-rich-text h2,
 	.custom-rich-text h3 {
-		@apply text-subtitle-large font-normal;
+		@apply text-subtitle-large font-normal mt-6 lg:mt-12 mb-2 leading-[1.1];
 	}
 
 	.custom-rich-text a {
@@ -197,7 +198,7 @@
 	}
 
 	.custom-rich-text ul {
-		@apply list-disc ml-6 mb-6 text-body-small md:text-body-medium lg:text-body-large font-normal;
+		@apply list-disc ml-6 mb-6 lg:mb-12 text-body-small md:text-body-medium lg:text-body-large font-normal;
 	}
 
 	/* ANIMATIONS */

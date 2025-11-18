@@ -10,7 +10,7 @@ export default function CaseServices({ services }: CaseServicesProps) {
 	const [showAllServices, setShowAllServices] = useState(false)
 	return (
 		<div className='flex-2'>
-			<h2 className='text-lg font-medium'>Services</h2>
+			<h2 className='text-lg font-medium mb-4'>Services</h2>
 
 			{/* SERVICES DESKTOP */}
 			<ul

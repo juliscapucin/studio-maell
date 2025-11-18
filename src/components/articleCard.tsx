@@ -54,7 +54,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 					</span>
 				</span>
 			</article>
-			{/* HORIZONTAL LINE */}
+			{/* DIVIDER */}
 			<div className='my-4 bg-secondary w-full h-px' aria-hidden='true' />
 		</>
 	)
