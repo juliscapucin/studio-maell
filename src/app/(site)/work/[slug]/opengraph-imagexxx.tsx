@@ -1,7 +1,5 @@
 import { ImageResponse } from 'next/og'
 import { getCaseBySlug } from '@/sanity/lib/queries'
-import { urlFor } from '@/sanity/lib/imageUrlBuilder'
-import { Image as ImageType } from 'sanity'
 
 // Image metadata
 export const size = {

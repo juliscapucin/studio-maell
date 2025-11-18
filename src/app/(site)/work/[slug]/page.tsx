@@ -42,7 +42,7 @@ export async function generateMetadata({
 			siteName: 'Studio Maell',
 			title: page.title || metadataFallback.title,
 			description: page.intro || metadataFallback.description,
-			// images: [{ url: page.mainImage as string }],
+			images: [{ url: page.mainImage as string }],
 		},
 	}
 }
