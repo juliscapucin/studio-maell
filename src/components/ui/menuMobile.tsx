@@ -71,7 +71,7 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 		if (!isMenuOpen) return
 		const handleEscape = (e: KeyboardEvent) => {
 			if (e.key === 'Escape' && isMenuOpen) {
-				toggleMenu()
+				setIsMenuOpen(false)
 			}
 		}
 

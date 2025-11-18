@@ -45,6 +45,7 @@ export default function ServicesCarousel({ services }: ServicesCarouselProps) {
 				activeCursor: 'grabbing',
 				dragResistance: 0.1,
 				allowContextMenu: true,
+				zIndexBoost: false,
 			})
 
 			// Optional: Update bounds on resize
@@ -65,7 +66,7 @@ export default function ServicesCarousel({ services }: ServicesCarouselProps) {
 	return (
 		<div
 			ref={carouselRef}
-			className='flex gap-6 text-tertiary col-start-2 col-span-3'>
+			className='relative flex gap-6 text-tertiary col-start-2 col-span-3 z-0'>
 			{services && services.length > 0 ? (
 				services.map((service: ServiceType) => (
 					<ServiceCard key={service.title} service={service} />
