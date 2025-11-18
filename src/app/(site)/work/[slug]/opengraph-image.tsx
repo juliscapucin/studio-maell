@@ -1,7 +1,6 @@
 import { ImageResponse } from 'next/og'
 import { getCaseBySlug } from '@/sanity/lib/queries'
 import { urlFor } from '@/sanity/lib/imageUrlBuilder'
-import { url } from 'inspector'
 
 // Image metadata
 export const size = {
@@ -28,7 +27,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
 					backgroundColor: '#000',
 				}}>
 				{/* Background image */}
-				<img
+				{/* <img
 					src={urlFor(caseData.mainImage).width(1200).url() || ''}
 					alt=''
 					style={{
@@ -38,7 +37,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
 						height: '100%',
 						objectFit: 'cover',
 					}}
-				/>
+				/> */}
 
 				<div
 					style={{
@@ -53,6 +52,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
 					{caseData.title}
 				</div>
 			</div>
-		)
+		),
+		size
 	)
 }
