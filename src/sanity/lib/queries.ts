@@ -45,7 +45,7 @@ export async function getCaseBySlug(slug: string) {
 	const query = defineQuery(`*[_type == "case" && slug.current == $slug][0] {
 				title,
 				"slug": slug.current,
-				"coverImage": coverImage.asset->url,
+				"mainImage": mainImage.asset->url,
 				client,
 				role,
 				services,

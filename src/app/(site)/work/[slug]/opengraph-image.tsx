@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { getCaseBySlug } from '@/sanity/lib/queries'
 import { urlFor } from '@/sanity/lib/imageUrlBuilder'
+import { Image as ImageType } from 'sanity'
 
 // Image metadata
 export const size = {
@@ -11,8 +12,14 @@ export const size = {
 export const contentType = 'image/png'
 
 // Image generation
-export default async function Image({ params }: { params: { slug: string } }) {
-	const caseData = await getCaseBySlug(params.slug)
+export default async function Image({
+	params,
+}: {
+	params: Promise<{ slug: string }>
+}) {
+	const caseData = await getCaseBySlug((await params).slug)
+
+	console.log(caseData)
 
 	return new ImageResponse(
 		(
@@ -27,8 +34,16 @@ export default async function Image({ params }: { params: { slug: string } }) {
 					backgroundColor: '#000',
 				}}>
 				{/* Background image */}
-				{/* <img
-					src={urlFor(caseData.mainImage).width(1200).url() || ''}
+				<img
+					src={
+						caseData.mainImage
+							? urlFor(caseData.mainImage as ImageType)
+									.width(1200)
+									.height(630)
+									.fit('crop')
+									.url()!
+							: '/og-image-fallback.png'
+					}
 					alt=''
 					style={{
 						position: 'absolute',
@@ -37,7 +52,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
 						height: '100%',
 						objectFit: 'cover',
 					}}
-				/> */}
+				/>
 
 				<div
 					style={{
