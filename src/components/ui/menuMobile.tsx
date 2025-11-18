@@ -131,6 +131,8 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 					tabIndex={isMenuOpen ? 0 : -1}>
 					{/* TOP GRADIENT */}
 					<div className='absolute -top-[3px] -left-6 -right-6 h-1 w-full bg-linear-to-b from-transparent to-primary'></div>
+					{/* BOTTOM ELEMENT */}
+					<div className='absolute -bottom-24 -left-6 -right-6 h-28 w-full bg-primary'></div>
 					<div className='absolute top-6 left-6 right-6 flex items-start justify-between z-100 pointer-events-auto'>
 						{/* LOGO */}
 						<Logo isDescriptionVisible={isMenuOpen} />
