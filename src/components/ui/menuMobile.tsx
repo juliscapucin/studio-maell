@@ -88,7 +88,8 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 					ref={mobileMenuRef}
 					role='dialog'
 					aria-modal='true'
-					aria-labelledby='mobile-menu-title'>
+					aria-labelledby='mobile-menu-title'
+					tabIndex={isMenuOpen ? 0 : -1}>
 					{/* TOP GRADIENT */}
 					<div className='absolute -top-[3px] h-1 w-full bg-linear-to-b from-transparent to-primary'></div>
 					<div className='absolute top-6 left-6 right-6 flex items-start justify-between z-100'>

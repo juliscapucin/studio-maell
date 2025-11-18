@@ -55,7 +55,7 @@ export default function NavBar({
 								className={`underlined-link transition-all duration-300 ${
 									showBullet ? 'font-bold translate-x-4' : ''
 								}`}
-								role='button'
+								tabIndex={isMobile ? (isMenuOpen ? 0 : -1) : 0}
 								aria-current={
 									pathname === `/${link.slug}` ? 'page' : undefined
 								}>
@@ -67,6 +67,7 @@ export default function NavBar({
 						{link.slug === 'work' && (
 							<ul
 								ref={submenuRef}
+								aria-hidden={!isInternalPage}
 								className={`space-y-6 transition-[max-height] duration-300 ${
 									isInternalPage
 										? 'max-h-96 relative my-6'
@@ -76,36 +77,37 @@ export default function NavBar({
 									(
 										caseItem: { slug: string; client: string },
 										index: number
-									) => (
-										<li
-											key={`case-link-${index}`}
-											className='pl-4 flex items-center gap-2'>
-											<Link
-												href={`/work/${caseItem.slug}`}
-												className={`flex gap-2 items-start ${
-													pathname === `/work/${caseItem.slug}`
-														? 'font-bold'
-														: ''
-												}`}
-												role='button'
-												onClick={(e) => {
-													if (!isMobile || !toggleMenu) return
-													e.preventDefault()
-													toggleMenu(`/work/${caseItem.slug}`)
-												}}
-												aria-current={
-													pathname === `/work/${caseItem.slug}`
-														? 'page'
-														: undefined
-												}
-												tabIndex={isMenuOpen ? 0 : -1}>
-												<div className='mt-[13px]'>
-													<IconDash />
-												</div>
-												{caseItem.client}
-											</Link>
-										</li>
-									)
+									) => {
+										const active = pathname === `/work/${caseItem.slug}`
+										return (
+											<li
+												key={`case-link-${index}`}
+												className='pl-4 flex items-center gap-2'>
+												<Link
+													href={`/work/${caseItem.slug}`}
+													className={`flex gap-2 items-start ${
+														pathname === `/work/${caseItem.slug}`
+															? 'font-bold'
+															: ''
+													}`}
+													onClick={(e) => {
+														if (!isMobile || !toggleMenu) return
+														e.preventDefault()
+														toggleMenu(`/work/${caseItem.slug}`)
+													}}
+													aria-current={active ? 'page' : undefined}
+													aria-expanded={active}
+													tabIndex={
+														isInternalPage && (isMenuOpen || !isMobile) ? 0 : -1
+													}>
+													<div className='mt-[13px]'>
+														<IconDash />
+													</div>
+													{caseItem.client}
+												</Link>
+											</li>
+										)
+									}
 								)}
 							</ul>
 						)}

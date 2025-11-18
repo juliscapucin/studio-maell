@@ -13,8 +13,6 @@
 	--color-secondary: var(--secondary);
 	--color-tertiary: var(--tertiary);
 	--color-accent-1: var(--accent-1);
-	--color-accent-2: var(--accent-2);
-	--color-accent-3: var(--accent-3);
 	--color-accent-focus: var(--accent-focus);
 	--color-text-dark: var(--primary);
 	--color-text-light: var(--secondary);
@@ -91,9 +89,9 @@
 	}
 
 	/* FOCUS STYLES */
-	:focus-visible {
-		@apply outline-none ring-4 ring-accent-focus;
-	}
+	/* :focus-visible {
+		@apply outline-none ring-2 ring-accent-focus ring-offset-2;
+	} */
 
 	/* LINK STYLES */
 	.underlined-link {
@@ -116,7 +114,7 @@
 	}
 
 	.btn {
-		@apply rounded-3xl px-4 py-3 leading-none font-medium transition-colors duration-300 flex items-center justify-center gap-2 focus:ring-2 focus:ring-accent-focus focus:ring-offset-2 disabled:opacity-50;
+		@apply rounded-3xl px-4 py-3 leading-none font-medium transition-colors duration-300 flex items-center justify-center gap-2 disabled:opacity-50;
 	}
 
 	.btn-primary {
@@ -203,7 +201,7 @@
 
 	/* ANIMATIONS */
 	.form-input {
-		@apply px-3 py-2 border border-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-focus focus:border-accent-focus disabled:opacity-50 disabled:cursor-not-allowed;
+		@apply px-3 py-2 border border-secondary rounded-lg disabled:opacity-50 disabled:cursor-not-allowed;
 	}
 
 	/* UTILITIES */
