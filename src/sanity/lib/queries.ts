@@ -1,8 +1,7 @@
 import { defineQuery } from 'next-sanity'
 
-import type { CaseType, NavLinkType } from '@/types'
+import type { CaseType, NavLinkType, PageType, ConnectPageType } from '@/types'
 import { client } from '@/sanity/lib/client'
-import { PageType, ConnectPageType } from '@/types'
 
 export async function getNavLinks(): Promise<NavLinkType[]> {
 	const query = defineQuery(`*[_type == "navLink"]|order(order asc) {
