@@ -124,36 +124,23 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 
 				{/* EXPANDED MENU */}
 				<aside
-					className='relative h-svh w-full p-4 pt-0 pointer-events-auto bg-primary z-100'
+					className='relative h-screen w-full flex flex-col justify-between p-4 pt-0 pointer-events-auto bg-primary z-100'
 					ref={mobileMenuRef}
 					role='dialog'
 					aria-modal='true'
 					aria-labelledby='mobile-menu-title'
-					tabIndex={isMenuOpen ? 0 : -1}>
+					tabIndex={isMenuOpen ? 0 : -1}
+					data-testid='mobile-menu'>
 					{/* TOP GRADIENT */}
 					<div className='absolute -top-[3px] -left-6 -right-6 h-1 w-full bg-linear-to-b from-transparent to-primary'></div>
 					{/* BOTTOM ELEMENT */}
 					<div className='absolute -bottom-24 -left-6 -right-6 h-28 w-full bg-primary'></div>
-					<div className='absolute top-6 left-6 right-6 flex items-start justify-between z-100 pointer-events-auto'>
+					<div className='flex items-start justify-between mt-4'>
 						{/* LOGO */}
 						<Logo isDescriptionVisible={isMenuOpen} />
 						{/* BURGER BUTTON */}
 						<ButtonBurger
 							className={`${isMenuOpen ? 'opacity-0' : 'opacity-100 delay-200'} transition-opacity duration-300`}
-							onClick={() => toggleMenu()}
-							aria-expanded={isMenuOpen}
-							aria-controls='mobile-menu'
-							aria-haspopup='dialog'
-							aria-label={'Open navigation menu'}
-						/>
-					</div>
-
-					{/* CLOSE BUTTON */}
-					<div
-						className={`absolute bottom-6 right-6 z-100 flex items-end justify-between bg-primary ${isMenuOpen ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
-						<ButtonClose
-							aria-label='Close navigation menu'
-							onClick={() => toggleMenu()}
 						/>
 					</div>
 
@@ -162,17 +149,25 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 						Navigation Menu
 					</h2>
 
-					{/* NAV LINKS */}
-					<nav aria-label='Navigation' className='flex h-full items-end pb-28'>
-						<NavBar
-							isMobile={true}
-							navLinks={navLinks}
-							toggleMenu={toggleMenu}
-							isMenuOpen={isMenuOpen}
-							pathname={pathname}
-							casesSlugs={casesSlugs}
+					<div>
+						{/* NAV LINKS */}
+						<nav aria-label='Navigation' className='mb-40'>
+							<NavBar
+								isMobile={true}
+								navLinks={navLinks}
+								toggleMenu={toggleMenu}
+								isMenuOpen={isMenuOpen}
+								pathname={pathname}
+								casesSlugs={casesSlugs}
+							/>
+						</nav>
+						{/* CLOSE BUTTON */}
+						<ButtonClose
+							classes='ml-auto'
+							aria-label='Close navigation menu'
+							onClick={() => toggleMenu()}
 						/>
-					</nav>
+					</div>
 				</aside>
 			</header>
 		)
