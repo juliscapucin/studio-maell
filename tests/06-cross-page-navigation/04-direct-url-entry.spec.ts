@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { verifyNavLinksVisible } from '../helpers/assertions'
 
 // Scenario 6.4 – Direct URL Entry
 // Verifies that entering key URLs directly loads correct pages, content, and metadata.
@@ -31,13 +32,6 @@ const PAGES = [
 			'Improving machine management by creating a 100% digital user journey',
 	},
 ]
-
-async function verifyNavLinksVisible(page: import('@playwright/test').Page) {
-	await expect(page.getByRole('link', { name: 'Work' })).toBeVisible()
-	await expect(page.getByRole('link', { name: 'Services' })).toBeVisible()
-	await expect(page.getByRole('link', { name: 'Articles' })).toBeVisible()
-	await expect(page.getByRole('link', { name: 'Connect' })).toBeVisible()
-}
 
 test.describe('Cross-Page Navigation: Direct URL Entry (6.4)', () => {
 	test('loads each page directly and shows correct content + metadata', async ({

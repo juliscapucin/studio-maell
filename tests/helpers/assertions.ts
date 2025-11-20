@@ -1,6 +1,6 @@
 import { expect, Page } from '@playwright/test'
 
-export async function verifyNavigationLinks(page: Page) {
+export async function verifyNavLinksVisible(page: Page) {
 	const links = ['Work', 'Services', 'Articles', 'Connect']
 	for (const link of links) {
 		await expect(page.getByRole('link', { name: link })).toBeVisible()
