@@ -1,37 +1,9 @@
 import { test, expect } from '@playwright/test'
 import { verifyNavLinksVisible } from '../helpers/assertions'
+import { PAGES } from '../helpers/page-definitions'
 
-// Scenario 6.4 – Direct URL Entry
+// Scenario 6.4 - Direct URL Entry
 // Verifies that entering key URLs directly loads correct pages, content, and metadata.
-
-const PAGES = [
-	{
-		url: 'https://studio-maell.vercel.app/work',
-		title: 'Studio Maell | Work',
-		heading: 'Work',
-	},
-	{
-		url: 'https://studio-maell.vercel.app/services',
-		title: 'Studio Maell | Services',
-		heading: 'Services',
-	},
-	{
-		url: 'https://studio-maell.vercel.app/articles',
-		title: 'Studio Maell | Articles',
-		heading: 'Articles',
-	},
-	{
-		url: 'https://studio-maell.vercel.app/connect',
-		title: 'Studio Maell | Connect',
-		heading: 'Connect',
-	},
-	{
-		url: 'https://studio-maell.vercel.app/work/improving-machine-management-by-creating-a-100-digital-user-journey',
-		title: 'Studio Maell | Case',
-		heading:
-			'Improving machine management by creating a 100% digital user journey',
-	},
-]
 
 test.describe('Cross-Page Navigation: Direct URL Entry (6.4)', () => {
 	test('loads each page directly and shows correct content + metadata', async ({

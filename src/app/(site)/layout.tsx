@@ -50,6 +50,10 @@ export async function generateMetadata() {
 		title: cleanTitle || metadataFallback.title,
 		description: cleanDescription || metadataFallback.description,
 		keywords: cleanKeywords || metadataFallback.keywords,
+		openGraph: {
+			siteName: 'Studio Maell',
+			title: cleanTitle || metadataFallback.title,
+		},
 	}
 }
 
