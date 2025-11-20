@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Work Section - 2.1 View Case Studies List', () => {
 	test.beforeEach(async ({ page }) => {
-		await page.goto('/')
+		await page.goto('/work')
 	})
 
 	test('should display work heading and subtitle', async ({ page }) => {

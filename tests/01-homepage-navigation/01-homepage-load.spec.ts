@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { BasePage } from '../fixtures/base-page'
 import {
-	verifyNavigationLinks,
+	verifyNavLinksVisibleAndClickable,
 	verifyPageTitle,
 	verifySkipLink,
 } from '../helpers/assertions'
@@ -24,9 +24,12 @@ test.describe('Homepage & Navigation - 1.1 Verify Homepage Load', () => {
 	})
 
 	test('should display tagline', async ({ page }) => {
-		const tagline = page.getByText(
-			/Freelance Product Designer, specialised in accessibility and inclusive design/i
-		)
+		const tagline = page
+			.getByTestId('logo-description-desktop')
+			.filter({
+				hasText:
+					/Freelance Product Designer, specialised in accessibility and inclusive design/i,
+			})
 		await expect(tagline).toBeVisible()
 	})
 
@@ -35,7 +38,7 @@ test.describe('Homepage & Navigation - 1.1 Verify Homepage Load', () => {
 	})
 
 	test('should display all navigation links', async ({ page }) => {
-		await verifyNavigationLinks(page)
+		await verifyNavLinksVisibleAndClickable(page)
 	})
 
 	test('should display work section with case studies', async ({ page }) => {

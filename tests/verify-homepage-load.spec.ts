@@ -1,19 +1,24 @@
 // spec: tests/test-plan.md
 // seed: tests/seed.spec.ts
 import { test, expect } from '@playwright/test'
+import { singlePageDefinition } from './helpers/page-definitions'
 
 test.describe('Homepage & Navigation', () => {
 	test('Verify Homepage Load', async ({ page }) => {
-		// 1. Navigate to `https://studio-maell.vercel.app/`
-		await page.goto('https://studio-maell.vercel.app/')
+		// 1. Navigate to homepage
+		const homepage = singlePageDefinition('homepage')
+		if (!homepage) {
+			throw new Error('Homepage definition not found')
+		}
+		await page.goto(homepage.url)
 
 		// 2. Wait for page to fully load (implicit by awaited goto and assertions)
 
 		// Expected: Page title contains "Studio Maell | Work"
 		await expect(page).toHaveTitle(/Studio Maell \| Work/)
 
-		// Expected: URL is exactly `https://studio-maell.vercel.app/`
-		await expect(page).toHaveURL('https://studio-maell.vercel.app/')
+		// Expected: URL is exactly homepage URL
+		await expect(page).toHaveURL(homepage.url)
 
 		// Expected: Header displays "Studio Maell" brand button
 		const brandButton = page.getByRole('button', { name: 'Studio Maell' })

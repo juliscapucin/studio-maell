@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { verifyNavLinksVisible } from '../helpers/assertions'
+import { verifyNavLinksVisibleAndClickable } from '../helpers/assertions'
 import { PAGES } from '../helpers/page-definitions'
 
 // Scenario 6.4 - Direct URL Entry
@@ -27,7 +27,7 @@ test.describe('Cross-Page Navigation: Direct URL Entry (6.4)', () => {
 			await expect(page.getByRole('heading', { name: heading })).toBeVisible()
 
 			// Navigation menu remains functional (links visible)
-			await verifyNavLinksVisible(page)
+			await verifyNavLinksVisibleAndClickable(page)
 
 			// Basic metadata sanity: presence of key meta tags
 			await expect(page.locator('head meta[name="description"]')).toHaveCount(1)

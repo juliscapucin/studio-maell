@@ -14,7 +14,9 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 	}
 
 	return (
-		<article className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6'>
+		<article
+			className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6'
+			data-testid='case-study-card'>
 			<h2 className='heading-title leading-[1.1]'>{caseData.title}</h2>
 			<p className='mt-4 leading-[0.7]'>{caseData.client}</p>
 			<div className='my-6 lg:my-8 h-0.5 bg-tertiary' />

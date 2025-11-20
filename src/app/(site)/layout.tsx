@@ -53,6 +53,7 @@ export async function generateMetadata() {
 		openGraph: {
 			siteName: 'Studio Maell',
 			title: cleanTitle || metadataFallback.title,
+			url: process.env.NEXT_PUBLIC_SITE_URL,
 		},
 	}
 }
