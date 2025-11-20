@@ -3,12 +3,10 @@ import { expect, Page } from '@playwright/test'
 export async function verifyNavLinksVisibleAndClickable(page: Page) {
 	const links = ['Work', 'Services', 'Articles', 'Connect']
 	for (const link of links) {
-		await expect(page.getByRole('link', { name: link })).toBeVisible()
+		const linkElement = page.getByRole('link', { name: link })
+		await expect(linkElement).toBeVisible()
+		await expect(linkElement).toBeEnabled()
 	}
-}
-
-export async function verifyPageTitle(page: Page, expectedTitle: string) {
-	await expect(page).toHaveTitle(expectedTitle)
 }
 
 export async function verifySkipLink(page: Page) {

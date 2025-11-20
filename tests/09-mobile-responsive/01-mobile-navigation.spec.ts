@@ -1,8 +1,8 @@
 import { test, expect, devices } from '@playwright/test'
 
-test.describe('Mobile Responsive - 9.1 & 9.2 Mobile Navigation', () => {
-	test.use({ ...devices['iPhone 12'] })
+test.use({ ...devices['iPhone 12'] })
 
+test.describe('Mobile Responsive - 9.1 & 9.2 Mobile Navigation', () => {
 	test('should show burger menu on mobile', async ({ page }) => {
 		await page.goto('/')
 

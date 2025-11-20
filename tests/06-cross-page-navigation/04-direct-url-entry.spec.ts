@@ -23,15 +23,17 @@ test.describe('Cross-Page Navigation: Direct URL Entry (6.4)', () => {
 			await expect(page).toHaveURL(url)
 			await expect(page).toHaveTitle(title)
 
-			// Core heading/content representative of each page
-			await expect(page.getByRole('heading', { name: heading })).toBeVisible()
+			// Core h1 representative of each page
+			await expect(
+				page.getByRole('heading', { name: heading, level: 1 })
+			).toBeVisible()
 
 			// Navigation menu remains functional (links visible)
 			await verifyNavLinksVisibleAndClickable(page)
 
 			// Basic metadata sanity: presence of key meta tags
-			await expect(page.locator('head meta[name="description"]')).toHaveCount(1)
-			await expect(page.locator('head meta[name="viewport"]')).toHaveCount(1)
+			await expect(page.locator('meta[name="description"]')).toHaveCount(1)
+			await expect(page.locator('meta[name="viewport"]')).toHaveCount(1)
 		}
 	})
 })

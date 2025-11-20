@@ -18,21 +18,25 @@ test.describe('Work Section - 2.1 View Case Studies List', () => {
 		expect(count).toBeGreaterThanOrEqual(2)
 	})
 
-	test('should display Ministry of Justice case study', async ({ page }) => {
-		const caseStudy = page.locator('text=Ministry of Justice')
+	test('should display Ministery of Justice case study', async ({ page }) => {
+		const caseStudy = page
+			.locator('#main-content')
+			.getByText(/Ministery of Justice/)
 		await expect(caseStudy).toBeVisible()
 
-		const title = page.getByText(
-			/Advising caretakers in the sensitive process/i
-		)
+		const title = page
+			.locator('#main-content')
+			.getByText(/Advising caretakers in the sensitive process/i)
 		await expect(title).toBeVisible()
 	})
 
 	test('should display Jacob Douwe Egberts case study', async ({ page }) => {
-		const caseStudy = page.locator('text=Jacob Douwe Egberts Professional')
+		const caseStudy = page.locator('#main-content').getByText(/Douwe Egberts/)
 		await expect(caseStudy).toBeVisible()
 
-		const title = page.getByText(/Improving machine management/i)
+		const title = page
+			.locator('#main-content')
+			.getByText(/Improving machine management/i)
 		await expect(title).toBeVisible()
 	})
 

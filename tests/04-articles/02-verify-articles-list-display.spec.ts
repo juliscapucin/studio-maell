@@ -2,11 +2,13 @@
 // seed: tests/seed.spec.ts
 
 import { test, expect } from '@playwright/test'
+import { BasePage } from '../fixtures/base-page'
 
 test.describe('Articles Section', () => {
 	test('Verify Articles List Display', async ({ page }) => {
 		// 1. Navigate to `/articles`
-		await page.goto('https://studio-maell.vercel.app/articles')
+		const basePage = new BasePage(page)
+		await basePage.goto('/articles')
 
 		// Verify at least 3 articles are visible
 		const articleCount = await page.locator('article').count()

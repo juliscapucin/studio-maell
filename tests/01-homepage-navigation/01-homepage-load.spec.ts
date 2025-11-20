@@ -2,7 +2,6 @@ import { test, expect } from '@playwright/test'
 import { BasePage } from '../fixtures/base-page'
 import {
 	verifyNavLinksVisibleAndClickable,
-	verifyPageTitle,
 	verifySkipLink,
 } from '../helpers/assertions'
 
@@ -15,7 +14,7 @@ test.describe('Homepage & Navigation - 1.1 Verify Homepage Load', () => {
 	})
 
 	test('should load homepage with correct title', async ({ page }) => {
-		await verifyPageTitle(page, 'Studio Maell | Work')
+		await expect(page).toHaveTitle('Studio Maell | Work')
 	})
 
 	test('should display brand button', async ({ page }) => {
@@ -24,8 +23,8 @@ test.describe('Homepage & Navigation - 1.1 Verify Homepage Load', () => {
 	})
 
 	test('should display tagline', async ({ page }) => {
-		const tagline = page
-			.getByTestId('logo-description-desktop')
+		const tagline = await page
+			.locator('header[aria-label="Header desktop"]')
 			.filter({
 				hasText:
 					/Freelance Product Designer, specialised in accessibility and inclusive design/i,

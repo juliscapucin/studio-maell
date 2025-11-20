@@ -23,7 +23,9 @@ export default function MenuDesktop({
 				{/* 1/4 COLUMN */}
 				<div className='relative w-1/4 flex flex-col justify-between h-full p-6 pointer-events-auto'>
 					{/* HEADER */}
-					<header className='h-header-mobile md:h-header-tablet lg:h-header-desktop'>
+					<header
+						aria-label='Header desktop'
+						className='h-header-mobile md:h-header-tablet lg:h-header-desktop'>
 						<Logo />
 						{/* HORIZONTAL LINE */}
 						{(pathname === '/' ||
@@ -35,7 +37,7 @@ export default function MenuDesktop({
 						)}
 					</header>
 					{/* NAVLINKS */}
-					<nav>
+					<nav aria-label='Main navigation desktop'>
 						<NavBar
 							navLinks={navLinks}
 							casesSlugs={casesSlugs}

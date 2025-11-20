@@ -1,4 +1,4 @@
-const baseUrl = 'https://studio-maell.vercel.app'
+import { baseUrl } from './../fixtures/base-url'
 
 export const PAGES = [
 	{

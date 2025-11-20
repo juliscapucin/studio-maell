@@ -2,11 +2,13 @@
 // seed: tests/seed.spec.ts
 
 import { test, expect } from '@playwright/test'
+import { BasePage } from '../fixtures/base-page'
 
 test.describe('Work (Case Studies) Section', () => {
 	test('Navigate to Case Study Detail Page', async ({ page }) => {
 		// 1. Navigate to homepage to find case study
-		await page.goto('https://studio-maell.vercel.app/')
+		const basePage = new BasePage(page)
+		await basePage.goto('/')
 
 		// 2. Click "Read case" button on Jacob Douwe Egberts Professional case study
 		await page

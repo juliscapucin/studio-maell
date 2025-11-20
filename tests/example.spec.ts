@@ -1,15 +1,17 @@
 import { test, expect } from '@playwright/test'
+import { BasePage } from '../tests/fixtures/base-page'
 
 test('has title', async ({ page }) => {
-	await page.goto('https://studio-maell.vercel.app/')
+	const basePage = new BasePage(page)
+	await basePage.goto('/')
 
 	// Expect a title "to contain" a substring.
 	await expect(page).toHaveTitle(/Studio Maell/)
 })
 
 test('services link', async ({ page }) => {
-	await page.goto('https://studio-maell.vercel.app/')
-
+	const basePage = new BasePage(page)
+	await basePage.goto('/services')
 	// Click the services link.
 	await page.getByRole('link', { name: 'Services' }).click()
 
