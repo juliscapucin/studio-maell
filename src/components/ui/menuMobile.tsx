@@ -151,7 +151,7 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 
 					<div>
 						{/* NAV LINKS */}
-						<nav aria-label='Navigation' className='mb-40'>
+						<nav aria-label='Navigation' className='mb-10'>
 							<NavBar
 								isMobile={true}
 								navLinks={navLinks}

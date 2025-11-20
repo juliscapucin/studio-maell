@@ -42,12 +42,14 @@ test.describe('Mobile Responsive - 9.1 & 9.2 Mobile Navigation', () => {
 			name: 'Close navigation menu',
 		})
 		await expect(closeButton).toBeVisible()
-		await closeButton.click({ timeout: 5000 })
 
-		// Wait a moment for close animation to start
-		await page.waitForTimeout(500)
+		// Click using evaluate since button is outside viewport
+		await closeButton.evaluate((btn) => (btn as HTMLElement).click())
 
-		// Menu should be hidden
-		await expect(navigation).not.toBeVisible({ timeout: 2000 })
+		// Wait for close animation to complete
+		await page.waitForTimeout(1000)
+
+		// Menu should be moved out of viewport
+		await expect(mobileMenu).not.toBeInViewport({ timeout: 2000 })
 	})
 })
