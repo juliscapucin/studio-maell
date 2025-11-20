@@ -11,6 +11,10 @@ test.describe('Accessibility - 10.1 Keyboard Navigation Tab Order', () => {
 
 		// Continue tabbing through navigation
 		await page.keyboard.press('Tab')
+		const homeLink = page.getByRole('button', { name: 'Studio Maell' })
+		await expect(homeLink).toBeFocused()
+
+		await page.keyboard.press('Tab')
 		await expect(page.getByRole('link', { name: 'Work' })).toBeFocused()
 
 		await page.keyboard.press('Tab')
