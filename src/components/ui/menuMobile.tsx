@@ -106,14 +106,16 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 				{/* COLLAPSED HEADER */}
 				<header
 					ref={mobileHeaderRef}
-					className='lg:hidden fixed -bottom-8 left-0 right-0 h-28 p-6 flex items-start justify-between bg-primary z-50 pointer-events-auto'>
+					className='lg:hidden fixed bottom-0 left-0 right-0 h-18 p-6 flex items-start justify-between bg-primary z-50 pointer-events-auto'>
 					{/* TOP GRADIENT */}
-					<div className='absolute -top-[3px] -left-6 -right-16 h-1 bg-linear-to-b from-transparent to-primary'></div>
+					<div
+						className='absolute -top-[3px] left-0 right-0 h-1 w-screen bg-linear-to-b from-transparent to-primary'
+						aria-hidden='true'></div>
 					{/* LOGO */}
 					<Logo isDescriptionVisible={false} />
 					{/* BURGER BUTTON */}
 					<ButtonBurger
-						className={`${isMenuOpen ? 'opacity-0' : 'opacity-100 delay-200'} transition-opacity duration-300`}
+						className={`self-center ${isMenuOpen ? 'opacity-0' : 'opacity-100 delay-200'} transition-opacity duration-300`}
 						onClick={() => toggleMenu()}
 						aria-expanded={isMenuOpen}
 						aria-controls='mobile-menu'
@@ -121,10 +123,10 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 						aria-label={'Open navigation menu'}
 					/>
 				</header>
+				{/* EXPANDED MENU */}
 				<div className='fixed inset-0 z-100 block lg:hidden gutter-stable pointer-events-none overflow-clip'>
-					{/* EXPANDED MENU */}
 					<aside
-						className='relative h-svh w-full flex flex-col justify-between p-4 pt-0 pointer-events-auto bg-primary z-100'
+						className='relative h-svh w-full flex flex-col justify-between p-6 pt-0 pointer-events-auto bg-primary z-100'
 						ref={mobileMenuRef}
 						role='dialog'
 						aria-modal='true'
@@ -132,15 +134,18 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 						tabIndex={isMenuOpen ? 0 : -1}
 						data-testid='mobile-menu'>
 						{/* TOP GRADIENT */}
-						<div className='absolute -top-[3px] -left-6 -right-6 h-1 w-full bg-linear-to-b from-transparent to-primary'></div>
+						<div
+							className='absolute -top-[3px] left-0 right-0 h-1 w-screen bg-linear-to-b from-transparent to-primary'
+							aria-hidden='true'></div>
 						{/* BOTTOM ELEMENT */}
 						<div className='absolute -bottom-24 -left-6 -right-6 h-28 w-full bg-primary'></div>
 						<div className='flex items-start justify-between mt-4'>
 							{/* LOGO */}
 							<Logo isDescriptionVisible={isMenuOpen} />
-							{/* BURGER BUTTON */}
+							{/* BURGER BUTTON FOR ANIMATION */}
 							<ButtonBurger
 								className={`${isMenuOpen ? 'opacity-0' : 'opacity-100 delay-200'} transition-opacity duration-300`}
+								disabled={true}
 							/>
 						</div>
 
