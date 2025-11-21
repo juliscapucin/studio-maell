@@ -45,6 +45,7 @@ test.describe('Mobile Responsive - 9.1 & 9.2 Mobile Navigation', () => {
 
 		// Click using evaluate since button is outside viewport
 		await closeButton.evaluate((btn) => (btn as HTMLElement).click())
+		// await closeButton.click({ timeout: 2000 })
 
 		// Wait for close animation to complete
 		await page.waitForTimeout(1000)
