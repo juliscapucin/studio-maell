@@ -109,13 +109,13 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 					className='lg:hidden fixed bottom-0 left-0 right-0 h-18 p-6 flex items-start justify-between bg-primary z-50 pointer-events-auto'>
 					{/* TOP GRADIENT */}
 					<div
-						className='absolute -top-[3px] left-0 right-0 h-1 w-screen bg-linear-to-b from-transparent to-primary'
+						className='absolute -top-[3px] left-0 right-0 h-1 w-screen bg-linear-to-b from-transparent to-primary pointer-events-none'
 						aria-hidden='true'></div>
 					{/* LOGO */}
 					<Logo isDescriptionVisible={false} />
 					{/* BURGER BUTTON */}
 					<ButtonBurger
-						className={`self-center ${isMenuOpen ? 'opacity-0' : 'opacity-100 delay-200'} transition-opacity duration-300`}
+						className={`self-center ${isMenuOpen ? 'opacity-0' : 'opacity-100 delay-200'} transition-opacity duration-300 h-full bg-amber-400`}
 						onClick={() => toggleMenu()}
 						aria-expanded={isMenuOpen}
 						aria-controls='mobile-menu'
@@ -135,7 +135,7 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 						data-testid='mobile-menu'>
 						{/* TOP GRADIENT */}
 						<div
-							className='absolute -top-[3px] left-0 right-0 h-1 w-screen bg-linear-to-b from-transparent to-primary'
+							className='absolute -top-[3px] left-0 right-0 h-1 w-screen bg-linear-to-b from-transparent to-primary pointer-events-none'
 							aria-hidden='true'></div>
 						{/* BOTTOM ELEMENT */}
 						<div className='absolute -bottom-24 -left-6 -right-6 h-28 w-full bg-primary'></div>
