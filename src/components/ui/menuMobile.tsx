@@ -69,7 +69,7 @@ export default function MenuMobile({ navLinks, casesSlugs }: NavLinksProps) {
 				document.body.style.overflow = 'unset'
 				const tl = gsap.timeline()
 				tl.to(mobileMenuRef.current, {
-					y: window.innerHeight,
+					y: window.innerHeight + 300,
 					duration: 0.5,
 					ease: 'power3.in',
 					delay: 0.3,
