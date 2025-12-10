@@ -23,7 +23,7 @@ export async function getPageContent($type: string): Promise<PageType> {
 			metadataKeywords,
 		 }`)
 
-	const data = await client.fetch(query)
+	const data = await client.fetch(query, {}, { cache: 'no-store' })
 	return data
 }
 
@@ -36,7 +36,7 @@ export async function getAllCases(): Promise<CaseType[]> {
 			publishedOn,
 		 }`)
 
-	const cases = await client.fetch(query)
+	const cases = await client.fetch(query, {}, { cache: 'no-store' })
 	return cases
 }
 
@@ -63,7 +63,7 @@ export async function getCaseBySlug(slug: string) {
 				metadataDescription,
 				metadataKeywords,
 			 }`)
-	const caseData = await client.fetch(query, { slug })
+	const caseData = await client.fetch(query, { slug }, { cache: 'no-store' })
 	return caseData
 }
 
@@ -73,7 +73,7 @@ export async function getAllCasesSlugs() {
 			client,
 		 }`)
 
-	const casesSlugs = await client.fetch(query)
+	const casesSlugs = await client.fetch(query, {}, { cache: 'no-store' })
 	return casesSlugs
 }
 
@@ -83,7 +83,7 @@ export async function getAllServices() {
 			description,
 		 }`)
 
-	const services = await client.fetch(query)
+	const services = await client.fetch(query, {}, { cache: 'no-store' })
 	return services
 }
 
@@ -95,7 +95,7 @@ export async function getAllArticles() {
 			publishedOn,
 		 }`)
 
-	const articles = await client.fetch(query)
+	const articles = await client.fetch(query, {}, { cache: 'no-store' })
 	return articles
 }
 
@@ -114,6 +114,10 @@ export async function getConnectPageContent(): Promise<ConnectPageType> {
 			metadataKeywords,
 		 }`)
 
-	const connectPageContent = await client.fetch(query)
+	const connectPageContent = await client.fetch(
+		query,
+		{},
+		{ cache: 'no-store' }
+	)
 	return connectPageContent
 }
