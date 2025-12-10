@@ -27,14 +27,6 @@ export default function MenuDesktop({
 						aria-label='Header desktop'
 						className='h-header-mobile md:h-header-tablet lg:h-header-desktop'>
 						<Logo />
-						{/* HORIZONTAL LINE */}
-						{(pathname === '/' ||
-							pathname === '/work' ||
-							pathname === '/services') && (
-							<div
-								className='header-line -left-6 -right-6'
-								aria-hidden='true'></div>
-						)}
 					</header>
 					{/* NAVLINKS */}
 					<nav aria-label='Main navigation desktop'>

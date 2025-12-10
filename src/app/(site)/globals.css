@@ -43,6 +43,7 @@
 	--text-label-small: 12px;
 
 	--max-width-desktop: 2200px;
+	--width-desktop: var(--max-width-desktop);
 
 	--breakpoint-3xl: 120rem;
 

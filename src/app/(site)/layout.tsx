@@ -84,7 +84,7 @@ export default async function RootLayout({
 						<DisableDraftMode />
 					</>
 				)}
-				<div className='custom-container mx-auto flex relative'>
+				<div className='custom-container overflow-x-clip mx-auto flex relative'>
 					{/* SPACER FOR DESKTOP MENU */}
 					<div className='hidden lg:block flex-1/4'></div>
 					{/* MAIN CONTENT */}
