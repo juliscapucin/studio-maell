@@ -29,8 +29,8 @@
 	--text-title-large: 32px;
 	--text-title-medium: 28px;
 	--text-title-small: 24px;
-	--text-subtitle-large: 18px;
-	--text-subtitle-medium: 25px;
+	--text-subtitle-large: 32px;
+	--text-subtitle-medium: 26px;
 	--text-subtitle-small: 20px;
 	--text-navlink-medium: 20px;
 	--text-tag-medium: 16px;
@@ -158,7 +158,7 @@
 	}
 
 	.heading-subtitle {
-		@apply text-subtitle-large font-medium text-pretty;
+		@apply text-subtitle-small sm:text-subline-medium lg:text-subtitle-large font-medium text-pretty tracking-tight leading-[1.05];
 	}
 
 	/* TEXT STYLES */

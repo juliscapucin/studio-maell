@@ -12,7 +12,7 @@ export default function ExternalLink({ classes, ...props }: ExternalLinkProps) {
 			target='_blank'
 			rel='noopener noreferrer'>
 			{/* LABEL */}
-			<span className='underline heading-subtitle'>{props.children}</span>
+			<span className='underline text-subline'>{props.children}</span>
 			{/* ARROW ANIMATION */}
 			<span className='relative inline-block overflow-hidden w-4 h-4 '>
 				{/* First arrow - moves out */}

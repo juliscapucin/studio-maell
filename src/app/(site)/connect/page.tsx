@@ -49,11 +49,11 @@ export default async function Connect() {
 				<div className='flex-1 flex flex-col justify-start gap-4 text-2xl'>
 					{/* CTA */}
 					<div className='flex items-end'>
-						<h2 className='text-2xl lg:text-3xl mb-8 max-w-[320px] sm:max-w-[450px] lg:max-w-[500px] text-pretty mt-16 lg:mt-28'>
+						<h2 className='heading-subtitle mb-8 max-w-[320px] sm:max-w-[450px] lg:max-w-[500px] text-pretty mt-16 lg:mt-28'>
 							{page.cta}
 						</h2>
 						{/* HORIZONTAL LINE */}
-						<div className='h-0.5 bg-secondary flex-1 mb-11 md:mb-12 -ml-24 lg:-ml-18 xl:-ml-16 -mr-40'></div>
+						<div className='h-0.5 bg-secondary flex-1 mb-10 md:mb-11 -ml-20 sm:-ml-40 lg:-ml-18 xl:-ml-16 -mr-40'></div>
 					</div>
 					<ExternalLink href={`mailto:${page.email}`}>
 						{page.email}
