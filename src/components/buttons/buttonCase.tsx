@@ -1,20 +1,12 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-
 import { IconArrow } from '@/components/icons'
 
-type ButtonCaseProps = {
-	slug: string
-}
+type ButtonCaseProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
-export default function ButtonCase({ slug }: ButtonCaseProps) {
-	const router = useRouter()
-
+export default function ButtonCase({ ...props }: ButtonCaseProps) {
 	return (
-		<button
-			className='btn btn-ghost-tertiary text-nowrap ml-auto'
-			onClick={() => router.push(`/work/${slug}`)}>
+		<button className='btn btn-ghost-tertiary text-nowrap ml-auto' {...props}>
 			<span>Read case</span>
 			<IconArrow />
 		</button>

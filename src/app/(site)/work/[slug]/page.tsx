@@ -90,7 +90,7 @@ export default async function Project({
 	}
 
 	return (
-		<PageWrapper>
+		<PageWrapper hasTransition={false}>
 			{/* GRID */}
 			<div className='bg-secondary text-tertiary rounded-sm relative p-6 md:grid grid-cols-8 gap-5 px-4 md:px-6'>
 				{/* BACK BUTTON */}

@@ -53,7 +53,9 @@ export default async function Connect() {
 							{page.cta}
 						</h2>
 						{/* HORIZONTAL LINE */}
-						<div className='h-0.5 bg-secondary flex-1 mb-10 md:mb-11 -ml-20 sm:-ml-40 lg:-ml-18 xl:-ml-16 -mr-40'></div>
+						<div
+							className='h-0.5 bg-secondary flex-1 mb-10 md:mb-11 -ml-20 sm:-ml-40 lg:-ml-18 xl:-ml-16 -mr-40'
+							aria-hidden='true'></div>
 					</div>
 					<ExternalLink href={`mailto:${page.email}`}>
 						{page.email}

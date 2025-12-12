@@ -13,20 +13,25 @@ gsap.registerPlugin(ScrollSmoother, ScrollTrigger, GSDevTools)
 type PageWrapperProps = {
 	classes?: string
 	children?: React.ReactNode
+	hasTransition?: boolean
 }
 
-export default function PageWrapper({ children, classes }: PageWrapperProps) {
+export default function PageWrapper({
+	children,
+	classes,
+	hasTransition = true,
+}: PageWrapperProps) {
 	const pathname = usePathname()
 
 	const pageTransitionRef = useRef<HTMLDivElement | null>(null)
 
 	// * PAGE TRANSITION ANIMATION *//
 	useGSAP(() => {
-		if (!pageTransitionRef.current) return
+		if (!pageTransitionRef.current || !hasTransition) return
 
 		// Animate the mask to reveal the content
 		gsap.to(pageTransitionRef.current, {
-			duration: 0.7,
+			duration: 0.4,
 			opacity: 0,
 			ease: 'power2.out',
 		})
@@ -36,16 +41,16 @@ export default function PageWrapper({ children, classes }: PageWrapperProps) {
 
 	return (
 		<Fragment key={pathname}>
-			{/* PAGE TRANSITION MASK */}
-			<div
-				ref={pageTransitionRef}
-				className='gsap-page-transition fixed inset-0 z-50 hidden lg:block pointer-events-none'>
-				<div className='custom-container h-full'>
-					<div className='h-full w-3/4 ml-auto bg-primary'></div>
+			{hasTransition && (
+				<div
+					ref={pageTransitionRef}
+					className='gsap-page-transition fixed inset-0 z-50 hidden lg:block pointer-events-none'>
+					<div className='custom-container h-full'>
+						<div className='h-full w-3/4 ml-auto bg-primary'></div>
+					</div>
 				</div>
-			</div>
+			)}
 
-			{/* MAIN CONTENT */}
 			<main
 				id='main-content' // Add id for skip link
 				tabIndex={-1} // Make focusable for skip link

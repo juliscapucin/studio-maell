@@ -51,7 +51,7 @@
 	/* Heights based on Tailwind's spacing scale: --spacing: 0.25rem /* 4px */
 	--height-header-desktop: calc(var(--spacing) * 51) /* [51] 12.75rem = 204px */;
 	--height-header-tablet: calc(var(--spacing) * 48) /* [48] 12rem = 192px */;
-	--height-header-mobile: calc(var(--spacing) * 36) /* [36] 9rem = 144px */;
+	--height-header-mobile: calc(var(--spacing) * 38) /* [38] 9.5rem = 152px */;
 	--height-content: calc(100svh - var(--height-header-desktop));
 }
 
