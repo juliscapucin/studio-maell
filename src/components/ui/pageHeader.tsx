@@ -31,8 +31,8 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 						// 700px is the amount the line is initially offset to the left
 						`${700 + parentElementWidth - (subtitleWidth + 30)}px`,
 					scrollTrigger: {
-						start: 'top+=100 top',
-						scrub: 1,
+						start: 'top top',
+						scrub: 0.3,
 					},
 					duration: 1,
 					ease: 'power3.out',
