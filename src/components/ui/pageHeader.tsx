@@ -31,7 +31,7 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 						// 700px is the amount the line is initially offset to the left
 						`${700 + parentElementWidth - (subtitleWidth + 30)}px`,
 					scrollTrigger: {
-						start: 'top top',
+						start: 'top+=100 top',
 						scrub: 1,
 					},
 					duration: 1,
@@ -52,7 +52,7 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 						{/* SUBTITLE */}
 						<p
 							ref={subtitleRef}
-							className='absolute z-20 -right-4 md:-right-8 pr-4 md:pr-8 top-[72px] sm:top-[76px] md:top-[100px] lg:top-[100px] pl-6 max-w-72 md:max-w-102 text-lg md:text-2xl font-medium text-pretty leading-[0.95] bg-primary'>
+							className='absolute z-20 -right-4 md:-right-8 pr-4 md:pr-8 top-[72px] sm:top-[76px] md:top-[100px] lg:top-[100px] pl-6 max-w-72 md:max-w-102 text-lg text-body-large font-medium text-pretty leading-[1.05] bg-primary'>
 							{subtitle}
 						</p>
 						{/* HORIZONTAL LINE */}

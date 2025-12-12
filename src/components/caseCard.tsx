@@ -17,8 +17,8 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 		<article
 			className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6'
 			data-testid='case-study-card'>
-			<h2 className='heading-title leading-[1.1]'>{caseData.title}</h2>
-			<p className='mt-4 leading-[0.7]'>{caseData.client}</p>
+			<h2 className='heading-headline'>{caseData.title}</h2>
+			<p className='mt-4 text-tag'>{caseData.client}</p>
 			<div className='my-6 lg:my-8 h-0.5 bg-tertiary' />
 			<div className='flex flex-col sm:flex-row gap-6 justify-between items-end'>
 				{caseData.mainImage && (
