@@ -15,7 +15,7 @@ export default function Logo({ isDescriptionVisible = true }: LogoProps) {
 		<div>
 			<Link
 				href='/'
-				className='block underlined-link uppercase font-primary text-navlink'
+				className='block underlined-link uppercase font-primary text-body-medium'
 				onClick={(e) => {
 					e.preventDefault()
 					router.push('/')

@@ -29,8 +29,8 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 				<div className='flex flex-col-reverse xl:flex-row xl:items-center xl:gap-x-6'>
 					{/* DATE AND PUBLICATION */}
 					<div className='flex gap-4 xl:block mt-4 xl:mt-0 xl:w-54 2xl:w-72 xl:mr-6'>
-						<p className='text-lg lg:text-xl'>{date}</p>
-						<p className='text-lg'>{publication}</p>
+						<p className='text-xl font-medium tracking-tight'>{date}</p>
+						<p className='text-lg font-normal tracking-tight'>{publication}</p>
 					</div>
 
 					<a
@@ -38,7 +38,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 						href={url || 'http://example.com'}
 						target='_blank'
 						rel='noopener noreferrer'>
-						<h2 className='text-xl lg:text-2xl'>{title}</h2>
+						<h2 className='text-subline'>{title}</h2>
 					</a>
 				</div>
 
