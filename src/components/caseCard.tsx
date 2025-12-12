@@ -20,6 +20,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 	const transitionRef = useRef<HTMLDivElement>(null)
 	const cardRef = useRef<HTMLElement>(null)
 	const cardTransitionRef = useRef<HTMLElement>(null)
+	const imageRef = useRef<HTMLDivElement>(null)
 
 	const transitionAnimation = () => {
 		if (
@@ -28,7 +29,9 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 			cardTransitionRef.current &&
 			caseData
 		) {
+			const mm = gsap.matchMedia()
 			const cardRect = cardRef.current.getBoundingClientRect()
+			const columnWidth = (cardRect.width - 100) / 8
 
 			gsap.set(transitionRef.current, {
 				top: 0,
@@ -37,22 +40,43 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 				height: screen.height,
 			})
 
-			console.log(cardRect.top)
-
 			gsap.set(transitionRef.current, { opacity: 1 })
-			gsap.fromTo(
+
+			const tl = gsap.timeline()
+			tl.fromTo(
 				transitionRef.current,
 				{ height: cardRect.height, y: 0 },
 				{
 					height: screen.height,
 					y: -cardRect.top + 24,
 					duration: 0.3,
-					ease: 'power3.out',
+					ease: 'power4.out',
 					onComplete: () => {
 						router.push(`/work/${caseData.slug}`)
 					},
 				}
+			).to(
+				cardTransitionRef.current,
+				{
+					marginLeft: columnWidth + 10,
+					marginRight: columnWidth + 10,
+					marginTop: 48,
+					duration: 0.4,
+					ease: 'power4.out',
+				},
+				'<'
 			)
+			if (imageRef.current) {
+				tl.to(
+					imageRef.current,
+					{
+						opacity: 0,
+						duration: 0.2,
+						ease: 'linear',
+					},
+					'<'
+				)
+			}
 		}
 	}
 
@@ -71,16 +95,17 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 		<div className='relative'>
 			<div
 				ref={transitionRef}
-				className='absolute bg-secondary rounded-sm container z-20'
+				className='absolute bg-secondary rounded-sm container z-20 pointer-events-none'
 				aria-hidden='true'>
 				<article
 					ref={cardTransitionRef}
-					className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6'
-					data-testid='case-study-card'>
+					className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6'>
 					<h2 className='heading-headline'>{caseData.title}</h2>
 					<p className='mt-4 text-tag'>{caseData.client}</p>
 					<div className='my-6 lg:my-8 h-0.5 bg-tertiary' />
-					<div className='flex flex-col sm:flex-row gap-6 justify-between items-end'>
+					<div
+						ref={imageRef}
+						className='flex flex-col sm:flex-row gap-6 justify-between items-end'>
 						{caseData.mainImage && (
 							<ImageWithSpinner
 								containerClassName='w-full sm:w-1/2 lg:w-3/4 xl:w-1/2 2xl:w-1/3 h-36 sm:h-56 md:h-96 relative'
@@ -92,14 +117,14 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 								fill
 							/>
 						)}
-						<ButtonCase onClick={transitionAnimation} />
+						{/* <ButtonCase onClick={transitionAnimation} /> */}
 					</div>
 				</article>
 			</div>
 
 			<article
 				ref={cardRef}
-				className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6'
+				className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6 w-full'
 				data-testid='case-study-card'>
 				<h2 className='heading-headline'>{caseData.title}</h2>
 				<p className='mt-4 text-tag'>{caseData.client}</p>

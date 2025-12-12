@@ -6,6 +6,7 @@ export type CaseType = {
 	slug: string
 	client: string
 	mainImage: Image
+	intro: string
 	publishedOn: string
 	categories: string[]
 	excerpt: string
