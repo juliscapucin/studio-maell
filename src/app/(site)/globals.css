@@ -27,13 +27,15 @@
 	--text-headline-medium: 34px;
 	--text-headline-small: 28px;
 	--text-title-large: 32px;
-	--text-title-medium: 25px;
-	--text-title-small: 20px;
+	--text-title-medium: 28px;
+	--text-title-small: 24px;
 	--text-subtitle-large: 18px;
 	--text-subtitle-medium: 25px;
 	--text-subtitle-small: 20px;
 	--text-navlink-medium: 20px;
 	--text-tag-medium: 16px;
+	--text-subline-medium: 24px;
+	--text-subline-small: 20px;
 	--text-body-large: 20px;
 	--text-body-medium: 18px;
 	--text-body-small: 18px;
@@ -152,7 +154,7 @@
 	}
 
 	.heading-title {
-		@apply font-primary text-title-small font-normal sm:text-title-medium xl:text-title-large text-pretty;
+		@apply font-primary text-title-small font-normal sm:text-title-medium xl:text-title-large text-pretty tracking-tight leading-[0.96] md:leading-[0.9];
 	}
 
 	.heading-subtitle {
@@ -166,6 +168,10 @@
 
 	.text-paragraph {
 		@apply text-body-medium max-w-prose text-pretty;
+	}
+
+	.text-subline {
+		@apply text-subline-small lg:text-subline-medium leading-[1.1] tracking-tight font-normal;
 	}
 
 	.text-tag {
