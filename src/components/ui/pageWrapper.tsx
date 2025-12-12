@@ -30,28 +30,25 @@ export default function PageWrapper({
 		if (!pageTransitionRef.current || !hasTransition) return
 
 		// Animate the mask to reveal the content
-		gsap.to(pageTransitionRef.current, {
-			duration: 0.4,
-			opacity: 0,
-			ease: 'power2.out',
-		})
+		gsap.fromTo(
+			pageTransitionRef.current,
+			{
+				opacity: 0,
+			},
+			{
+				duration: 0.4,
+				opacity: 1,
+				ease: 'power2.out',
+			}
+		)
 
 		// GSDevTools.create()
 	}, [pathname])
 
 	return (
 		<Fragment key={pathname}>
-			{hasTransition && (
-				<div
-					ref={pageTransitionRef}
-					className='gsap-page-transition fixed inset-0 z-50 hidden lg:block pointer-events-none'>
-					<div className='custom-container h-full'>
-						<div className='h-full w-3/4 ml-auto bg-primary'></div>
-					</div>
-				</div>
-			)}
-
 			<main
+				ref={pageTransitionRef}
 				id='main-content' // Add id for skip link
 				tabIndex={-1} // Make focusable for skip link
 				className={`w-full flex-3/4 relative p-4 lg:p-6 pb-18 lg:pb-6 ${classes ? classes : ''}`}>
