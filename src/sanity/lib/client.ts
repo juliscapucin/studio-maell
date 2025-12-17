@@ -6,8 +6,8 @@ export const client = createClient({
 	apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-11-10',
 	useCdn: true,
 	token: process.env.SANITY_VIEWER_TOKEN,
-	stega: {
-		studioUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL,
-		enabled: true,
-	},
+	// stega: {
+	// 	studioUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL,
+	// 	enabled: true,
+	// },
 })

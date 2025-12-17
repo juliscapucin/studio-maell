@@ -78,12 +78,12 @@ export default async function RootLayout({
 				</a>
 				<MenuDesktop navLinks={navLinks} casesSlugs={casesSlugs} />
 				<MenuMobile navLinks={navLinks} casesSlugs={casesSlugs} />
-				{(await draftMode()).isEnabled && (
+				{/* {(await draftMode()).isEnabled && (
 					<>
 						<VisualEditing />
 						<DisableDraftMode />
 					</>
-				)}
+				)} */}
 				<div className='custom-container overflow-x-clip mx-auto flex relative'>
 					{/* SPACER FOR DESKTOP MENU */}
 					<div className='hidden lg:block flex-1/4'></div>
