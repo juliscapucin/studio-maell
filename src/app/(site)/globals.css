@@ -197,8 +197,11 @@
 	}
 
 	.custom-rich-text h2,
-	.custom-rich-text h3 {
-		@apply text-subtitle-large font-normal mt-6 lg:mt-12 mb-2 leading-[1.1];
+	.custom-rich-text h3,
+	.custom-rich-text h4,
+	.custom-rich-text h5,
+	.custom-rich-text h6 {
+		@apply text-body-medium font-normal mt-6 lg:mt-12 mb-2 leading-[1.1];
 	}
 
 	.custom-rich-text a {
