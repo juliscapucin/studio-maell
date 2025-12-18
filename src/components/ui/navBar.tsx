@@ -68,10 +68,8 @@ export default function NavBar({
 							<ul
 								ref={submenuRef}
 								aria-hidden={!isInternalPage}
-								className={`space-y-6 transition-[max-height] overflow-clip duration-200  ${
-									isInternalPage
-										? 'max-h-96 relative my-6 ease-in'
-										: 'max-h-0 ease-out'
+								className={`space-y-6 transition-[max-height] overflow-clip duration-300 ease-in-out ${
+									isInternalPage ? 'max-h-96 relative my-6' : 'max-h-0'
 								}`}>
 								{casesSlugs.map(
 									(

@@ -8,9 +8,11 @@ export const structure: StructureResolver = (S) =>
 			// Pages section
 			S.listItem()
 				.title('Pages')
+				.id('pages')
 				.child(
 					S.list()
 						.title('Pages')
+						.id('pages-list')
 						.items([
 							S.listItem()
 								.title('Work')
@@ -44,9 +46,11 @@ export const structure: StructureResolver = (S) =>
 			// Collections section
 			S.listItem()
 				.title('Collections')
+				.id('collections')
 				.child(
 					S.list()
 						.title('Collections')
+						.id('collections-list')
 						.items([
 							S.documentTypeListItem('article').title('Articles'),
 							S.documentTypeListItem('case').title('Cases'),

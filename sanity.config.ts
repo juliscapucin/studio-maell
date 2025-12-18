@@ -4,15 +4,17 @@
  * This configuration is used to for the Sanity Studio that's mounted on the `/app/studio/[[...tool]]/page.tsx` route
  */
 
-import { visionTool } from '@sanity/vision'
+// import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
+
+import '@/sanity/styles/studio.css'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { schema } from './src/sanity/schemaTypes'
 import { structure } from './src/sanity/structure'
-import { presentationTool } from 'sanity/presentation'
-import { mainDocuments, locations } from './src/sanity/lib/presentation/resolve'
+// import { presentationTool } from 'sanity/presentation'
+// import { mainDocuments, locations } from './src/sanity/lib/presentation/resolve'
 
 export default defineConfig({
 	basePath: '/studio',

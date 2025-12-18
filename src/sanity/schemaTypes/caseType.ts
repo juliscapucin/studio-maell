@@ -72,7 +72,13 @@ export const caseType = defineType({
 			title: 'Body',
 			type: 'array',
 			of: [
-				defineArrayMember({ type: 'block' }),
+				defineArrayMember({
+					type: 'block',
+					styles: [
+						{ title: 'Normal', value: 'normal' },
+						{ title: 'Subtitle (H2)', value: 'h2' },
+					],
+				}),
 				defineArrayMember({
 					type: 'image',
 					fields: [

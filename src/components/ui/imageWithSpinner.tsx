@@ -35,7 +35,7 @@ type ImageWithSpinnerProps = {
 	quality?: number
 	priority?: boolean
 	showSpinner?: boolean
-	altFallback?: string
+	alt?: string
 	fill?: boolean
 	id?: string
 }
@@ -50,14 +50,14 @@ export default function ImageWithSpinner({
 	quality = 75,
 	priority = false,
 	showSpinner = true,
-	altFallback = '',
+	alt,
 	fill = false,
 	id,
 }: ImageWithSpinnerProps) {
 	const [isLoading, setIsLoading] = useState(true)
 	const [hasError, setHasError] = useState(false)
 
-	const { alt, width, height, url } = imageSrc
+	const { width, height, url } = imageSrc
 
 	const handleLoad = () => setIsLoading(false)
 	const handleError = () => {
@@ -84,7 +84,7 @@ export default function ImageWithSpinner({
 				<Image
 					className={imageClassName}
 					src={url}
-					alt={alt || altFallback || 'Image'}
+					alt={alt || imageSrc.alt || 'Image'}
 					sizes={sizes}
 					quality={quality}
 					width={fill ? undefined : width}

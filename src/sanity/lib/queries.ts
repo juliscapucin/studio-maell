@@ -32,6 +32,7 @@ export async function getAllCases(): Promise<CaseType[]> {
 			title,
 			"slug": slug.current,
 			"mainImage": mainImage.asset->url,
+			"alt": mainImage.alt,
 			client,
 			publishedOn,
 		 }`)
@@ -45,6 +46,7 @@ export async function getCaseBySlug(slug: string) {
 				title,
 				"slug": slug.current,
 				"mainImage": mainImage.asset->url,
+				"alt": mainImage.alt,
 				client,
 				role,
 				services,

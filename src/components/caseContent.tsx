@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { PortableText } from '@portabletext/react'
+import { PortableText, PortableTextBlock } from '@portabletext/react'
 import { urlFor } from '@/sanity/lib/imageUrlBuilder'
 
 import { CaseServices } from '@/components'
@@ -15,6 +15,13 @@ type CaseContentProps = {
 export default function CaseContent({ data }: CaseContentProps) {
 	// Portable Text components
 	const portableTextComponents = {
+		block: {
+			h1: ({ children }: any) => <h2>{children}</h2>,
+			h2: ({ children }: any) => <h2>{children}</h2>,
+			h3: ({ children }: any) => <h2>{children}</h2>,
+			h4: ({ children }: any) => <h2>{children}</h2>,
+			normal: ({ children }: any) => <p>{children}</p>,
+		},
 		types: {
 			image: ({ value }: { value: ImageType }) => {
 				const alt = value.alt || ''
@@ -26,7 +33,7 @@ export default function CaseContent({ data }: CaseContentProps) {
 							alt={alt}
 							width={1200}
 							height={800}
-							className='rounded-sm object-cover'
+							className='object-cover'
 						/>
 						{value.caption && (
 							<figcaption className='text-sm mt-2 text-secondary/70'>

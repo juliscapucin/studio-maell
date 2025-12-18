@@ -129,7 +129,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 					{caseData.mainImage && (
 						<ImageWithSpinner
 							containerClassName='gsap-card-image w-full sm:w-[400px] h-48 md:h-72 lg:h-96 relative'
-							// containerClassName='w-full sm:w-[400px] h-36 sm:h-56 md:h-96 relative'
+							alt={caseData.alt || caseData.title}
 							imageClassName='w-full h-full object-cover'
 							imageSrc={{
 								url: urlFor(caseData.mainImage).width(1200).url(),
@@ -154,6 +154,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 						<ImageWithSpinner
 							containerClassName='w-full sm:w-[400px] h-48 md:h-72 lg:h-96 relative'
 							imageClassName='w-full h-full object-cover'
+							alt={caseData.alt || caseData.title}
 							imageSrc={{ url: urlFor(caseData.mainImage).width(1200).url() }}
 							sizes='100vw'
 							fill
