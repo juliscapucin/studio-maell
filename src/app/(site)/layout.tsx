@@ -2,11 +2,11 @@ import { Work_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 
-import { draftMode } from 'next/headers'
-import { VisualEditing } from 'next-sanity/visual-editing'
+// import { draftMode } from 'next/headers'
+// import { VisualEditing } from 'next-sanity/visual-editing'
 
 import { MenuDesktop, MenuMobile } from '@/components/ui'
-import { DisableDraftMode } from '@/components'
+// import { DisableDraftMode } from '@/components'
 import {
 	getAllCasesSlugs,
 	getNavLinks,
@@ -67,7 +67,7 @@ export default async function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='en'>
+		<html lang='en' className='gutter-stable'>
 			<body
 				className={`${workSans.variable} ${fontPrimary.variable} antialiased bg-primary text-secondary font-secondary`}>
 				{/* SKIP TO MAIN CONTENT LINK - for screen readers */}

@@ -43,7 +43,7 @@ export default function CaseContent({ data }: CaseContentProps) {
 				{/* BACK BUTTON */}
 				<ButtonBack label='work' />
 				<div className='col-start-2 col-end-8 mt-6 md:mt-18'>
-					<h1 className='heading-headline text-pretty'>{data.title}</h1>
+					<h1 className='heading-headline'>{data.title}</h1>
 					<p className='mt-4 text-tag font-normal'>{data.client}</p>
 
 					{/* DIVIDER */}
