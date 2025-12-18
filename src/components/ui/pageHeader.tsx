@@ -33,9 +33,8 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 					scrollTrigger: {
 						start: 'top top',
 						scrub: 0.3,
+						end: '+=70', //shorter distance = faster start
 					},
-					duration: 1,
-					ease: 'power3.out',
 				})
 			})
 		}

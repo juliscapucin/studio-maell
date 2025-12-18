@@ -37,6 +37,9 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 
 				const cardRect = cardRef.current.getBoundingClientRect()
 				const columnWidth = (cardRect.width - 100) / 8
+				const screenWidth = window.innerWidth
+				const marginX = screenWidth > 768 ? columnWidth + 10 : 0
+				const marginTop = screenWidth > 768 ? 48 : 24
 
 				gsap.set(cardContainerRef.current, {
 					top: 0,
@@ -53,7 +56,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 					{ height: cardRect.height, y: 0 },
 					{
 						height: window.innerHeight,
-						y: -cardRect.top + 24,
+						y: -cardRect.top + (screenWidth > 1024 ? 24 : 16),
 						duration: 0.3,
 						ease: 'power4.out',
 					}
@@ -61,9 +64,9 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 					.to(
 						cardContentRef.current,
 						{
-							marginLeft: columnWidth + 10,
-							marginRight: columnWidth + 10,
-							marginTop: 48,
+							marginLeft: marginX,
+							marginRight: marginX,
+							marginTop: marginTop,
 							duration: 0.3,
 							ease: 'power4.out',
 						},
@@ -75,9 +78,6 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 							width: '100%',
 							duration: 0.3,
 							ease: 'power4.out',
-							onComplete: () => {
-								router.push(`/work/${caseData.slug}`)
-							},
 						},
 						'<'
 					)
@@ -87,6 +87,9 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 							backgroundColor: 'var(--color-accent-1)',
 							duration: 0.2,
 							ease: 'power4.out',
+							// onComplete: () => {
+							// 	router.push(`/work/${caseData.slug}`)
+							// },
 						},
 						'<0.1'
 					)

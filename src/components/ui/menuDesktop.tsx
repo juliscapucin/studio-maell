@@ -21,7 +21,7 @@ export default function MenuDesktop({
 			{/* CONTAINER */}
 			<div className='custom-container mx-auto h-svh'>
 				{/* 1/4 COLUMN */}
-				<div className='relative w-1/4 flex flex-col justify-between h-full p-6 pointer-events-auto'>
+				<div className='relative w-1/4 flex flex-col justify-between h-full py-6 pl-6 pointer-events-auto'>
 					{/* HEADER */}
 					<header
 						aria-label='Header desktop'
