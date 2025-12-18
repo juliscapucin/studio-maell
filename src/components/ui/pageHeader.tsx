@@ -28,8 +28,8 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 
 				gsap.to(horizontalLineRef.current, {
 					x: () =>
-						// 700px is the amount the line is initially offset to the left
-						`${700 + parentElementWidth - (subtitleWidth + 30)}px`,
+						// 600px is the amount the line is initially offset to the left
+						`${600 + parentElementWidth - (subtitleWidth + 30)}px`,
 					scrollTrigger: {
 						start: 'top top',
 						scrub: 0.3,
@@ -57,7 +57,7 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 						{/* HORIZONTAL LINE */}
 						<div
 							ref={horizontalLineRef}
-							className='header-line w-desktop -mt-6 -left-[700px] -z-10'
+							className='header-line w-desktop -mt-6 -left-[600px] -z-10'
 							aria-hidden='true'></div>
 					</>
 				)}
