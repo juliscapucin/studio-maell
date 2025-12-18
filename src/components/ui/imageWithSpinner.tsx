@@ -67,7 +67,7 @@ export default function ImageWithSpinner({
 
 	return (
 		<div
-			className={`rounded-sm overflow-hidden ${containerClassName}`}
+			className={`overflow-hidden ${containerClassName}`}
 			id={id}
 			role='img'
 			aria-busy={isLoading}
