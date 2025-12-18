@@ -202,7 +202,7 @@
 	.custom-rich-text h4,
 	.custom-rich-text h5,
 	.custom-rich-text h6 {
-		@apply text-body-medium font-normal mt-6 lg:mt-12 mb-2 leading-[1.1] max-w-text;
+		@apply text-body-medium font-medium mt-6 lg:mt-12 mb-2 leading-[1.1] max-w-text;
 	}
 
 	.custom-rich-text a {

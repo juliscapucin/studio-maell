@@ -51,6 +51,15 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 
 				const tl = gsap.timeline()
 
+				const siblingCards = document.querySelectorAll(
+					'[data-animation="case-card"]'
+				)
+				siblingCards.forEach((sibling) => {
+					if (sibling !== cardRef.current) {
+						gsap.to(sibling, { opacity: 0, duration: 0.2 })
+					}
+				})
+
 				tl.fromTo(
 					cardContainerRef.current,
 					{ height: cardRect.height, y: 0 },
@@ -67,7 +76,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 							marginLeft: marginX,
 							marginRight: marginX,
 							marginTop: marginTop,
-							duration: 0.3,
+							duration: 0.2,
 							ease: 'power4.out',
 						},
 						'<'
@@ -109,7 +118,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 				ref={cardContainerRef}
 				className='absolute bg-secondary rounded-sm min-w-full container z-20 pointer-events-none'
 				aria-hidden='true'>
-				<article className='bg-secondary w-full text-tertiary rounded-sm px-4 py-14 md:py-12 md:px-6'>
+				<div className='bg-secondary w-full text-tertiary rounded-sm px-4 py-14 md:py-12 md:px-6'>
 					<div ref={cardContentRef}>
 						<h2 className='gsap-card-title heading-headline'>
 							{caseData.title}
@@ -129,13 +138,14 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 							fill
 						/>
 					)}
-				</article>
+				</div>
 			</div>
 
 			<article
 				ref={cardRef}
 				className='bg-secondary text-tertiary rounded-sm px-4 py-6 md:px-6 w-full'
-				data-testid='case-study-card'>
+				data-testid='case-study-card'
+				data-animation='case-card'>
 				<h2 className='heading-headline'>{caseData.title}</h2>
 				<p className='mt-4 text-tag'>{caseData.client}</p>
 				<div className='my-6 lg:my-8 h-0.5 bg-tertiary' />
