@@ -46,6 +46,7 @@
 	--max-width-desktop: 1500px;
 	--max-width-text: 759px;
 	--width-desktop: var(--max-width-desktop);
+	--min-width-menu-desktop: 290px;
 
 	--breakpoint-3xl: 120rem;
 
@@ -54,6 +55,7 @@
 	--height-header-tablet: calc(var(--spacing) * 48) /* [48] 12rem = 192px */;
 	--height-header-mobile: calc(var(--spacing) * 38) /* [38] 9.5rem = 152px */;
 	--height-content: calc(100svh - var(--height-header-desktop));
+	--height-service-card: calc(var(--spacing) * 100) /* [100] 25rem = 400px */;
 }
 
 @layer base {

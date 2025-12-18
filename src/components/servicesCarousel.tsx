@@ -22,21 +22,23 @@ export default function ServicesCarousel({ services }: ServicesCarouselProps) {
 
 	useGSAP(
 		() => {
-			if (!carouselRef.current) return
+			if (!carouselRef.current || services.length <= 1) return
 
-			const container = carouselRef.current
-			const parent = container.parentElement
+			const carousel = carouselRef.current
+			const parent = carousel.parentElement
 			if (!parent) return
 
+			Draggable.get(carousel)?.kill() // Clean up previous instances
+
 			const containerWidth = parent.offsetWidth
-			const totalWidth = container.scrollWidth
-			const maxScroll = totalWidth - containerWidth + 44 // extra padding
+			const totalWidth = carousel.scrollWidth
+			const maxScroll = totalWidth - containerWidth
 
 			if (maxScroll <= 0) return // No need to make it draggable if content fits
 
-			gsap.set(container, { x: 0 })
+			gsap.set(carousel, { x: 0 })
 
-			Draggable.create(container, {
+			Draggable.create(carousel, {
 				type: 'x',
 				edgeResistance: 0.85,
 				inertia: true,
@@ -48,32 +50,24 @@ export default function ServicesCarousel({ services }: ServicesCarouselProps) {
 				zIndexBoost: false,
 			})
 
-			// Optional: Update bounds on resize
-			const handleResize = () => {
-				const newMaxScroll = container.scrollWidth - parent.offsetWidth
-				Draggable.get(container)?.applyBounds({ minX: -newMaxScroll, maxX: 0 })
-			}
-			window.addEventListener('resize', handleResize)
-
 			return () => {
-				window.removeEventListener('resize', handleResize)
-				Draggable.get(container)?.kill()
+				Draggable.get(carousel)?.kill()
 			}
 		},
 		{ scope: carouselRef }
 	)
 
 	return (
-		<div
-			ref={carouselRef}
-			className='relative flex gap-6 text-tertiary col-start-2 col-span-3 z-0'>
-			{services && services.length > 0 ? (
-				services.map((service: ServiceType) => (
-					<ServiceCard key={service.title} service={service} />
-				))
-			) : (
-				<EmptyResults message='No services available at the moment' />
-			)}
+		<div className='overflow-visible'>
+			<div ref={carouselRef} className='flex gap-6 text-tertiary z-0'>
+				{services && services.length > 0 ? (
+					services.map((service: ServiceType) => (
+						<ServiceCard key={service.title} service={service} />
+					))
+				) : (
+					<EmptyResults message='No services available at the moment' />
+				)}
+			</div>
 		</div>
 	)
 }

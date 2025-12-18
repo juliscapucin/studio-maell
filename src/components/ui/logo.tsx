@@ -25,7 +25,7 @@ export default function Logo({ isDescriptionVisible = true }: LogoProps) {
 				Studio Maell
 			</Link>
 			<p
-				className={`max-w-72 leading-[1.05] text-body-medium xl:text-body-large ${isDescriptionVisible ? 'opacity-100' : 'opacity-0 delay-500'} transition-opacity duration-300`}
+				className={`max-w-72 leading-[1.05] text-body-medium xl:text-body-large ${isDescriptionVisible ? 'opacity-100' : 'opacity-0 delay-500'} transition-opacity duration-300 text-balance`}
 				data-testid='logo-description-desktop'>
 				Freelance Product Designer, specialised in accessibility and inclusive
 				design.

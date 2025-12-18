@@ -37,9 +37,8 @@ export default async function Services() {
 	const services = await getAllServices()
 
 	return (
-		<PageWrapper classes='flex flex-col justify-between h-screen overflow-hidden xl:overflow-visible z-0'>
+		<PageWrapper classes='flex flex-col justify-between h-svh z-0'>
 			<PageHeader title={page.title || 'Services'} subtitle={page.subtitle} />
-			{/* Services Carousel */}
 			<ServicesCarousel services={services} />
 		</PageWrapper>
 	)

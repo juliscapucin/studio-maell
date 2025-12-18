@@ -21,15 +21,17 @@ export default function MenuDesktop({
 			{/* CONTAINER */}
 			<div className='custom-container mx-auto h-svh'>
 				{/* 1/4 COLUMN */}
-				<div className='relative w-1/4 flex flex-col justify-between h-full py-6 pl-6 pointer-events-auto'>
+				<div className='relative w-1/4 flex flex-col justify-between h-full pointer-events-auto'>
 					{/* HEADER */}
 					<header
-						aria-label='Header desktop'
-						className='h-header-mobile md:h-header-tablet lg:h-header-desktop'>
+						className='h-header-mobile md:h-header-tablet lg:h-header-desktop pl-6 pt-6'
+						aria-label='Header desktop'>
 						<Logo />
 					</header>
 					{/* NAVLINKS */}
-					<nav aria-label='Main navigation desktop'>
+					<nav
+						className='bg-primary h-service-card flex items-end pl-6 mb-6'
+						aria-label='Main navigation desktop'>
 						<NavBar
 							navLinks={navLinks}
 							casesSlugs={casesSlugs}

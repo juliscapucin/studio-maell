@@ -41,8 +41,6 @@ export default function PageWrapper({
 				ease: 'power2.out',
 			}
 		)
-
-		// GSDevTools.create()
 	}, [pathname])
 
 	return (
@@ -51,7 +49,7 @@ export default function PageWrapper({
 				ref={pageTransitionRef}
 				id='main-content' // Add id for skip link
 				tabIndex={-1} // Make focusable for skip link
-				className={`w-full flex-3/4 relative p-4 lg:p-6 pb-18 lg:pb-6 ${classes ? classes : ''}`}>
+				className={`w-full lg:w-3/4 ml-auto relative p-4 lg:p-6 pb-18 lg:pb-6 ${classes ? classes : ''}`}>
 				{children}
 			</main>
 		</Fragment>
