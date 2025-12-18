@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { PortableText, PortableTextBlock } from '@portabletext/react'
+import { PortableText } from '@portabletext/react'
 import { urlFor } from '@/sanity/lib/imageUrlBuilder'
 
 import { CaseServices } from '@/components'
@@ -13,18 +13,10 @@ type CaseContentProps = {
 }
 
 export default function CaseContent({ data }: CaseContentProps) {
-	// Portable Text components
 	const portableTextComponents = {
-		block: {
-			h1: ({ children }: any) => <h2>{children}</h2>,
-			h2: ({ children }: any) => <h2>{children}</h2>,
-			h3: ({ children }: any) => <h2>{children}</h2>,
-			h4: ({ children }: any) => <h2>{children}</h2>,
-			normal: ({ children }: any) => <p>{children}</p>,
-		},
 		types: {
 			image: ({ value }: { value: ImageType }) => {
-				const alt = value.alt || ''
+				const alt = value.alt || 'Image'
 				const src = value.src || urlFor(value).width(1200).url()
 				return (
 					<figure className='my-10'>
@@ -72,7 +64,7 @@ export default function CaseContent({ data }: CaseContentProps) {
 						}}
 						fill={true}
 						sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px'
-						altFallback={data.title}
+						alt={data.alt || data.title}
 					/>
 				</div>
 			)}

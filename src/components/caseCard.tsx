@@ -41,6 +41,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 				const marginX = screenWidth > 768 ? columnWidth + 10 : 0
 				const marginTop = screenWidth > 768 ? 48 : 24
 
+				// Show fake card for transition
 				gsap.set(cardContainerRef.current, {
 					top: 0,
 					left: 0,
@@ -49,16 +50,15 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 					opacity: 1,
 				})
 
-				const tl = gsap.timeline()
-
+				// Fade out cards
 				const siblingCards = document.querySelectorAll(
 					'[data-animation="case-card"]'
 				)
 				siblingCards.forEach((sibling) => {
-					if (sibling !== cardRef.current) {
-						gsap.to(sibling, { opacity: 0, duration: 0.2 })
-					}
+					gsap.to(sibling, { opacity: 0, duration: 0.2 })
 				})
+
+				const tl = gsap.timeline()
 
 				tl.fromTo(
 					cardContainerRef.current,
@@ -116,7 +116,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 			{/* TRANSITION OVERLAY */}
 			<div
 				ref={cardContainerRef}
-				className='absolute bg-secondary rounded-sm min-w-full container z-20 pointer-events-none'
+				className='absolute bg-secondary rounded-sm min-w-full container z-20 pointer-events-none opacity-0'
 				aria-hidden='true'>
 				<div className='bg-secondary w-full text-tertiary rounded-sm px-4 py-14 md:py-12 md:px-6'>
 					<div ref={cardContentRef}>
