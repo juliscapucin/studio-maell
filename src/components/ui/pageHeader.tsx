@@ -42,7 +42,7 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 
 	return (
 		<>
-			<div className='relative h-header-mobile md:h-header-tablet lg:h-header-desktop'>
+			<header className='relative h-header-mobile md:h-header-tablet lg:h-header-desktop'>
 				{/* TITLE */}
 				{title && <h1 className='heading-display'>{title}</h1>}
 
@@ -61,7 +61,7 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 							aria-hidden='true'></div>
 					</>
 				)}
-			</div>
+			</header>
 		</>
 	)
 }

@@ -87,9 +87,9 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 							backgroundColor: 'var(--color-accent-1)',
 							duration: 0.2,
 							ease: 'power4.out',
-							// onComplete: () => {
-							// 	router.push(`/work/${caseData.slug}`)
-							// },
+							onComplete: () => {
+								router.push(`/work/${caseData.slug}`)
+							},
 						},
 						'<0.1'
 					)
@@ -107,9 +107,9 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 			{/* TRANSITION OVERLAY */}
 			<div
 				ref={cardContainerRef}
-				className='absolute bg-secondary rounded-sm container z-20 pointer-events-none'
+				className='absolute bg-secondary rounded-sm min-w-full container z-20 pointer-events-none'
 				aria-hidden='true'>
-				<article className='bg-secondary text-tertiary rounded-sm px-4 py-12 md:px-6'>
+				<article className='bg-secondary w-full text-tertiary rounded-sm px-4 py-14 md:py-12 md:px-6'>
 					<div ref={cardContentRef}>
 						<h2 className='gsap-card-title heading-headline'>
 							{caseData.title}
