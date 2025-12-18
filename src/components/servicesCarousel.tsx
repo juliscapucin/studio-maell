@@ -28,30 +28,60 @@ export default function ServicesCarousel({ services }: ServicesCarouselProps) {
 			const parent = carousel.parentElement
 			if (!parent) return
 
-			Draggable.get(carousel)?.kill() // Clean up previous instances
+			let draggable: Draggable | null = null
 
-			const containerWidth = parent.offsetWidth
-			const totalWidth = carousel.scrollWidth
-			const maxScroll = totalWidth - containerWidth
+			const setupDraggable = () => {
+				const containerWidth = parent.offsetWidth
+				const totalWidth = carousel.scrollWidth
+				const maxScroll = totalWidth - containerWidth
 
-			if (maxScroll <= 0) return // No need to make it draggable if content fits
+				// Kill if it shouldn't exist
+				if (maxScroll <= 0) {
+					draggable?.kill()
+					draggable = null
+					gsap.set(carousel, { x: 0 })
+					return
+				}
 
-			gsap.set(carousel, { x: 0 })
+				// Create if missing
+				if (!draggable) {
+					gsap.set(carousel, { x: 0 })
 
-			Draggable.create(carousel, {
-				type: 'x',
-				edgeResistance: 0.85,
-				inertia: true,
-				bounds: { minX: -maxScroll, maxX: 0 },
-				cursor: 'grab',
-				activeCursor: 'grabbing',
-				dragResistance: 0.1,
-				allowContextMenu: true,
-				zIndexBoost: false,
+					draggable = Draggable.create(carousel, {
+						type: 'x',
+						inertia: true,
+						edgeResistance: 0.85,
+						dragResistance: 0.1,
+						bounds: { minX: -maxScroll, maxX: 0 },
+						cursor: 'grab',
+						activeCursor: 'grabbing',
+						allowContextMenu: true,
+						zIndexBoost: false,
+					})[0]
+				} else {
+					// Update bounds + clamp current position
+					const currentX = gsap.getProperty(carousel, 'x') as number
+
+					const clampedX = gsap.utils.clamp(-maxScroll, 0, currentX)
+
+					gsap.set(carousel, { x: clampedX })
+					draggable.applyBounds({ minX: -maxScroll, maxX: 0 })
+				}
+			}
+
+			// Initial setup
+			setupDraggable()
+
+			// Observe parent size changes
+			const resizeObserver = new ResizeObserver(() => {
+				setupDraggable()
 			})
 
+			resizeObserver.observe(parent)
+
 			return () => {
-				Draggable.get(carousel)?.kill()
+				resizeObserver.disconnect()
+				draggable?.kill()
 			}
 		},
 		{ scope: carouselRef }
