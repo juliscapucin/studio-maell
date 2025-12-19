@@ -34,6 +34,7 @@ type ImageWithSpinnerProps = {
 	bgColor?: string
 	quality?: number
 	priority?: boolean
+	loading?: 'eager' | 'lazy'
 	showSpinner?: boolean
 	alt?: string
 	fill?: boolean
@@ -49,6 +50,7 @@ export default function ImageWithSpinner({
 	bgColor = 'bg-accent-1',
 	quality = 75,
 	priority = false,
+	loading = 'lazy',
 	showSpinner = true,
 	alt,
 	fill = false,
@@ -93,6 +95,7 @@ export default function ImageWithSpinner({
 					onLoad={handleLoad}
 					onError={handleError}
 					priority={priority}
+					loading={loading}
 				/>
 			)}
 		</div>

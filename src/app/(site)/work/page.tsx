@@ -44,8 +44,11 @@ export default async function Work() {
 				subtitle={page.subtitle}></PageHeader>
 			<div className='space-y-8'>
 				{cases && cases.length > 0 ? (
-					cases.map((caseItem: CaseType) => (
-						<CaseCard key={caseItem.slug} caseData={caseItem}></CaseCard>
+					cases.map((caseItem: CaseType, index: number) => (
+						<CaseCard
+							key={caseItem.slug}
+							caseData={caseItem}
+							index={index}></CaseCard>
 					))
 				) : (
 					<EmptyResults message='No cases available at the moment' />

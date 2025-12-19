@@ -13,9 +13,10 @@ import { CaseType } from '@/types/CaseType'
 
 type CaseCardProps = {
 	caseData?: CaseType
+	index: number
 }
 
-export default function CaseCard({ caseData }: CaseCardProps) {
+export default function CaseCard({ caseData, index }: CaseCardProps) {
 	const router = useRouter()
 	const cardContainerRef = useRef<HTMLDivElement>(null)
 	const cardRef = useRef<HTMLElement>(null)
@@ -134,7 +135,8 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 							imageSrc={{
 								url: urlFor(caseData.mainImage).width(1200).url(),
 							}}
-							sizes='100vw'
+							sizes='(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 33vw'
+							loading={index === 0 ? 'eager' : 'lazy'}
 							fill
 						/>
 					)}
@@ -156,7 +158,8 @@ export default function CaseCard({ caseData }: CaseCardProps) {
 							imageClassName='w-full h-full object-cover'
 							alt={caseData.alt || caseData.title}
 							imageSrc={{ url: urlFor(caseData.mainImage).width(1200).url() }}
-							sizes='100vw'
+							sizes='(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 33vw'
+							loading={index === 0 ? 'eager' : 'lazy'}
 							fill
 						/>
 					)}

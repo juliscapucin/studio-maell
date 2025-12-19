@@ -64,6 +64,7 @@ export default function CaseContent({ data }: CaseContentProps) {
 						}}
 						fill={true}
 						sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px'
+						loading='eager'
 						alt={data.alt || data.title}
 					/>
 				</div>
