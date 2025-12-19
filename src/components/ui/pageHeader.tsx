@@ -18,25 +18,47 @@ export default function PageHeader({ title, subtitle }: PageHeaderProps) {
 	const subtitleRef = useRef<HTMLParagraphElement>(null)
 
 	useGSAP(() => {
-		if (subtitle && horizontalLineRef.current) {
-			const mm = gsap.matchMedia()
-			// Desktop only
-			mm.add('(min-width: 1024px)', () => {
-				const parentElementWidth =
-					horizontalLineRef.current!.parentElement?.offsetWidth || 1200
-				const subtitleWidth = subtitleRef.current?.offsetWidth || 200
+		if (!subtitle || !horizontalLineRef.current) return
 
-				gsap.to(horizontalLineRef.current, {
-					x: () =>
-						// 600px is the amount the line is initially offset to the left
-						`${600 + parentElementWidth - (subtitleWidth + 30)}px`,
-					scrollTrigger: {
-						start: 'top top',
-						scrub: 0.3,
-						end: '+=70', //shorter distance = faster start
-					},
-				})
+		const line = horizontalLineRef.current
+		const subtitleEl = subtitleRef.current
+		const parent = line.parentElement
+		if (!parent || !subtitleEl) return
+
+		const mm = gsap.matchMedia()
+
+		mm.add('(min-width: 1024px)', () => {
+			const animation = gsap.to(line, {
+				x: () => {
+					const parentWidth = parent.offsetWidth
+					const subtitleWidth = subtitleEl?.offsetWidth || 0
+
+					// 600px = initial left offset
+					return 600 + parentWidth - (subtitleWidth + 30)
+				},
+				scrollTrigger: {
+					start: 'top top',
+					end: '+=40',
+					scrub: 0.3,
+					invalidateOnRefresh: true,
+				},
 			})
+
+			return () => {
+				animation.kill()
+			}
+		})
+
+		// Observe layout changes and refresh ScrollTrigger
+		const resizeObserver = new ResizeObserver(() => {
+			ScrollTrigger.refresh()
+		})
+
+		resizeObserver.observe(parent)
+
+		return () => {
+			resizeObserver.disconnect()
+			mm.revert()
 		}
 	}, [])
 
