@@ -19,7 +19,7 @@ import { metadataFallback } from '@/data'
 const workSans = Work_Sans({
 	variable: '--font-work-sans',
 	subsets: ['latin'],
-	weight: ['400', '700'],
+	weight: ['400', '500', '700'],
 })
 
 // Load custom font //
