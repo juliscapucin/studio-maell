@@ -23,8 +23,11 @@ export default async function Home() {
 				title={pageData.title}
 				subtitle={pageData.subtitle}></PageHeader>
 			<div className='space-y-8'>
-				{cases.map((caseItem: CaseType) => (
-					<CaseCard key={caseItem.slug} caseData={caseItem}></CaseCard>
+				{cases.map((caseItem: CaseType, index: number) => (
+					<CaseCard
+						key={caseItem.slug}
+						caseData={caseItem}
+						index={index}></CaseCard>
 				))}
 			</div>
 		</PageWrapper>
