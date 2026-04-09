@@ -53,7 +53,7 @@ export default function CaseCard({ caseData, index }: CaseCardProps) {
 
 				// Fade out cards
 				const siblingCards = document.querySelectorAll(
-					'[data-animation="case-card"]'
+					'[data-animation="case-card"]',
 				)
 				siblingCards.forEach((sibling) => {
 					gsap.to(sibling, { opacity: 0, duration: 0.2 })
@@ -69,7 +69,7 @@ export default function CaseCard({ caseData, index }: CaseCardProps) {
 						y: -cardRect.top + (screenWidth > 1024 ? 24 : 16),
 						duration: 0.3,
 						ease: 'power4.out',
-					}
+					},
 				)
 					.to(
 						cardContentRef.current,
@@ -80,7 +80,7 @@ export default function CaseCard({ caseData, index }: CaseCardProps) {
 							duration: 0.2,
 							ease: 'power4.out',
 						},
-						'<'
+						'<',
 					)
 					.to(
 						'.gsap-card-image',
@@ -89,7 +89,7 @@ export default function CaseCard({ caseData, index }: CaseCardProps) {
 							duration: 0.3,
 							ease: 'power4.out',
 						},
-						'<'
+						'<',
 					)
 					.to(
 						'.gsap-card-divider',
@@ -101,11 +101,11 @@ export default function CaseCard({ caseData, index }: CaseCardProps) {
 								router.push(`/work/${caseData.slug}`)
 							},
 						},
-						'<0.1'
+						'<0.1',
 					)
 			}
 		},
-		{ scope: cardContainerRef }
+		{ scope: cardContainerRef },
 	)
 
 	if (!caseData) {
@@ -133,11 +133,11 @@ export default function CaseCard({ caseData, index }: CaseCardProps) {
 							alt={caseData.alt || caseData.title}
 							imageClassName='w-full h-full object-cover'
 							imageSrc={{
-								url: urlFor(caseData.mainImage).width(1200).url(),
+								url: urlFor(caseData.mainImage).url(),
 							}}
-							sizes='(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 33vw'
+							sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px'
 							loading={index === 0 ? 'eager' : 'lazy'}
-							fill
+							fill={true}
 						/>
 					)}
 				</div>
@@ -157,8 +157,8 @@ export default function CaseCard({ caseData, index }: CaseCardProps) {
 							containerClassName='w-full sm:w-[400px] h-48 md:h-72 lg:h-96 relative'
 							imageClassName='w-full h-full object-cover'
 							alt={caseData.alt || caseData.title}
-							imageSrc={{ url: urlFor(caseData.mainImage).width(1200).url() }}
-							sizes='(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 33vw'
+							imageSrc={{ url: urlFor(caseData.mainImage).url() }}
+							sizes='(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 1200px'
 							loading={index === 0 ? 'eager' : 'lazy'}
 							fill
 						/>

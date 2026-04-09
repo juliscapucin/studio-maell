@@ -20,13 +20,7 @@ export default function CaseContent({ data }: CaseContentProps) {
 				const src = value.src || urlFor(value).width(1200).url()
 				return (
 					<figure className='my-10'>
-						<Image
-							src={src}
-							alt={alt}
-							width={1200}
-							height={800}
-							className='object-cover'
-						/>
+						<Image src={src} alt={alt} fill={true} />
 						{value.caption && (
 							<figcaption className='text-sm mt-2 text-secondary/70'>
 								{value.caption}
@@ -60,7 +54,7 @@ export default function CaseContent({ data }: CaseContentProps) {
 						containerClassName='w-full h-48 md:h-72 lg:h-96 relative'
 						imageClassName='w-full h-full object-cover'
 						imageSrc={{
-							url: urlFor(data.mainImage).width(1200).url(),
+							url: urlFor(data.mainImage).url(),
 						}}
 						fill={true}
 						sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px'

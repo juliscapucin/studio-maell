@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { EmptyResults } from '@/components/ui'
 
-// Extracted Spinner component for better separation
 function LoadingSpinner({ className = '', bgColor = 'bg-accent-1' }) {
 	return (
 		<div
